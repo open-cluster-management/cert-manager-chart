@@ -1,0 +1,12 @@
+repo/
+.vscode
+.idea
+*.log
+.DS_Store
+node_modules
+public/*/*
+public/webpack-assets.json
+dll*
+vendor*
+
+*.tgz
