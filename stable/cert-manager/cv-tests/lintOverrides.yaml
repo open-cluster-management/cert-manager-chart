@@ -28,3 +28,5 @@ ignoreMessages:
 - "\\[WARNING\\] ICP or icp referenced in chart name"
 - "\\[INFO\\] \"ICP\" or \"IBM Cloud Private\" is referenced"
 - "\\[ERROR\\] A values-metadata.yaml file is required, but not found: values-metadata.yaml"
+- "\\[ERROR\\] Missing test resources: templates/tests/.*.yaml"
+- "\\[ERROR\\] Missing required metadata labels: \"chart\", \"heritage\" under Pod (spec template) in cert-manager/templates/deployment.yaml"
