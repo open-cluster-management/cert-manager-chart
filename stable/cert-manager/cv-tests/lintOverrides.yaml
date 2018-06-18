@@ -27,3 +27,4 @@ ignoreMessages:
 - "\\[ERROR\\] Missing readinessProbe: readinessProbe not found for container"
 - "\\[WARNING\\] ICP or icp referenced in chart name"
 - "\\[INFO\\] \"ICP\" or \"IBM Cloud Private\" is referenced"
+- "\\[ERROR\\] A values-metadata.yaml file is required, but not found: values-metadata.yaml"
