@@ -7,7 +7,7 @@ language: generic
 env:
   global:
   - OCTOKIT_API_ENDPOINT="https://github.ibm.com/api/v3/"
-  - CONTENT_TOOLS_PROJECT="https://$(GITHUB_USER):$(GITHUB_TOKEN)@github.ibm.com:ibmprivatecloud/content-tools"
+
 services:
   - docker
 
@@ -15,6 +15,8 @@ before_install:
   # copy right check disabled for community chart
   # - make copyright-check
   # Clone build tools & set tools path for follow on processing 
+  CONTENT_TOOLS_PROJECT ?= "https://$(GITHUB_USER):$(GITHUB_TOKEN)@github.ibm.com:ibmprivatecloud/content-tools"
+  
   - if [[ ! -z "$BRANCH_OVERRIDE" ]] ; then
       git clone -b $BRANCH_OVERRIDE $CONTENT_TOOLS_PROJECT;
     else
