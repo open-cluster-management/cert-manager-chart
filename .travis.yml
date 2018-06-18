@@ -7,7 +7,7 @@ language: generic
 env:
   global:
   - OCTOKIT_API_ENDPOINT="https://github.ibm.com/api/v3/"
-  - CONTENT_TOOLS_PROJECT="https://$(GITHUB_USER):$(GITHUB_TOKEN)@github.ibm.com:ibmprivatecloud/content-tools"
+  - CONTENT_TOOLS_PROJECT="https://$GITHUB_USER:$GITHUB_TOKEN@github.ibm.com:ibmprivatecloud/content-tools"
 services:
   - docker
 
