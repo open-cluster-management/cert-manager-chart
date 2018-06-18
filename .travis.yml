@@ -7,7 +7,7 @@ language: generic
 env:
   global:
   - OCTOKIT_API_ENDPOINT="https://github.ibm.com/api/v3/"
-  - CONTENT_TOOLS_PROJECT="https://$GITHUB_USER:$GITHUB_TOKEN@github.ibm.com:ibmprivatecloud/content-tools"
+
 services:
   - docker
 
@@ -16,9 +16,9 @@ before_install:
   # - make copyright-check
   # Clone build tools & set tools path for follow on processing 
   - if [[ ! -z "$BRANCH_OVERRIDE" ]] ; then
-      git clone -b $BRANCH_OVERRIDE $CONTENT_TOOLS_PROJECT;
+      git clone -b $BRANCH_OVERRIDE git@github.ibm.com:ibmprivatecloud/content-tools;
     else
-      git clone $CONTENT_TOOLS_PROJECT;
+      git clone git@github.ibm.com:ibmprivatecloud/content-tools;
     fi
   - export toolsPath=`pwd`/content-tools/travis-tools/
   # Install dependencies & determine chart delta
