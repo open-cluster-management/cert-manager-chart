@@ -17,6 +17,7 @@ spec:
   template:
     metadata:
       labels:
+        k8s-app: "cert-manager"
         app: {{ template "cert-manager.name" . }}
         release: {{ .Release.Name }}
 {{- if .Values.podLabels }}

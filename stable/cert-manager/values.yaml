@@ -4,8 +4,8 @@
 replicaCount: 1
 
 image:
-  repository: registry.ng.bluemix.net/mdelder/icp-cert-manager-controller
-  tag: 0.3.1
+  repository: ibmcom/icp-cert-manager-controller
+  tag: 0.3.0
   pullPolicy: IfNotPresent
 
 createCustomResource: true
