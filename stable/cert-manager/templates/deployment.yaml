@@ -68,6 +68,9 @@ spec:
                 fieldPath: metadata.namespace
           resources:
 {{ toYaml .Values.resources | indent 12 }}
+          securityContext:
+            runAsNonRoot: true
+            runAsUser: 100
     {{- with .Values.nodeSelector }}
       nodeSelector:
 {{ toYaml . | indent 8 }}
