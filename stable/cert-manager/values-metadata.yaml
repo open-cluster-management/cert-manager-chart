@@ -1,0 +1,180 @@
+replicaCount:
+  __metadata:
+    label: "Replicas"
+    description: "Number of cert-manager replicas"
+    type: "number"
+    required: true
+    default: 1    
+image:
+  repository:
+    __metadata:
+      label: "Image Repository"
+      description: "Full repository and path to Certificate Manager image."
+      type: "string"
+      required: true
+      default: "ibmcom/icp-cert-manager-controller"
+  tag:
+    __metadata:
+      label: "Image Tag"
+      description: "The tag identifying which Certificate Manager image to deploy."
+      type: "string"
+      required: true
+      default: "0.3.0"
+  pullPolicy:
+    __metadata:
+      label: "Pull Policy"
+      description: "The policy used by Kubernetes for images."
+      type: "string"
+      required: true
+      default: "IfNotPresent"
+      options:
+      - label: "Never"
+        value: "Never"
+      - label: "IfNotPresent"
+        value: "IfNotPresent"
+      - label: "Always"
+        value: "Always"
+createCustomResource:
+  __metadata:
+    label: "Create kubernetes custom resource"
+    description: "Create CRD/TPR with this release"
+    type: "boolean"
+    required: true
+    default: true
+clusterResourceNamespace:
+  __metadata:
+    label: "The namespace for cluster resources"
+    description: "Override the namespace used to store DNS provider credentials etc. for ClusterIssuer resources"
+    type: "string"
+    required: false
+    default: "kube-system"
+leaderElection:
+  namespace:
+    __metadata:
+      label: "The namespace for ConfigMap"
+      description: "Override the namespace used to store the ConfigMap for leader election"
+      type: "string"
+      required: false
+      default: "kube-system"
+certificateResourceShortNames:
+  __metadata:
+    label: "Short names for Certificate resources"
+    description: "Custom aliases for Certificate CRD"
+    type: "array"
+    items:
+      type: "string"
+    required: false
+    default: ["cert", "certs"]
+rbac:
+  create:
+    __metadata:
+      label: "Rbac for certificate resources"
+      description: "If true, create and use RBAC resources"
+      type: "boolean"
+      required: true
+      default: true
+serviceAccount:
+  create:
+    __metadata:
+      label: "Service Account"
+      description: "If true, create a new service account"
+      type: "boolean"
+      required: true
+      default: true
+  name:
+    __metadata:
+      label: "The name of service account"
+      description: "Service account to be used. If not set and serviceAccount.create is true, a name is generated using the fullname template"
+      type: "string"
+      required: false
+      default:
+extraArgs:
+  __metadata:
+    label: "Additional arguments"
+    description: "Optional flags for cert-manager"
+    type: "array"
+    items: 
+      type: "string"
+    required: false
+    default: []
+resources:
+  __metadata:
+    label: "Resource configuration"
+  requests:
+    cpu: 
+      __metadata: 
+        label: "CPU request"
+        description: "CPU resource"
+        type: "string"
+        required: false
+        default: "10m"
+    memory: 
+      __metadata: 
+        label: "Memory request"
+        description: "Memory resource"
+        type: "string"
+        required: false
+	default: "32Mi"  
+podAnnotations:
+  __metadata:
+    name: "podAnnotations"
+    label: "Pod Annotations"
+    description: "Annotations to add to the cert-manager pod"
+    type: "string"
+    immutable: "false"
+    required: false
+    default: {}
+podLabels:
+  __metadata:
+    name: "podLabels"
+    label: "Pod Labels"
+    description: "Labels to add to the cert-manager pod"
+    type: "string"
+    immutable: "false"
+    required: false
+    default: {}
+nodeSelector:
+  __metadata:
+    name: "nodeSelector"
+    label: "Node selector"
+    description: "Node labels for pod assignment"
+    type: "string"
+    immutable: "false"
+    required: false
+    default: {}
+ingressShim:
+  defaultIssuerName:
+    __metadata:
+      label: "Default Issuer Name"
+      description: "Optional default issuer to use for ingress resources"
+      type: "string"
+      required: false
+      default: ""
+  defaultIssuerKind:
+    __metadata:
+      label: "Default Issuer Kind"
+      description: "Optional default issuer kind to use for ingress resources"
+      type: "string"
+      required: false
+      default: ""
+  defaultACMEChallengeType:
+    __metadata:
+      label: "Default ACME challenge type"
+      description: "Optional default challenge type to use for ingresses using ACME issuers"
+      type: "string"
+      required: false
+      default: ""
+  defaultACMEDNS01ChallengeProvider:
+    __metadata:
+      label: "Default ACME DNS Channege Provider"
+      description: "Optional default DNS01 challenge provider to use for ingresses using ACME issuers with DNS01"
+      type: "string"
+      required: false
+      default: ""
+createNamespaceResource:
+  __metadata:
+    label: "Create kubernetes namespace resource"
+    description: "Optional, static manifest generator in order to create a static namespace manifest for the namespace that cert-manager is being installed within."
+    type: "boolean"
+    required: true
+    default: false
