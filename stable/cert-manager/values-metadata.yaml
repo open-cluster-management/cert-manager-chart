@@ -107,14 +107,12 @@ resources:
         description: "CPU resource"
         type: "string"
         required: false
-        default: "10m"
     memory: 
       __metadata: 
         label: "Memory request"
         description: "Memory resource"
         type: "string"
-        required: false
-	default: "32Mi"  
+        required: false 
 podAnnotations:
   __metadata:
     name: "podAnnotations"
