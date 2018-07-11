@@ -65,12 +65,12 @@ spec:
           {{- end }}
           livenessProbe:
             exec:
-              command: ["sh", "-c", "exec echo 1"]
+              command: ["sh", "-c", "exec echo start cert-manager"]
             initialDelaySeconds: 30
             timeoutSeconds: 5
           readinessProbe:
             exec:
-              command: ["sh", "-c", "exec echo 1"]
+              command: ["sh", "-c", "exec echo start cert-manager"]
             initialDelaySeconds: 10
             timeoutSeconds: 2
           env:
