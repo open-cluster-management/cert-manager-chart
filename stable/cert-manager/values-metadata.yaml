@@ -87,7 +87,6 @@ serviceAccount:
       description: "Service account to be used. If not set and serviceAccount.create is true, a name is generated using the fullname template"
       type: "string"
       required: false
-      default:
 extraArgs:
   __metadata:
     label: "Additional arguments"
