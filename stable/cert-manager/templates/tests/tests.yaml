@@ -10,6 +10,8 @@ metadata:
   annotations:
     "helm.sh/hook": test-success
   labels:
+    app: {{ template "cert-manager.fullname" . }}
+    chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
     component: "cert-manager-test"
     release: {{ .Release.Name }}
     heritage: "{{ .Release.Service }}"
