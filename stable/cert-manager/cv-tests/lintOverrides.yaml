@@ -12,7 +12,6 @@
 # match the reqular expression.
 #
 #ignoreMessages:
-#  - "\\[WARNING\\] Parameter does not follow camelCase format standards: replica_Count in values\\.yaml"
 
 # For example, if uncomment the reduceMessages entry below with a list of regular
 # expressions and the new severity, the cv lint will modify the severty for any
@@ -23,10 +22,3 @@
 #    reduceTo: WARNING
 
 ignoreMessages:
-# "\\[ERROR\\] Missing livenessProbe: livenessProbe not found for container"
-# "\\[ERROR\\] Missing readinessProbe: readinessProbe not found for container"
-# "\\[WARNING\\] ICP or icp referenced in chart name"
-#"\\[INFO\\] \"ICP\" or \"IBM Cloud Private\" is referenced"
-# "\\[ERROR\\] A values-metadata.yaml file is required, but not found: values-metadata.yaml"
-# "\\[ERROR\\] Missing test resources: templates/tests/.*.yaml"
-# "\\[ERROR\\] Missing required metadata labels: \"chart\", \"heritage\" under Pod (spec template) in cert-manager/templates/deployment.yaml"
