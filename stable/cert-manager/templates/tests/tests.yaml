@@ -20,9 +20,9 @@ spec:
   - name: {{ .Release.Name }}-test-cm-health
     image: radial/busyboxplus:curl
     env:
-    - name: "ES_HOST"
+    - name: "CM_HOST"
       value: "localhost"
-    - name: "ES_PORT"
+    - name: "CM_PORT"
       value: "9402"
-    command: ["sh", "-c", "echo $ES_HOST && echo $ES_PORT && curl -k http://$ES_HOST:$ES_PORT"]
+    command: ["sh", "-c", "echo $CM_HOST && echo $CM_PORT && curl -k http://$CM_HOST:$CM_PORT"]
   restartPolicy: Never
