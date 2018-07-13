@@ -1,0 +1,20 @@
+filebeat:
+  name: fb-tempname
+logstash:
+  name: ls-tempname
+  port: 5000
+elasticsearch:
+  name: es-tempname
+  internalPort: 9300
+  master:
+    replicas: 1
+  client:
+    restPort: 9200
+  data:
+    replicas: 1
+    storage:
+      persistent: false
+kibana:
+  install: false
+security:
+  enabled: false
