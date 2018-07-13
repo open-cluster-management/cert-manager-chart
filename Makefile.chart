@@ -12,7 +12,7 @@ include Configfile
 
 CHART_NAME ?= stable/cert-manager
 
-.PHONY: build lint setup
+.PHONY: test build lint setup
 
 default: build
 
@@ -27,5 +27,8 @@ lint: setup
 
 build: lint
 	helm package $(CHART_NAME)
+
+test: build
+        helm test $(CHART_NAME)
 
 include Makefile.docker
