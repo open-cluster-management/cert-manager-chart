@@ -18,6 +18,8 @@ spec:
     metadata:
       labels:
         k8s-app: "cert-manager"
+        chart: {{ template "cert-manager.chart" . }}
+        heritage: {{ .Release.Service }}
         app: {{ template "cert-manager.name" . }}
         release: {{ .Release.Name }}
 {{- if .Values.podLabels }}
@@ -61,6 +63,16 @@ spec:
           - --default-acme-issuer-dns01-provider-name={{ .defaultACMEDNS01ChallengeProvider }}
           {{- end }}
           {{- end }}
+          livenessProbe:
+            exec:
+              command: ["sh", "-c", "exec echo start cert-manager"]
+            initialDelaySeconds: 30
+            timeoutSeconds: 5
+          readinessProbe:
+            exec:
+              command: ["sh", "-c", "exec echo start cert-manager"]
+            initialDelaySeconds: 10
+            timeoutSeconds: 2
           env:
           - name: POD_NAMESPACE
             valueFrom:
