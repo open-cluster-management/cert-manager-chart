@@ -15,10 +15,9 @@ metadata:
     component: "cert-manager-test"
     release: {{ .Release.Name }}
     heritage: "{{ .Release.Service }}"
--spec:
+spec:
   containers:
   - name: {{ .Release.Name }}-test-cm-health
     image: radial/busyboxplus:curl
     command: ["sh", "-c", "echo cert-manager-tests"]
   restartPolicy: Never
-
