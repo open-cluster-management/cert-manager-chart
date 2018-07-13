@@ -35,16 +35,6 @@ spec:
         - name: {{ .Chart.Name }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
-          livenessProbe:
-       	    exec:
-              command: ["sh", "-c", "exec echo start cert-manager check"]
-            initialDelaySeconds: 5
-            periodSeconds: 10
-          readinessProbe:
-            exec:
-              command: ["sh", "-c", "exec echo start cert-manager check"]
-            initialDelaySeconds: 5
-            periodSeconds: 10
           args:
         {{- if .Values.clusterResourceNamespace }}
           - --cluster-resource-namespace={{ .Values.clusterResourceNamespace }}
@@ -73,6 +63,16 @@ spec:
           - --default-acme-issuer-dns01-provider-name={{ .defaultACMEDNS01ChallengeProvider }}
           {{- end }}
           {{- end }}
+          livenessProbe:
+            exec:
+              command: ["sh", "-c", "exec echo start cert-manager"]
+            initialDelaySeconds: 30
+            timeoutSeconds: 5
+          readinessProbe:
+            exec:
+              command: ["sh", "-c", "exec echo start cert-manager"]
+            initialDelaySeconds: 10
+            timeoutSeconds: 2
           env:
           - name: POD_NAMESPACE
             valueFrom:
