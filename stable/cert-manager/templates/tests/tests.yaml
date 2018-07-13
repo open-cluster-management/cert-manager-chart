@@ -6,7 +6,7 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: "{{ .Release.Name }}-test-cm-health"
+  name: "{{ .Release.Name }}-test-cm-test"
   annotations:
     "helm.sh/hook": test-success
   labels:
@@ -15,14 +15,10 @@ metadata:
     component: "cert-manager-test"
     release: {{ .Release.Name }}
     heritage: "{{ .Release.Service }}"
-spec:
+-spec:
   containers:
   - name: {{ .Release.Name }}-test-cm-health
     image: radial/busyboxplus:curl
-    env:
-    - name: "CM_HOST"
-      value: "localhost"
-    - name: "CM_PORT"
-      value: "9402"
-    command: ["sh", "-c", "echo $CM_HOST && echo $CM_PORT && curl -k http://$CM_HOST:$CM_PORT"]
+    command: ["sh", "-c", "echo cert-manager-tests"]
   restartPolicy: Never
+
