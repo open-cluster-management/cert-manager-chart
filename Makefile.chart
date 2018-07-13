@@ -28,7 +28,4 @@ lint: setup
 build: lint
 	helm package $(CHART_NAME)
 
-test: build
-	helm test $(CHART_NAME)
-
 include Makefile.docker
