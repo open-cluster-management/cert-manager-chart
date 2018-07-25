@@ -11,8 +11,9 @@
 include Configfile
 
 CHART_NAME ?= stable/cert-manager
+VERSION ?= $(shell grep version ./$(CHART_NAME)/Chart.yaml | awk '{print $$2}')
 
-.PHONY: build lint setup
+.PHONY: build lint setup release-chart
 
 default: build
 
@@ -27,5 +28,10 @@ lint: setup
 
 build: lint
 	helm package $(CHART_NAME)
+
+release-chart: build
+	$(eval NAME := $(notdir $(CHART_NAME)))
+	$(eval FILE_NAME := $(NAME)-${VERSION}.tgz)
+	$(eval URL := $(ARTIFACTORY_URL)/$(ARTIFACTORY_REPO))
 
 include Makefile.docker
