@@ -96,22 +96,6 @@ extraArgs:
       type: "string"
     required: false
     default: []
-resources:
-  __metadata:
-    label: "Resource configuration"
-  requests:
-    cpu: 
-      __metadata: 
-        label: "CPU request"
-        description: "CPU resource"
-        type: "string"
-        required: false
-    memory: 
-      __metadata: 
-        label: "Memory request"
-        description: "Memory resource"
-        type: "string"
-        required: false 
 podAnnotations:
   __metadata:
     name: "podAnnotations"
@@ -139,35 +123,6 @@ nodeSelector:
     immutable: "false"
     required: false
     default: {}
-ingressShim:
-  defaultIssuerName:
-    __metadata:
-      label: "Default Issuer Name"
-      description: "Optional default issuer to use for ingress resources"
-      type: "string"
-      required: false
-      default: ""
-  defaultIssuerKind:
-    __metadata:
-      label: "Default Issuer Kind"
-      description: "Optional default issuer kind to use for ingress resources"
-      type: "string"
-      required: false
-      default: ""
-  defaultACMEChallengeType:
-    __metadata:
-      label: "Default ACME challenge type"
-      description: "Optional default challenge type to use for ingresses using ACME issuers"
-      type: "string"
-      required: false
-      default: ""
-  defaultACMEDNS01ChallengeProvider:
-    __metadata:
-      label: "Default ACME DNS Channege Provider"
-      description: "Optional default DNS01 challenge provider to use for ingresses using ACME issuers with DNS01"
-      type: "string"
-      required: false
-      default: ""
 createNamespaceResource:
   __metadata:
     label: "Create kubernetes namespace resource"

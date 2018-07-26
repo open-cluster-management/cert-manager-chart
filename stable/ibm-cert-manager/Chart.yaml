@@ -1,14 +1,20 @@
-name: cert-manager
+name: ibm-cert-manager
 version: 0.3.2
 tillerVersion: ">=2.7.0"
 appVersion: 0.3.0
-description: A Helm chart for cert-manager
+description: A Helm chart for ICP cert-manager
 home: https://github.com/jetstack/cert-manager
 keywords:
   - cert-manager
   - kube-lego
   - letsencrypt
   - tls
+  - amd64
+  - ppc64le
+  - ICP
+  - Development
+  - IBM Cloud Private
+  - OpenSource
 sources:
   - https://github.com/jetstack/cert-manager
 maintainers:
