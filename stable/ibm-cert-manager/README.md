@@ -1,4 +1,4 @@
-# cert-manager
+## Introduction
 
 cert-manager is a Kubernetes addon to automate the management and issuance of
 TLS certificates from various issuing sources.
@@ -9,6 +9,15 @@ to renew certificates at an appropriate time before expiry.
 ## Prerequisites
 
 - Kubernetes 1.7+
+
+## Chart Details
+
+This chart deploys:
+  - cert-manager master pods
+
+## Resources Required
+
+* Certificate Manager resource needs are very minimal, so no additional resources needed apart from what IBM CLoud Private needs.
 
 ## Installing the Chart
 
@@ -86,6 +95,8 @@ Alternatively, a YAML file that specifies the values for the above parameters ca
 $ helm install --name my-release -f values.yaml .
 ```
 > **Tip**: You can use the default [values.yaml](values.yaml)
+
+## Limitations
 
 ## Contributing
 
