@@ -24,6 +24,7 @@ before_install:
   # Install dependencies & determine chart delta
   - $toolsPath/build/bin/installDependencies.sh
   - export changeList=`$toolsPath/build/bin/determineChartDelta.sh | tee determineChartDelta.out | grep 'return determineChartDelta:' | cut -f2 -d:` && cat determineChartDelta.out
+  - source travis-env.sh
 
 install:
   # Package for release
@@ -58,4 +59,10 @@ after_success:
       make docker-login
       make image
       make release
+
+      echo "push chart image to artifactory registry"
+      make release-chart
+    else
+      echo "testing chart build and release to artifactory"
+      make release-chart
     fi
