@@ -32,8 +32,9 @@ build: lint
 # When releasing the latest - change the version in the Chart.yaml
 # Pushes chart to Artifactory repository.
 release-chart: build
+	$(eval VERSION_NUMBER ?= ${VERSION})
 	$(eval NAME := $(notdir $(CHART_NAME)))
-	$(eval FILE_NAME := $(NAME)-${VERSION}.tgz)
+	$(eval FILE_NAME := $(NAME)-$(VERSION_NUMBER).tgz)
 	$(eval URL := $(ARTIFACTORY_URL)/$(ARTIFACTORY_REPO))
 	curl -H "X-JFrog-Art-Api: $(ARTIFACTORY_KEY)" -T $(FILE_NAME) $(URL)/$(FILE_NAME)
 
