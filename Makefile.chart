@@ -11,7 +11,7 @@
 include Configfile
 
 CHART_NAME ?= stable/ibm-cert-manager
-VERSION ?= $(shell grep version ./$(CHART_NAME)/Chart.yaml | awk '{print $$2}')
+VERSION := $(shell grep version ./$(CHART_NAME)/Chart.yaml | awk '{print $$2}')
 
 .PHONY: build lint setup release-chart
 
