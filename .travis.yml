@@ -63,6 +63,6 @@ after_success:
       echo "push chart image to artifactory registry"
       make release-chart
     else
-      echo "testing chart build and release to artifactory"
+      echo "push chart image to test artifactory repository"
       make release-chart
     fi

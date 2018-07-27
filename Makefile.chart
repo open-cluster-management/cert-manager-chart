@@ -30,7 +30,6 @@ build: lint
 	$(eval VERSION_NUMBER ?= ${VERSION})
 	helm package --version $(VERSION_NUMBER) $(CHART_NAME)
 
-# When releasing the latest - change the version in the Chart.yaml
 # Pushes chart to Artifactory repository.
 release-chart: build
 	$(eval VERSION_NUMBER ?= ${VERSION})
