@@ -59,10 +59,6 @@ after_success:
       make docker-login
       make image
       make release
-
-      echo "push chart image to artifactory registry"
-      make release-chart
-    else
-      echo "push chart image to test artifactory repository"
-      make release-chart
     fi
+    echo "push chart image to artifactory registry"
+    make release-chart
