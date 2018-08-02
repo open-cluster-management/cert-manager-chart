@@ -13,4 +13,5 @@ DOCKER_FLAG =
 
 ARTIFACTORY_URL ?= https://na.artifactory.swg-devops.com/artifactory
 ARTIFACTORY_REPO ?= hyc-cloud-private-scratch-helm-local
+
 ARTIFACTORY_KEY ?= 
