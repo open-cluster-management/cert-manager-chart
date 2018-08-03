@@ -11,8 +11,9 @@
 include Configfile
 
 CHART_NAME ?= stable/ibm-cert-manager
+VERSION := $(shell grep version ./$(CHART_NAME)/Chart.yaml | awk '{print $$2}')
 
-.PHONY: build lint setup
+.PHONY: build lint setup release-chart
 
 default: build
 
@@ -26,6 +27,15 @@ lint: setup
 	helm lint $(CHART_NAME)
 
 build: lint
-	helm package $(CHART_NAME)
+	$(eval VERSION_NUMBER ?= ${VERSION})
+	helm package --version $(VERSION_NUMBER) $(CHART_NAME)
+
+# Pushes chart to Artifactory repository.
+release-chart: build
+	$(eval VERSION_NUMBER ?= ${VERSION})
+	$(eval NAME := $(notdir $(CHART_NAME)))
+	$(eval FILE_NAME := $(NAME)-$(VERSION_NUMBER).tgz)
+	$(eval URL := $(ARTIFACTORY_URL)/$(ARTIFACTORY_REPO))
+	curl -H "X-JFrog-Art-Api: $(ARTIFACTORY_KEY)" -T $(FILE_NAME) $(URL)/$(FILE_NAME)
 
 include Makefile.docker
