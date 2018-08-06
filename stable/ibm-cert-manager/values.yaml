@@ -43,7 +43,8 @@ resources: {}
   #   cpu: 10m
   #   memory: 32Mi
 
-podAnnotations: {}
+podAnnotations: 
+  scheduler.alpha.kubernetes.io/critical-pod: ''
 
 podLabels: {}
 # Optional DNS settings, useful if you have a public and private DNS zone for
@@ -69,3 +70,8 @@ ingressShim: {}
 # namespace manifest for the namespace that cert-manager is being installed
 # within. It should **not** be used if you are using Helm for deployment.
 createNamespaceResource: false
+
+# New additions for pod priority and preemption alignment
+priorityClassName: system-cluster-critical
+schedulerName: default-scheduler
+restartPolicy: Always
