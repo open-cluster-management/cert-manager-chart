@@ -25,7 +25,8 @@ spec:
 {{- if .Values.podLabels }}
 {{ toYaml .Values.podLabels | indent 8 }}
 {{- end }}
-      annotations: scheduler.alpha.kubernetes.io/critical-pod: ''
+      annotations: 
+        scheduler.alpha.kubernetes.io/critical-pod: ''
     spec:
       serviceAccountName: {{ template "cert-manager.serviceAccountName" . }}
       containers:
