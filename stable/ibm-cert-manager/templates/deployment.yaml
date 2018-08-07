@@ -101,7 +101,7 @@ spec:
 {{- end }}
 {{- if .Values.priorityClassName }}
       priorityClassName: 
-{{ toYaml .Values.priorityClassName | indent8 }}
+{{ toYaml .Values.priorityClassName | indent 8 }}
 {{- end }}
 {{- if .Values.schedulerName }}
       schedulerName: 
