@@ -103,11 +103,11 @@ spec:
 {{ toYaml .Values.podDnsConfig | indent 8 }}
 {{- end }}
 {{- if .Values.priorityClassName }}
-      priorityClassName: {{ .Values.priorityClassName | indent 8 }}
+      priorityClassName: {{ .Values.priorityClassName }}
 {{- end }}
 {{- if .Values.schedulerName }}
-      schedulerName: {{ .Values.default-scheduler | indent 8 }}
+      schedulerName: {{ .Values.default-scheduler }}
 {{- end }}
 {{- if .Values.restartPolicy }}
-      restartPolicy: {{ .Values.restartPolicy | indent 8}}
+      restartPolicy: {{ .Values.restartPolicy }}
 {{- end }}
