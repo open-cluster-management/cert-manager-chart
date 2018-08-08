@@ -4,4 +4,4 @@
 # US Government Users Restricted Rights - Use, duplication or disclosure restricted by GSA ADP Schedule Contract with IBM Corp.
 
 ignoreMessages:
-  - `\[ERROR\] Use of Alpha annotation: found scheduler.alpha.kubernetes.io/critical-pod: in source templates/deployment.yaml`
+  - '\[ERROR\] Use of Alpha annotation: found scheduler.alpha.kubernetes.io/critical-pod: in source templates/deployment.yaml'
