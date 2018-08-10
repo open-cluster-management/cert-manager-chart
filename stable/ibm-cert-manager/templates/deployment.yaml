@@ -26,7 +26,7 @@ spec:
 {{ toYaml .Values.podLabels | indent 8 }}
 {{- end }}
       annotations: 
-        scheduler.alpha.kubernetes.io/critical-pod: ''
+        scheduler.alpha.kubernetes.io/critical-pod: ""
     spec:
       serviceAccountName: {{ template "cert-manager.serviceAccountName" . }}
       containers:
@@ -100,15 +100,4 @@ spec:
       dnsConfig:
 {{ toYaml .Values.podDnsConfig | indent 8 }}
 {{- end }}
-{{- if .Values.priorityClassName }}
-      priorityClassName: 
-{{ toYaml .Values.priorityClassName | indent 8 }}
-{{- end }}
-{{- if .Values.schedulerName }}
-      schedulerName: 
-{{ toYaml .Values.schedulerName | indent 8 }}
-{{- end }}
-{{- if .Values.restartPolicy }}
-      restartPolicy: 
-{{ toYaml .Values.restartPolicy | indent 8 }}
-{{- end }}
+      priorityClassName: system-cluster-critical
