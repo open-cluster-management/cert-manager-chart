@@ -43,7 +43,9 @@ resources: {}
   #   cpu: 10m
   #   memory: 32Mi
 
-podAnnotations: {}
+podAnnotations: {
+  scheduler.alpha.kubernetes.io/critical-pod: ""
+}
 
 podLabels: {}
 # Optional DNS settings, useful if you have a public and private DNS zone for
@@ -71,6 +73,4 @@ ingressShim: {}
 createNamespaceResource: false
 
 # New additions for pod priority and preemption alignment
-priorityClassName: system-cluster-critical
-schedulerName: default-scheduler
-restartPolicy: Always
+priorityClassName: cert-manager-system-cluster-critical
