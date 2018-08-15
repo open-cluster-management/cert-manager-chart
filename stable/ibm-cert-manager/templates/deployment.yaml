@@ -26,9 +26,9 @@ spec:
 {{ toYaml .Values.podLabels | indent 8 }}
 {{- end }}
       annotations: 
-        {{- if .Values.podAnnotations }}
-  {{ toYaml .Values.podAnnotations | indent 8 }}
-        {{- end }}
+      {{- if .Values.podAnnotations }}
+{{ toYaml .Values.podAnnotations | indent 8 }}
+      {{- end }}
     spec:
       serviceAccountName: {{ template "cert-manager.serviceAccountName" . }}
       containers:
