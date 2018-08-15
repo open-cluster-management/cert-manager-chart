@@ -2,6 +2,11 @@ apiVersion: scheduling.k8s.io/v1beta1
 kind: PriorityClass
 metadata:
   name: cert-manager-system-cluster-critical
+  labels:
+    app: {{ template "cert-manager.name" . }}
+    chart: {{ template "cert-manager.chart" . }}
+    release: {{ .Release.Name }}
+    heritage: {{ .Release.Service }}
 value: 1000000000
 globalDefault: false
 description: "Used for system critical pods that must run in the cluster, but can be moved to another node if necessary."
