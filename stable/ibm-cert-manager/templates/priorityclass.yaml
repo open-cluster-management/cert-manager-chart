@@ -1,7 +1,7 @@
-apiVersion: scheduling.k8s.io/v1alpha1
+apiVersion: scheduling.k8s.io/v1beta1
 kind: PriorityClass
 metadata:
-  name: system-cluster-critical
-value: 2000000000
+  name: cert-manager-system-cluster-critical
+value: 1000000000
 globalDefault: false
 description: "Used for system critical pods that must run in the cluster, but can be moved to another node if necessary."

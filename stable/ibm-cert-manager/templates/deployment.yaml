@@ -100,4 +100,4 @@ spec:
       dnsConfig:
 {{ toYaml .Values.podDnsConfig | indent 8 }}
 {{- end }}
-      priorityClassName: system-cluster-critical
+      priorityClassName: cert-manager-system-cluster-critical
