@@ -21,6 +21,7 @@ before_install:
       git clone git@github.ibm.com:ibmprivatecloud/content-tools;
     fi
   - export toolsPath=`pwd`/content-tools/travis-tools/
+  - echo "kubectl version" | cat - $toolsPath/cv-test/bin/loginV2.sh > temp && mv temp $toolsPath/cv-test/bin/loginV2.sh 
   # Install dependencies & determine chart delta
   - $toolsPath/build/bin/installDependencies.sh
   - export changeList=`$toolsPath/build/bin/determineChartDelta.sh | tee determineChartDelta.out | grep 'return determineChartDelta:' | cut -f2 -d:` && cat determineChartDelta.out
