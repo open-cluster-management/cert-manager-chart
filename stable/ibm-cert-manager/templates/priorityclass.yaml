@@ -1,7 +1,7 @@
 apiVersion: scheduling.k8s.io/v1beta1
 kind: PriorityClass
 metadata:
-  name: cert-manager-system-cluster-critical
+  name: {{ .Values.priorityClassName }}
   labels:
     app: {{ template "cert-manager.name" . }}
     chart: {{ template "cert-manager.chart" . }}
