@@ -43,7 +43,9 @@ resources: {}
   #   cpu: 10m
   #   memory: 32Mi
 
-podAnnotations: {}
+podAnnotations: {
+  scheduler.alpha.kubernetes.io/critical-pod: ""
+}
 
 podLabels: {}
 # Optional DNS settings, useful if you have a public and private DNS zone for
