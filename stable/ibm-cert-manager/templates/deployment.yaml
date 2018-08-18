@@ -102,6 +102,4 @@ spec:
       dnsConfig:
 {{ toYaml .Values.podDnsConfig | indent 8 }}
 {{- end }}
-{{- if .Values.priorityClassName }}
-      priorityClassName: {{ toYaml .Values.priorityClassName | indent 8 }}
-{{- end }}
+
