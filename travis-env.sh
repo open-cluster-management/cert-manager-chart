@@ -1,13 +1,5 @@
 # Release Tag and Repository
-if [ "$TRAVIS_PULL_REQUEST" ]; then
-
-    ARTIFACTORY_REPO=hyc-cloud-private-integration-helm-local
-    VERSION=0.3.2
-    
-    export VERSION_NUMBER="$VERSION"
-    export ARTIFACTORY_REPO="$ARTIFACTORY_REPO"
-
-elif [ "$TRAVIS_BRANCH" = "master" ]; then
+if [ "$TRAVIS_BRANCH" = "master" ] && [ !"$TRAVIS_PULL_REQUEST" ]; then
     ARTIFACTORY_REPO=hyc-cloud-private-integration-helm-local
     VERSION=1.1.1
     
