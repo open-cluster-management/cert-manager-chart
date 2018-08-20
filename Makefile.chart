@@ -36,7 +36,7 @@ release-chart: build
 	$(eval NAME := $(notdir $(CHART_NAME)))
 	$(eval FILE_NAME := $(NAME)-$(VERSION_NUMBER).tgz)
 	$(eval URL := $(ARTIFACTORY_URL)/$(ARTIFACTORY_REPO))
-	
-	@echo 'curl -H "X-JFrog-Art-Api: $(ARTIFACTORY_KEY)" -T $(FILE_NAME) $(URL)/$(FILE_NAME)'
+
+	echo '$(URL)/$(FILE_NAME)'
 
 include Makefile.docker
