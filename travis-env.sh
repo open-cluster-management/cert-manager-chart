@@ -7,7 +7,7 @@ if [ "$TRAVIS_PULL_REQUEST" ]; then
     export VERSION_NUMBER="$VERSION"
     export ARTIFACTORY_REPO="$ARTIFACTORY_REPO"
 
-else if [ "$TRAVIS_BRANCH" = "master" ]; then
+elif [ "$TRAVIS_BRANCH" = "master" ]; then
     ARTIFACTORY_REPO=hyc-cloud-private-integration-helm-local
     VERSION=1.1.1
     
