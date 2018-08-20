@@ -28,7 +28,9 @@ repo: repo-stable
 charts-stable: $(STABLE_CHARTS)
 $(STABLE_CHARTS): $(STABLE_BUILD_DIR) 
 	cv lint $@
+	mv $@/templates/tests/test01.yaml .
 	helm package $@ -d $(STABLE_BUILD_DIR)
+	mv test01.yaml $@/templates/tests
 
 .PHONY: copyright-check
 copyright-check:
