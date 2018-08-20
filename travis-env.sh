@@ -10,7 +10,7 @@ if [ "$TRAVIS_BRANCH" = "master" ]; then
         export ARTIFACTORY_REPO="$ARTIFACTORY_REPO"
     fi
 
-    if [ "$TRAVIS_EVENT_TYPE" = "pull_request" ]; then
+    if ! [ "$TRAVIS_EVENT_TYPE" = "pull_request" ]; then
         echo TRAVIS_EVENT_TYPE=$TRAVIS_EVENT_TYPE
     fi
 fi
