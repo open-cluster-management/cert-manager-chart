@@ -18,6 +18,6 @@ metadata:
 spec:
   containers:
   - name: {{ .Release.Name }}-test-cm-health
-    image: radial/busyboxplus:curl
+    image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
     command: ["sh", "-c", "echo cert-manager-tests"]
   restartPolicy: Never
