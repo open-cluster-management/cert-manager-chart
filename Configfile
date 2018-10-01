@@ -1,0 +1,17 @@
+GIT_REMOTE_URL = $(shell git config --get remote.origin.url)
+GITHUB_USER := $(shell echo $(GITHUB_USER) | sed 's/@/%40/g')
+GITHUB_TOKEN ?=
+DOCKER_SERVER ?= registry.ng.bluemix.net
+DOCKER_USERNAME ?= token
+DOCKER_PASSWORD ?= 
+IMAGE_DESCRIPTION =
+IMAGE_NAME = icp-cert-manager-chart
+IMAGE_REPO ?= registry.ng.bluemix.net/mdelder
+RELEASE_TAG ?= 0.3.2
+ARCH = $(shell uname -m)
+DOCKER_FLAG =
+
+ARTIFACTORY_URL ?= https://na.artifactory.swg-devops.com/artifactory
+ARTIFACTORY_REPO ?= hyc-cloud-private-scratch-helm-local
+
+ARTIFACTORY_KEY ?= 

@@ -17,6 +17,9 @@ spec:
   template:
     metadata:
       labels:
+        k8s-app: "cert-manager"
+        chart: {{ template "cert-manager.chart" . }}
+        heritage: {{ .Release.Service }}
         app: {{ template "cert-manager.name" . }}
         release: {{ .Release.Name }}
 {{- if .Values.podLabels }}
@@ -68,6 +71,16 @@ spec:
           tolerations:
 {{ toYaml .Values.tolerations | indent 10 }}
           {{- end }}
+          livenessProbe:
+            exec:
+              command: ["sh", "-c", "exec echo start cert-manager"]
+            initialDelaySeconds: 30
+            timeoutSeconds: 5
+          readinessProbe:
+            exec:
+              command: ["sh", "-c", "exec echo start cert-manager"]
+            initialDelaySeconds: 10
+            timeoutSeconds: 2
           env:
           - name: POD_NAMESPACE
             valueFrom:
@@ -90,6 +103,9 @@ spec:
           {{- end }}
           resources:
 {{ toYaml .Values.resources | indent 12 }}
+          securityContext:
+            runAsNonRoot: true
+            runAsUser: 100
     {{- with .Values.nodeSelector }}
       nodeSelector:
 {{ toYaml . | indent 8 }}
@@ -109,3 +125,7 @@ spec:
       dnsConfig:
 {{ toYaml .Values.podDnsConfig | indent 8 }}
 {{- end }}
+<<<<<<< HEAD
+=======
+
+>>>>>>> 07103cc2385c28b19c9571ba3713143de1907c6e
