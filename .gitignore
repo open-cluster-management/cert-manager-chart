@@ -8,5 +8,6 @@ public/*/*
 public/webpack-assets.json
 dll*
 vendor*
+*requirements.lock
 
 *.tgz
