@@ -5,7 +5,7 @@ replicaCount: 1
 
 image:
   repository: ibmcom/icp-cert-manager-controller
-  tag: 0.3.0
+  tag: 0.5.0
   pullPolicy: IfNotPresent
 
 createCustomResource: true

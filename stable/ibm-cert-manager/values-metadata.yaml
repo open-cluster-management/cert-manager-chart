@@ -19,7 +19,7 @@ image:
       description: "The tag identifying which Certificate Manager image to deploy."
       type: "string"
       required: true
-      default: "0.3.0"
+      default: "0.5.0"
   pullPolicy:
     __metadata:
       label: "Pull Policy"
