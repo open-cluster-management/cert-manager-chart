@@ -48,7 +48,8 @@ resources: {}
   #   memory: 32Mi
 
 podAnnotations: {
-  scheduler.alpha.kubernetes.io/critical-pod: ""
+  scheduler.alpha.kubernetes.io/critical-pod: "",
+  productID: ""
 }
 
 podLabels: {}
