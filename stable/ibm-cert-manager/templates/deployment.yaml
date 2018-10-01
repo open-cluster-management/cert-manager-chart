@@ -125,7 +125,3 @@ spec:
       dnsConfig:
 {{ toYaml .Values.podDnsConfig | indent 8 }}
 {{- end }}
-<<<<<<< HEAD
-=======
-
->>>>>>> 07103cc2385c28b19c9571ba3713143de1907c6e
