@@ -31,7 +31,9 @@ The command deploys ibm-cert-manager on the Kubernetes cluster in the default co
 > **Tip**: List all releases using `helm list`
 
 ### Verifying the Chart
-See NOTES.txt associated with this chart for verification instructions
+```console
+$ kubectl get pods -o custom-columns=:metadata.name | grep "ibm-cert-manager" | xargs -I {} sh -c "kubectl describe pods {}"
+```
 
 ### Uninstalling the Chart
 
