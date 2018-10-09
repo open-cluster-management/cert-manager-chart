@@ -4,8 +4,6 @@
 ## Introduction
 This chart is a [Kubernetes Addon](https://kubernetes.io/docs/concepts/cluster-administration/addons/) to automate the management and issuance of TLS certificates from various issuing sources. It will ensure certificates are valid and up to date periodically, and it will attempt to renew certificates at an appropriate time before expiry.
 
-
-
 ## Chart Details
 This chart deploys:
 * cert-manager master pod
@@ -17,6 +15,8 @@ This chart deploys:
 Certificate Manager resource needs are very minimal, so no additional resources needed apart from what IBM CLoud Private needs.
 
 ## Installing the Chart
+IBM-Cert-Manager is automatically installed with ICP version 3.1.0 and later. Installation instructions are provided as a reference in case IBM-Cert-Manager needs to be reinstalled.
+
 Full installation instructions, including details on how to configure extra
 functionality in cert-manager can be found in the [getting started docs](https://cert-manager.readthedocs.io/en/latest/getting-started/).
 
