@@ -28,7 +28,9 @@ lint: setup
 
 build: lint
 	$(eval VERSION_NUMBER ?= ${VERSION})
+	mv $(CHART_NAME)/templates/tests/test01.yaml $(CHART_NAME)/..
 	helm package --version $(VERSION_NUMBER) $(CHART_NAME)
+	mv $(CHART_NAME)/../test01.yaml $(CHART_NAME)/templates/tests
 
 # Pushes chart to Artifactory repository.
 release-chart: build
