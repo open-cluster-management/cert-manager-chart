@@ -1,7 +1,7 @@
 name: ibm-cert-manager
 version: 5.3.4
 tillerVersion: ">=2.7.0"
-appVersion: 0.3.0
+appVersion: 0.5.0
 description: A Helm chart for ICP cert-manager
 home: https://github.com/jetstack/cert-manager
 keywords:
