@@ -4,6 +4,8 @@
 ## Introduction
 This chart is a [Kubernetes Addon](https://kubernetes.io/docs/concepts/cluster-administration/addons/) to automate the management and issuance of TLS certificates from various issuing sources. It will ensure certificates are valid and up to date periodically, and it will attempt to renew certificates at an appropriate time before expiry.
 
+
+
 ## Chart Details
 This chart deploys:
 * cert-manager master pod
@@ -74,14 +76,7 @@ The following table lists the configurable parameters of the cert-manager chart 
 | `http_proxy` | Value of the `HTTP_PROXY` environment variable in the cert-manager pod | |
 | `https_proxy` | Value of the `HTTPS_PROXY` environment variable in the cert-manager pod | |
 | `no_proxy` | Value of the `NO_PROXY` environment variable in the cert-manager pod | |
-| `webhook.enabled` | Toggles whether the validating webhook component should be installed | `false` |
-| `webhook.replicaCount` | Number of cert-manager webhook replicas | `1` |
-| `webhook.podAnnotations` | Annotations to add to the webhook pods | `{}` |
-| `webhook.extraArgs` | Optional flags for cert-manager webhook component | `[]` |
-| `webhook.resources` | CPU/memory resource requests/limits for the webhook pods | |
-| `webhook.image.repository` | Webhook image repository | `quay.io/jetstack/cert-manager-webhook` |
-| `webhook.image.tag` | Webhook image tag | `v0.5.0` |
-| `webhook.image.pullPolicy` | Webhook image pull policy | `IfNotPresent` |
+
 
 Specify each parameter using the `--set key=value[,key=value]` argument to `helm install`.
 
