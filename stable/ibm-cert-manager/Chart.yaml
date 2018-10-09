@@ -1,5 +1,5 @@
 name: ibm-cert-manager
-version: 0.3.2
+version: 5.3.4
 tillerVersion: ">=2.7.0"
 appVersion: 0.3.0
 description: A Helm chart for ICP cert-manager
