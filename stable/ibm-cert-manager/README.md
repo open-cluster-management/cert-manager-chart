@@ -1,5 +1,5 @@
 # IBM-Cert-Manager
-[IBM-Cert-Manager](github.com/jetstack/cert-manager) is an open source project that provides certificate management to services running on ICP.
+[IBM-Cert-Manager](https://github.com/jetstack/cert-manager) is an open source project that provides certificate management to services running on ICP.
 
 ## Introduction
 This chart is a [Kubernetes Addon](https://kubernetes.io/docs/concepts/cluster-administration/addons/) to automate the management and issuance of TLS certificates from various issuing sources. It will ensure certificates are valid and up to date periodically, and it will attempt to renew certificates at an appropriate time before expiry.
