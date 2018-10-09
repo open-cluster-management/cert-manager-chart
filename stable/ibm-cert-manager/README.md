@@ -1,12 +1,12 @@
 # IBM-Cert-Manager
-* [IBM-Cert-Manager](github.com/jetstack/cert-manager) is an open source project that provides certificate management to services running on ICP.
+[IBM-Cert-Manager](github.com/jetstack/cert-manager) is an open source project that provides certificate management to services running on ICP.
 
 ## Introduction
-This chart is a Kubernetes addon to automate the management and issuance of TLS certificates from various issuing sources. It will ensure certificates are valid and up to date periodically, and attempt to renew certificates at an appropriate time before expiry.
+This chart is a Kubernetes [Addon](https://kubernetes.io/docs/concepts/cluster-administration/addons/) to automate the management and issuance of TLS certificates from various issuing sources. It will ensure certificates are valid and up to date periodically, and it will attempt to renew certificates at an appropriate time before expiry.
 
 ## Chart Details
 This chart deploys:
-* cert-manager master pods
+* cert-manager master pod
 
 ## Prerequisites
 * Kubernetes 1.7+
@@ -25,20 +25,6 @@ $ helm install --name my-release stable/ibm-cert-manager
 ```
 
 The command deploys ibm-cert-manager on the Kubernetes cluster in the default configuration. The [configuration](#configuration) section lists the parameters that can be configured during installation.
-
-In order to begin issuing certificates, you will need to set up a ClusterIssuer
-or Issuer resource (for example, by creating a 'letsencrypt-staging' issuer).
-
-More information on the different types of issuers and how to configure them
-can be found in our documentation:
-
-https://cert-manager.readthedocs.io/en/latest/reference/issuers.html
-
-For information on how to configure cert-manager to automatically provision
-Certificates for Ingress resources, take a look at the `ingress-shim`
-documentation:
-
-https://cert-manager.readthedocs.io/en/latest/reference/ingress-shim.html
 
 > **Tip**: List all releases using `helm list`
 
@@ -107,7 +93,19 @@ $ helm install --name my-release -f values.yaml .
 
 > **Tip**: You can use the default values.yaml
 
+### How to use IBM-Cert-Manager
+In order to begin issuing certificates, you will need to set up a ClusterIssuer
+or Issuer resource (for example, by creating a 'letsencrypt-staging' issuer).
+
+More information on the different types of issuers and how to configure them
+can be found in our [documentation](https://cert-manager.readthedocs.io/en/latest/reference/issuers.html)
+
+For information on how to configure cert-manager to automatically provision
+Certificates for Ingress resources, take a look at the `ingress-shim`
+[documentation](https://cert-manager.readthedocs.io/en/latest/reference/ingress-shim.html)
+
 ## Limitations
+* Validated to run on IBM Private Cloud
 
 ## Documentation
 * [Official cert-manager documentation](https://cert-manager.readthedocs.io/en/latest)
