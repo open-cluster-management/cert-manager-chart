@@ -2,7 +2,7 @@
 [IBM-Cert-Manager](github.com/jetstack/cert-manager) is an open source project that provides certificate management to services running on ICP.
 
 ## Introduction
-This chart is a Kubernetes [Addon](https://kubernetes.io/docs/concepts/cluster-administration/addons/) to automate the management and issuance of TLS certificates from various issuing sources. It will ensure certificates are valid and up to date periodically, and it will attempt to renew certificates at an appropriate time before expiry.
+This chart is a [Kubernetes Addon](https://kubernetes.io/docs/concepts/cluster-administration/addons/) to automate the management and issuance of TLS certificates from various issuing sources. It will ensure certificates are valid and up to date periodically, and it will attempt to renew certificates at an appropriate time before expiry.
 
 ## Chart Details
 This chart deploys:
@@ -104,9 +104,12 @@ For information on how to configure cert-manager to automatically provision
 Certificates for Ingress resources, take a look at the `ingress-shim`
 [documentation](https://cert-manager.readthedocs.io/en/latest/reference/ingress-shim.html)
 
+Documentation for using IBM-Cert-Manager can be found in the [IBM Knowledge Center](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/manage_applications/create_cert.html).
+
 ## Limitations
 * Validated to run on IBM Private Cloud
 
 ## Documentation
 * [Official cert-manager documentation](https://cert-manager.readthedocs.io/en/latest)
+* [IBM Knowledge Center documentation](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/manage_applications/create_cert.html)
 * This chart is maintained at [github.com/jetstack/cert-manager](https://github.com/jetstack/cert-manager/tree/master/contrib/charts/cert-manager).
