@@ -48,35 +48,37 @@ The following table lists the configurable parameters of the cert-manager chart 
 
 | Parameter | Description | Default |
 | --------- | ----------- | ------- |
-| `image.repository` | Image repository | `quay.io/jetstack/cert-manager-controller` |
-| `image.tag` | Image tag | `v0.5.0` |
+| `image.repository` | Image repository | `ibmcom/icp-cert-manager-controller` |
+| `image.tag` | Image tag | `0.5.0` |
 | `image.pullPolicy` | Image pull policy | `IfNotPresent` |
 | `replicaCount`  | Number of cert-manager replicas  | `1` |
 | `createCustomResource` | Create CRD/TPR with this release | `true` |
 | `clusterResourceNamespace` | Override the namespace used to store DNS provider credentials etc. for ClusterIssuer resources | Same namespace as cert-manager pod
 | `leaderElection.Namespace` | Override the namespace used to store the ConfigMap for leader election | Same namespace as cert-manager pod
 | `certificateResourceShortNames` | Custom aliases for Certificate CRD | `["cert", "certs"]` |
-| `extraArgs` | Optional flags for cert-manager | `[]` |
-| `extraEnv` | Optional environment variables for cert-manager | `[]` |
 | `rbac.create` | If `true`, create and use RBAC resources | `true` |
 | `serviceAccount.create` | If `true`, create a new service account | `true` |
 | `serviceAccount.name` | Service account to be used. If not set and `serviceAccount.create` is `true`, a name is generated using the fullname template |  |
-| `resources` | CPU/memory resource requests/limits | `requests: {cpu: 10m, memory: 32Mi}` |
+| `extraArgs` | Optional flags for cert-manager | `[]` |
+| `extraEnv` | Optional environment variables for cert-manager | `[]` |
+| `resources` | CPU/memory resource requests/limits | `{}` |
+| `podAnnotations.scheduler.kubernetes.io/critical-pod` | Annotation to indicate to Kubernetes that this is a critical pod | `""` |
+| `podAnnotations.productID` | Recommended metering annotation | `""` |
+| `podLabels` | Labels to add to the cert-manager pod | `{}` |
+| `podDnsPolicy` | Optional cert-manager pod [DNS policy](https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/#pods-dns-policy) |  |
+| `podDnsConfig` | Optional cert-manager pod [DNS configurations](https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/#pods-dns-config) |  |
 | `nodeSelector` | Node labels for pod assignment | `{}` |
-| `affinity` | Node affinity for pod assignment | `{}` |
-| `tolerations` | Node tolerations for pod assignment | `[]` |
 | `ingressShim.defaultIssuerName` | Optional default issuer to use for ingress resources |  |
 | `ingressShim.defaultIssuerKind` | Optional default issuer kind to use for ingress resources |  |
 | `ingressShim.defaultACMEChallengeType` | Optional default challenge type to use for ingresses using ACME issuers |  |
 | `ingressShim.defaultACMEDNS01ChallengeProvider` | Optional default DNS01 challenge provider to use for ingresses using ACME issuers with DNS01 |  |
-| `podAnnotations` | Annotations to add to the cert-manager pod | `{}` |
-| `podDnsPolicy` | Optional cert-manager pod [DNS policy](https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/#pods-dns-policy) |  |
-| `podDnsConfig` | Optional cert-manager pod [DNS configurations](https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/#pods-dns-config) |  |
-| `podLabels` | Labels to add to the cert-manager pod | `{}` |
+| `webhook.enabled` | Toggles whether the validating webhook component should be installed | `false` |
+| `createNamespaceResource` | If `true` used by static manifest generator to create a static namespace manifest for namespace cert-manager is installed in. | `false` |
 | `http_proxy` | Value of the `HTTP_PROXY` environment variable in the cert-manager pod | |
 | `https_proxy` | Value of the `HTTPS_PROXY` environment variable in the cert-manager pod | |
 | `no_proxy` | Value of the `NO_PROXY` environment variable in the cert-manager pod | |
-
+| `affinity` | Node affinity for pod assignment | `{}` |
+| `tolerations` | Node tolerations for pod assignment | `[]` |
 
 Specify each parameter using the `--set key=value[,key=value]` argument to `helm install`.
 
