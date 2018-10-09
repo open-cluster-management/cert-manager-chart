@@ -1,35 +1,30 @@
-# cert-manager
+# IBM-Cert-Manager
+* [IBM-Cert-Manager](github.com/jetstack/cert-manager) is an open source project that provides certificate management to services running on ICP.
+
 ## Introduction
-
-cert-manager is a Kubernetes addon to automate the management and issuance of
-TLS certificates from various issuing sources.
-
-It will ensure certificates are valid and up to date periodically, and attempt
-to renew certificates at an appropriate time before expiry.
-
-## Prerequisites
-
-- Kubernetes 1.7+
+This chart is a Kubernetes addon to automate the management and issuance of TLS certificates from various issuing sources. It will ensure certificates are valid and up to date periodically, and attempt to renew certificates at an appropriate time before expiry.
 
 ## Chart Details
-
 This chart deploys:
-  - cert-manager master pods
+* cert-manager master pods
+
+## Prerequisites
+* Kubernetes 1.7+
 
 ## Resources Required
-
-* Certificate Manager resource needs are very minimal, so no additional resources needed apart from what IBM CLoud Private needs.
+Certificate Manager resource needs are very minimal, so no additional resources needed apart from what IBM CLoud Private needs.
 
 ## Installing the Chart
-
 Full installation instructions, including details on how to configure extra
 functionality in cert-manager can be found in the [getting started docs](https://cert-manager.readthedocs.io/en/latest/getting-started/).
 
 To install the chart with the release name `my-release`:
 
 ```console
-$ helm install --name my-release stable/cert-manager
+$ helm install --name my-release stable/ibm-cert-manager
 ```
+
+The command deploys ibm-cert-manager on the Kubernetes cluster in the default configuration. The [configuration](#configuration) section lists the parameters that can be configured during installation.
 
 In order to begin issuing certificates, you will need to set up a ClusterIssuer
 or Issuer resource (for example, by creating a 'letsencrypt-staging' issuer).
@@ -47,18 +42,20 @@ https://cert-manager.readthedocs.io/en/latest/reference/ingress-shim.html
 
 > **Tip**: List all releases using `helm list`
 
-## Uninstalling the Chart
+### Verifying the Chart
+See NOTES.txt associated with this chart for verification instructions
+
+### Uninstalling the Chart
 
 To uninstall/delete the `my-release` deployment:
 
 ```console
-$ helm delete my-release
+$ helm delete my-release --purge
 ```
 
 The command removes all the Kubernetes components associated with the chart and deletes the release.
 
 ## Configuration
-
 The following table lists the configurable parameters of the cert-manager chart and their default values.
 
 | Parameter | Description | Default |
@@ -107,10 +104,11 @@ Alternatively, a YAML file that specifies the values for the above parameters ca
 ```console
 $ helm install --name my-release -f values.yaml .
 ```
-> **Tip**: You can use the default [values.yaml](values.yaml)
+
+> **Tip**: You can use the default values.yaml
 
 ## Limitations
 
-## Contributing
-
-This chart is maintained at [github.com/jetstack/cert-manager](https://github.com/jetstack/cert-manager/tree/master/contrib/charts/cert-manager).
+## Documentation
+* [Official cert-manager documentation](https://cert-manager.readthedocs.io/en/latest)
+* This chart is maintained at [github.com/jetstack/cert-manager](https://github.com/jetstack/cert-manager/tree/master/contrib/charts/cert-manager).
