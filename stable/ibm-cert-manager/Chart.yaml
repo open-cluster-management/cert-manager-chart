@@ -5,18 +5,18 @@ appVersion: 0.5.0
 description: Certificate issuing and managing for services running on ICP.
 home: https://github.com/jetstack/cert-manager
 keywords:
-  - amd64
-  - ppc64le
-  - OpenSource
-  - ICP
-  - IcpClusterResource
-  - Security
-  - cert-manager
-  - kube-lego
-  - letsencrypt
-  - tls
-  - Development
-  - IBM Cloud Private
+  - "amd64"
+  - "ppc64le"
+  - "OpenSource"
+  - "ICP"
+  - "IcpClusterResource"
+  - "Security"
+  - "cert-manager"
+  - "kube-lego"
+  - "letsencrypt"
+  - "tls"
+  - "Development"
+  - "IBM Cloud Private"
 sources:
   - https://github.com/jetstack/cert-manager
 maintainers:
