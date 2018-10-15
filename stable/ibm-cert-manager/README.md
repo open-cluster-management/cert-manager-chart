@@ -74,7 +74,6 @@ The following table lists the configurable parameters of the cert-manager chart 
 | `ingressShim.defaultIssuerKind` | Optional default issuer kind to use for ingress resources |  |
 | `ingressShim.defaultACMEChallengeType` | Optional default challenge type to use for ingresses using ACME issuers |  |
 | `ingressShim.defaultACMEDNS01ChallengeProvider` | Optional default DNS01 challenge provider to use for ingresses using ACME issuers with DNS01 |  |
-| `webhook.enabled` | Toggles whether the validating webhook component should be installed | `false` |
 | `createNamespaceResource` | If `true` used by static manifest generator to create a static namespace manifest for namespace cert-manager is installed in. | `false` |
 | `http_proxy` | Value of the `HTTP_PROXY` environment variable in the cert-manager pod | |
 | `https_proxy` | Value of the `HTTPS_PROXY` environment variable in the cert-manager pod | |
