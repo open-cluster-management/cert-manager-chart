@@ -3,8 +3,7 @@ name: ibm-cert-manager
 version: 0.5.0
 tillerVersion: ">=2.7.0"
 appVersion: 0.5.0
-description: Microservice for issuing and managing certificates for services running on ICP.
-home: https://github.com/jetstack/cert-manager
+description: Microservice for issuing and managing certificates for services running on IBM Cloud Private.
 keywords:
   - "amd64"
   - "ppc64le"
@@ -18,8 +17,3 @@ keywords:
   - "tls"
   - "Development"
   - "IBM Cloud Private"
-sources:
-  - https://github.com/jetstack/cert-manager
-maintainers:
-  - name: hxiao
-    email: hxiao@us.ibm.com
