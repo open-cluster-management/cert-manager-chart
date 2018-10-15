@@ -1,113 +1,17 @@
 # IBM-Cert-Manager
-[IBM-Cert-Manager](https://github.com/jetstack/cert-manager) is an open source project that provides certificate management to services running on ICP.
+IBM® Cloud Private cert-manager is the Kubernetes certificate manager controller shared service that is used to generate and manage certificates based on the jetstack/cert-manager project Opens in a new tab.
 
 ## Introduction
-This chart is a [Kubernetes Addon](https://kubernetes.io/docs/concepts/cluster-administration/addons/) to automate the management and issuance of TLS certificates from various issuing sources. It will ensure certificates are valid and up to date periodically, and it will attempt to renew certificates at an appropriate time before expiry.
+You can use the IBM Cloud Private cert-manager to automate the management and issuance of TLS certificates from various issuing sources and mount a certificate to a Kubernetes Deployment, StatefulSet, or DaemonSet. You can also create and add a certificate to a Kubernetes Ingress. It will ensure certificates are valid and up to date periodically, and it will attempt to renew certificates at an appropriate time before expiry.
 
 ## Chart Details
-This chart deploys:
-* cert-manager master pod
-
-## Prerequisites
-* Kubernetes 1.7+
-
-## Resources Required
-Certificate Manager resource needs are very minimal, so no additional resources needed apart from what IBM CLoud Private needs.
-
-## Installing the Chart
-IBM-Cert-Manager is automatically installed with ICP version 3.1.0 and later. Installation instructions are provided as a reference in case IBM-Cert-Manager needs to be reinstalled.
-
-Full installation instructions, including details on how to configure extra
-functionality in cert-manager can be found in the [getting started docs](https://cert-manager.readthedocs.io/en/latest/getting-started/).
-
-To install the chart with the release name `my-release`:
-
-```console
-$ helm install --name my-release stable/ibm-cert-manager
-```
-
-The command deploys ibm-cert-manager on the Kubernetes cluster in the default configuration. The [configuration](#configuration) section lists the parameters that can be configured during installation.
-
-> **Tip**: List all releases using `helm list`
-
-### Verifying the Chart
-```console
-$ kubectl get pods -o custom-columns=:metadata.name | grep "ibm-cert-manager" | xargs -I {} sh -c "kubectl describe pods {}"
-```
-
-### Uninstalling the Chart
-
-To uninstall/delete the `my-release` deployment:
-
-```console
-$ helm delete my-release --purge
-```
-
-The command removes all the Kubernetes components associated with the chart and deletes the release.
-
-## Configuration
-The following table lists the configurable parameters of the cert-manager chart and their default values.
-
-| Parameter | Description | Default |
-| --------- | ----------- | ------- |
-| `image.repository` | Image repository | `ibmcom/icp-cert-manager-controller` |
-| `image.tag` | Image tag | `0.5.0` |
-| `image.pullPolicy` | Image pull policy | `IfNotPresent` |
-| `replicaCount`  | Number of cert-manager replicas  | `1` |
-| `createCustomResource` | Create CRD/TPR with this release | `true` |
-| `clusterResourceNamespace` | Override the namespace used to store DNS provider credentials etc. for ClusterIssuer resources | Same namespace as cert-manager pod
-| `leaderElection.Namespace` | Override the namespace used to store the ConfigMap for leader election | Same namespace as cert-manager pod
-| `certificateResourceShortNames` | Custom aliases for Certificate CRD | `["cert", "certs"]` |
-| `rbac.create` | If `true`, create and use RBAC resources | `true` |
-| `serviceAccount.create` | If `true`, create a new service account | `true` |
-| `serviceAccount.name` | Service account to be used. If not set and `serviceAccount.create` is `true`, a name is generated using the fullname template |  |
-| `extraArgs` | Optional flags for cert-manager | `[]` |
-| `extraEnv` | Optional environment variables for cert-manager | `[]` |
-| `resources` | CPU/memory resource requests/limits | `{}` |
-| `podAnnotations.scheduler.kubernetes.io/critical-pod` | Annotation to indicate to Kubernetes that this is a critical pod | `""` |
-| `podAnnotations.productID` | Recommended metering annotation | `""` |
-| `podLabels` | Labels to add to the cert-manager pod | `{}` |
-| `podDnsPolicy` | Optional cert-manager pod [DNS policy](https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/#pods-dns-policy) |  |
-| `podDnsConfig` | Optional cert-manager pod [DNS configurations](https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/#pods-dns-config) |  |
-| `nodeSelector` | Node labels for pod assignment | `{}` |
-| `ingressShim.defaultIssuerName` | Optional default issuer to use for ingress resources |  |
-| `ingressShim.defaultIssuerKind` | Optional default issuer kind to use for ingress resources |  |
-| `ingressShim.defaultACMEChallengeType` | Optional default challenge type to use for ingresses using ACME issuers |  |
-| `ingressShim.defaultACMEDNS01ChallengeProvider` | Optional default DNS01 challenge provider to use for ingresses using ACME issuers with DNS01 |  |
-| `createNamespaceResource` | If `true` used by static manifest generator to create a static namespace manifest for namespace cert-manager is installed in. | `false` |
-| `http_proxy` | Value of the `HTTP_PROXY` environment variable in the cert-manager pod | |
-| `https_proxy` | Value of the `HTTPS_PROXY` environment variable in the cert-manager pod | |
-| `no_proxy` | Value of the `NO_PROXY` environment variable in the cert-manager pod | |
-| `affinity` | Node affinity for pod assignment | `{}` |
-| `tolerations` | Node tolerations for pod assignment | `[]` |
-
-Specify each parameter using the `--set key=value[,key=value]` argument to `helm install`.
-
-Alternatively, a YAML file that specifies the values for the above parameters can be provided while installing the chart. For example,
-
-```console
-$ helm install --name my-release -f values.yaml .
-```
-
-> **Tip**: You can use the default values.yaml
+One instance of cert-manager is deployed to a single master node.
 
 ### How to use IBM-Cert-Manager
-In order to begin issuing certificates, you will need to set up a ClusterIssuer
-or Issuer resource (for example, by creating a 'letsencrypt-staging' issuer).
-
-More information on the different types of issuers and how to configure them
-can be found in our [documentation](https://cert-manager.readthedocs.io/en/latest/reference/issuers.html)
-
-For information on how to configure cert-manager to automatically provision
-Certificates for Ingress resources, take a look at the `ingress-shim`
-[documentation](https://cert-manager.readthedocs.io/en/latest/reference/ingress-shim.html)
-
 Documentation for using IBM-Cert-Manager can be found in the [IBM Knowledge Center](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/manage_applications/create_cert.html).
 
 ## Limitations
 * Validated to run on IBM Private Cloud
-
-## Documentation
-* [Official cert-manager documentation](https://cert-manager.readthedocs.io/en/latest)
-* [IBM Knowledge Center documentation](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/manage_applications/create_cert.html)
-* This chart is maintained at [github.com/jetstack/cert-manager](https://github.com/jetstack/cert-manager/tree/master/contrib/charts/cert-manager).
+* Only one instance of cert-manager can be run at a time and it is already installed by default
+* Webhook API validation has not been validated to run on IBM Private Cloud
+* ACME solver has not been validated to run on IBM Private Cloud
