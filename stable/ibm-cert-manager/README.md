@@ -7,11 +7,11 @@ You can use the IBM Cloud Private cert-manager to automate the management and is
 ## Chart Details
 One instance of cert-manager is deployed to a single master node.
 
-### How to use IBM-Cert-Manager
+## How to use IBM-Cert-Manager
 Documentation for using IBM-Cert-Manager can be found in the [IBM Knowledge Center](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/manage_applications/create_cert.html).
 
 ## Limitations
-* Validated to run on IBM Private Cloud
-* Only one instance of cert-manager can be run at a time and it is already installed by default
-* Webhook API validation has not been validated to run on IBM Private Cloud
-* ACME solver has not been validated to run on IBM Private Cloud
+* Validated to run on IBM Cloud Private
+* Only one instance of cert-manager can be run at a time, and it is already installed by default
+* Webhook API validation has not been validated to run on IBM Cloud Private
+* ACME solver has not been validated to run on IBM Cloud Private
