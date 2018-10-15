@@ -78,8 +78,11 @@ The following table lists the configurable parameters of the cert-manager chart 
 | `http_proxy` | Value of the `HTTP_PROXY` environment variable in the cert-manager pod | |
 | `https_proxy` | Value of the `HTTPS_PROXY` environment variable in the cert-manager pod | |
 | `no_proxy` | Value of the `NO_PROXY` environment variable in the cert-manager pod | |
+<<<<<<< HEAD
 | `affinity` | Node affinity for pod assignment | `{}` |
 | `tolerations` | Node tolerations for pod assignment | `[]` |
+=======
+>>>>>>> master
 
 Specify each parameter using the `--set key=value[,key=value]` argument to `helm install`.
 
