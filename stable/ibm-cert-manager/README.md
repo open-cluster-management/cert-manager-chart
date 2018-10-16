@@ -1,5 +1,5 @@
 # IBM-Cert-Manager
-IBM® Cloud Private cert-manager is the Kubernetes certificate manager controller shared service that is used to generate and manage certificates based on the jetstack/cert-manager project Opens in a new tab.
+IBM® Cloud Private cert-manager is the Kubernetes certificate manager controller shared service that is used to generate and manage certificates based on the jetstack/cert-manager project.
 
 ## Introduction
 You can use the IBM Cloud Private cert-manager to automate the management and issuance of TLS certificates from various issuing sources and mount a certificate to a Kubernetes Deployment, StatefulSet, or DaemonSet. You can also create and add a certificate to a Kubernetes Ingress. It will ensure certificates are valid and up to date periodically, and it will attempt to renew certificates at an appropriate time before expiry.
