@@ -6,3 +6,5 @@
 ignoreMessages:
   - '\[ERROR\] Use of Alpha annotation: found scheduler.alpha.kubernetes.io/critical-pod: in source templates/deployment.yaml'
   - '\[ERROR\] Found an invalid __metadata type in values-metadata.yaml: value array not valid, expected value string|boolean|number|password in values-metadata.yaml'
+  - '\[ERROR\] Missing required readme sections: "Prerequisites", "Resources Required", "Installing the Chart", "Configuration" in README.md'
+  - '\[ERROR\] "ICP" or "IBM Cloud Private" should not referenced in section headers or in the "Chart Details" section of the README.md: referenced at the following locations: README.md:1:2, README.md:7:71.'
