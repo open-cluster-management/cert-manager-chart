@@ -1,4 +1,4 @@
-# IBM Cloud Private certificate manager service helm chart
+# IBM Cloud Private Certificate Manager
 
 ## Introduction
 This chart deploys the IBM Cloud Private certificate manager service that can be used to issue and manage certificates for services running on IBM Cloud Private. You can use cert-manager to create and mount a certificate to a Kubernetes Deployment, StatefulSet, or DaemonSet. You can also create and add a certificate to a Kubernetes Ingress. It will ensure certificates are valid and up to date periodically, and it will attempt to renew certificates at an appropriate time before expiry.
