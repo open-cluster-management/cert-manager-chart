@@ -1,8 +1,6 @@
-IBM Cert-Manager has been deployed successfully!
+BM cert-manager has been deployed successfully!
 
-In order to begin issuing certificates, you will need to set up a ClusterIssuer
-or Issuer resource (for example, by creating a 'letsencrypt-staging' issuer).
-An icp-ca-issuer is automatically created as a ClusterIssuer for each IBM Cloud Private installation. This ClusterIssuer contains the self-signed IBM Cloud Private cluster CA and is accessible from all namespaces. More Issuers (namespace-scoped) or ClusterIssuers (cluster-scoped) can be defined.
+In order to begin issuing certificates, you will need to set up a ClusterIssuer. An icp-ca-issuer is automatically created as a ClusterIssuer for each IBM Cloud Private installation. This Issuer contains the self-signed IBM Cloud Private cluster CA and is accessible from all namespaces. More Issuers (namespace-scoped) or ClusterIssuers (cluster-scoped) can be defined.
 
 More information on generating certificates can be found in our documentation:
 
