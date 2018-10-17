@@ -3,7 +3,7 @@ name: ibm-cert-manager
 version: 0.5.0
 tillerVersion: ">=2.7.0"
 appVersion: 0.5.0
-description: Microservice for issuing and managing certificates for services running on IBM Cloud Private.
+description: Service for issuing and managing certificates on IBM Cloud Private.
 keywords:
   - "amd64"
   - "ppc64le"
