@@ -1,4 +1,4 @@
-# IBM-Cert-Manager
+# IBM-cert-manager
 IBM Cloud Private certificate manager service helm chart
 
 ## Introduction
