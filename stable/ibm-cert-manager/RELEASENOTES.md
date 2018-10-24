@@ -1,5 +1,5 @@
 # What's new in 0.5.0
-* Support for ECDSA Certificates using CA Issuers.
+* Support for use of the ECDSA algorithm for encrypting Certificates.
 * Support for Vault Issuers.
 * New Certificate options: keyAlgorithm, keySize, isCA, organization.
 
