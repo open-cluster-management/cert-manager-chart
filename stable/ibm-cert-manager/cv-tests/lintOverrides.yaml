@@ -10,5 +10,4 @@ ignoreMessages:
   - '\[ERROR\] Missing required readme sections: "Prerequisites", "Resources Required", "Installing the Chart", "Configuration" in README.md'
   - '\[ERROR\] "ICP" or "IBM Cloud Private" should not referenced in section headers or in the "Chart Details" section of the README.md: referenced at the following locations: README.md:1:2, README.md:7:71.'
   - '\[ERROR\] Missing required release notes sections: "Fixes", "Prerequisites" in RELEASENOTES.md'
-  - '\[ERROR\] templates/deployment.yaml: found alpha annotation: 'scheduler.alpha.kubernetes.io/critical-pod' found at spec.template.metadata.annotations'
-  
+  - '\[ERROR\] templates/deployment.yaml: found alpha annotation: \'scheduler.alpha.kubernetes.io/critical-pod\' found at spec.template.metadata.annotations'
