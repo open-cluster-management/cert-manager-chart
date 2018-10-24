@@ -13,3 +13,4 @@ See [Creating certificates](https://www.ibm.com/support/knowledgecenter/en/SSBS6
 * There can only be a single deployment of the certificate manager service in a cluster, and it is installed by default.
 * Webhook API validation has not been validated to run on IBM Cloud Private.
 * ACME solver has not been validated to run on IBM Cloud Private.
+* Only CA Issuers have been validated to issue ECDSA Certificates.
