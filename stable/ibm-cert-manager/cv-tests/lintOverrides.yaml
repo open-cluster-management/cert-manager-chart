@@ -11,3 +11,4 @@ ignoreMessages:
   - '\[ERROR\] "ICP" or "IBM Cloud Private" should not referenced in section headers or in the "Chart Details" section of the README.md: referenced at the following locations: README.md:1:2, README.md:7:71.'
   - '\[ERROR\] Missing required release notes sections: "Fixes", "Prerequisites" in RELEASENOTES.md'
   - '\[ERROR\] templates/deployment.yaml: found alpha annotation: .*'
+  - '\[ERROR\] Missing recommended metering labels .*'
