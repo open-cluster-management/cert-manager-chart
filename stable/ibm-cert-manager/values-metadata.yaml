@@ -34,13 +34,21 @@ image:
         value: "IfNotPresent"
       - label: "Always"
         value: "Always"
-createCustomResource:
-  __metadata:
-    label: "Create kubernetes custom resource"
-    description: "Create CRD/TPR with this release"
-    type: "boolean"
-    required: true
-    default: true
+solver:
+  repository:
+    __metadata:
+      label: "ACME Solver Repository"
+      description: "Full repository and path to Certificate Manager ACME Solver image."
+      type: "string"
+      required: true
+      default: "ibmcom/icp-cert-manager-acmesolver"
+  tag:
+    __metadata:
+      label: "Image Tag"
+      description: "The tag identifying which Certificate Manager ACME Solver image to deploy."
+      type: "string"
+      required: true
+      default: "0.5.0"
 clusterResourceNamespace:
   __metadata:
     label: "The namespace for cluster resources"
@@ -56,15 +64,6 @@ leaderElection:
       type: "string"
       required: false
       default: "kube-system"
-certificateResourceShortNames:
-  __metadata:
-    label: "Short names for Certificate resources"
-    description: "Custom aliases for Certificate CRD"
-    type: "array"
-    items:
-      type: "string"
-    required: false
-    default: ["cert", "certs"]
 rbac:
   create:
     __metadata:
@@ -123,10 +122,3 @@ nodeSelector:
     immutable: "false"
     required: false
     default: {}
-createNamespaceResource:
-  __metadata:
-    label: "Create kubernetes namespace resource"
-    description: "Optional, static manifest generator in order to create a static namespace manifest for the namespace that cert-manager is being installed within."
-    type: "boolean"
-    required: true
-    default: false

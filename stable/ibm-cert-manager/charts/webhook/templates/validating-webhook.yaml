@@ -31,6 +31,7 @@ webhooks:
           - certificates
     failurePolicy: Fail
     clientConfig:
+      caBundle: ""
       service:
         name: kubernetes
         namespace: default
@@ -58,6 +59,7 @@ webhooks:
           - issuers
     failurePolicy: Fail
     clientConfig:
+      caBundle: ""
       service:
         name: kubernetes
         namespace: default
@@ -85,6 +87,7 @@ webhooks:
           - clusterissuers
     failurePolicy: Fail
     clientConfig:
+      caBundle: ""
       service:
         name: kubernetes
         namespace: default
