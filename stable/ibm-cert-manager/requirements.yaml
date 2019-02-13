@@ -4,3 +4,6 @@ dependencies:
   version: "v0.6.3"
   repository: "file://webhook"
   condition: webhook.enabled
+- name: ibm-cert-manager-crd
+  version: "0.6.0"
+  repository: "file://ibm-cert-manager-crd"
