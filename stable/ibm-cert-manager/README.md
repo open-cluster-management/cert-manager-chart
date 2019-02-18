@@ -7,7 +7,7 @@ This chart deploys the IBM Cloud Private certificate manager service that can be
 One instance of cert-manager is deployed to a single master node when IBM Cloud Private is installed.
 
 ## How to use IBM-Cert-Manager
-See [Creating certificates](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/manage_applications/create_cert.html) for more details on cert-manager, IBM Cloud Private's Kubernetes certificate manager service.
+See the IBM Cloud Private product documentation in the [IBM Knowledge Center](https://www.ibm.com/support/knowledgecenter/) for more details on cert-manager, IBM Cloud Private's Kubernetes certificate manager service.
 
 ## Limitations
 * There can only be a single deployment of the certificate manager service in a cluster, and it is installed by default.
