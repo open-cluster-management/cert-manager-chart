@@ -7,6 +7,10 @@ metadata:
     chart: {{ include "webhook.chart" . }}
     release: {{ .Release.Name }}
     heritage: {{ .Release.Service }}
+  annotations:
+{{- if .Values.injectAPIServerCA }}
+    certmanager.k8s.io/inject-apiserver-ca: "true"
+{{- end }}
 webhooks:
   - name: certificates.admission.certmanager.k8s.io
     namespaceSelector:
@@ -31,7 +35,6 @@ webhooks:
           - certificates
     failurePolicy: Fail
     clientConfig:
-      caBundle: ""
       service:
         name: kubernetes
         namespace: default
@@ -59,7 +62,6 @@ webhooks:
           - issuers
     failurePolicy: Fail
     clientConfig:
-      caBundle: ""
       service:
         name: kubernetes
         namespace: default
@@ -87,7 +89,6 @@ webhooks:
           - clusterissuers
     failurePolicy: Fail
     clientConfig:
-      caBundle: ""
       service:
         name: kubernetes
         namespace: default

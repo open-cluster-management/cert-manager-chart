@@ -29,7 +29,7 @@ metadata:
     heritage: {{ .Release.Service }}
 spec:
   secretName: {{ include "webhook.rootCACertificate" . }}
-  duration: 87600h  # 5y
+  duration: 43800h # 5y
   issuerRef:
     name: {{ include "webhook.selfSignedIssuer" . }}
   commonName: "ca.webhook.cert-manager"
