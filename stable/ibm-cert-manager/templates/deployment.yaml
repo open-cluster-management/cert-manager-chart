@@ -79,7 +79,7 @@ spec:
           {{- end }}
           {{- end }}
           ports:
-          - containerPort: 9402
+          - contianerPort: 9402
           {{- if .Values.solver.repository }}
           - --acme-http01-solver-image={{ .Values.solver.repository }}:{{ .Values.solver.tag }}
           {{- end }}
