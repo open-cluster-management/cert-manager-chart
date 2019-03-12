@@ -21,6 +21,9 @@ spec:
   template:
     metadata:
       labels:
+        k8s-app: "cert-manager-cainjector"
+        chart: {{ template "cainjector.chart" . }}
+        heritage: {{ .Release.Service }}
         app: {{ include "cainjector.name" . }}
         release: {{ .Release.Name }}
       annotations:
