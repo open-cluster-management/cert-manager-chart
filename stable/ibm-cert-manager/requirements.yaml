@@ -9,5 +9,5 @@ dependencies:
   repository: "file://cainjector"
   condition: cainjector.enabled
 - name: ibm-cert-manager-crd
-  version: "0.6.0"
+  version: "0.7.0"
   repository: "file://ibm-cert-manager-crd"
