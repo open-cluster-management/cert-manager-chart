@@ -31,11 +31,6 @@ global:
         type: "boolean"
         required: true
         default: true
-
-  __metadata:
-    label: "Global"
-    description: "Global variables for cert-manager."
-    type: ""
 replicaCount:
   __metadata:
     label: "Replicas"
