@@ -97,6 +97,8 @@ spec:
             initialDelaySeconds: 10
             timeoutSeconds: 2
           env:
+          - name: POD_RESTART
+            value: {{ .Values.podRestart.enabled | quote }}
           - name: POD_NAMESPACE
             valueFrom:
               fieldRef:
