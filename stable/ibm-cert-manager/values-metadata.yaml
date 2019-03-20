@@ -139,3 +139,11 @@ nodeSelector:
     immutable: "false"
     required: false
     default: {}
+podRestart:
+  enabled:
+    __metadata:
+      label: "Pod restart"
+      description: "If set to true, will allow cert-manager to restart pods"
+      type: boolean
+      required: false
+      default: true
