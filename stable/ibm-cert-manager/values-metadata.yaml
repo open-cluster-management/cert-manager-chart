@@ -144,7 +144,7 @@ podRestart:
     __metadata:
       label: "Pod restart"
       description: "If set to true, will allow cert-manager to restart pods"
-      type: boolean
+      type: "boolean"
       required: false
       default: true
 resources:
@@ -155,7 +155,7 @@ resources:
         description: "The amount of memory cert-manager requests"
         required: false
         default: "30Mi"
-        type: string
+        type: "string"
   limits:
     memory:
       __metadata:
@@ -163,4 +163,4 @@ resources:
         description: "The memory limit cert-manager has"
         required: true
         default: "40Mi"
-        type: string
+        type: "string"
