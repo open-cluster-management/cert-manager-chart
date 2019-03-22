@@ -1,4 +1,7 @@
 global:
+  __metadata:
+    label: "Global Chart Settings"
+    description: "Global values for cert-manager chart"
   imagePullSecrets:
     __metadata:
       label: "Image Pull Secrets"
@@ -39,6 +42,9 @@ replicaCount:
     required: true
     default: 1    
 image:
+  __metadata:
+    label: "Image"
+    description: "Image to be used for cert-manager deployment"
   repository:
     __metadata:
       label: "Image Repository"
@@ -68,6 +74,9 @@ image:
       - label: "Always"
         value: "Always"
 solver:
+  __metadata:
+    label: "ACME Solver"
+    description: "Configuration for ACME Solver"
   repository:
     __metadata:
       label: "ACME Solver Repository"
@@ -148,7 +157,13 @@ podRestart:
       required: false
       default: true
 resources:
+  __metadata:
+    label: "Resources"
+    description: "Resource requests and limits for cpu and memory for cert-manager deployment"
   requests:
+    __metadata:
+      label: "Requests"
+      description: "The amount of cpu/memory requested by cert-manager's deployment"
     memory:
       __metadata:
         label: "Memory request"
@@ -157,6 +172,9 @@ resources:
         default: "30Mi"
         type: "string"
   limits:
+    __metadata:
+      label: "Limits"
+      description: "The amount of cpu/memory cert-manager deployment is limited to"
     memory:
       __metadata:
         label: "Memory limit"
