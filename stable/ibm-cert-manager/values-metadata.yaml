@@ -154,13 +154,11 @@ resources:
         label: "Memory request"
         description: "The amount of memory cert-manager requests"
         required: false
-        default: "30Mi"
-        type: string
+        default: 30Mi
   limits:
     memory:
       __metadata:
       label: "Memory limit"
       description: "The memory limit cert-manager has"
       required: true
-      default: "40Mi"
-      type: string
+      default: 40Mi
