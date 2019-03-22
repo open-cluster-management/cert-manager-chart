@@ -27,7 +27,9 @@ podAnnotations: {}
 # Optional additional arguments for cainjector
 extraArgs: []
 
-resources: {}
+resources:
+  limits:
+    memory: 10Mi
   # requests:
   #   cpu: 10m
   #   memory: 32Mi
