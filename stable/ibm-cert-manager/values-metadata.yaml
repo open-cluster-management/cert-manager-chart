@@ -1,4 +1,7 @@
 global:
+  __metadata:
+    label: "Global Chart Settings"
+    description: "Global values for cert-manager chart"
   imagePullSecrets:
     __metadata:
       label: "Image Pull Secrets"
@@ -39,6 +42,9 @@ replicaCount:
     required: true
     default: 1    
 image:
+  __metadata:
+    label: "Image"
+    description: "Image to be used for cert-manager deployment"
   repository:
     __metadata:
       label: "Image Repository"
@@ -68,6 +74,9 @@ image:
       - label: "Always"
         value: "Always"
 solver:
+  __metadata:
+    label: "ACME Solver"
+    description: "Configuration for ACME Solver"
   repository:
     __metadata:
       label: "ACME Solver Repository"
@@ -144,6 +153,6 @@ podRestart:
     __metadata:
       label: "Pod restart"
       description: "If set to true, will allow cert-manager to restart pods"
-      type: boolean
+      type: "boolean"
       required: false
       default: true
