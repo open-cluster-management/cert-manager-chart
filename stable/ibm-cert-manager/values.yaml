@@ -58,9 +58,9 @@ extraEnv: []
 
 resources: 
   requests:
-    memory: "100Mi"
+    memory: "150Mi"
   limits:
-    memory: "200Mi"
+    memory: "300Mi"
   # requests:
   #   cpu: 10m
   #   memory: 32Mi
