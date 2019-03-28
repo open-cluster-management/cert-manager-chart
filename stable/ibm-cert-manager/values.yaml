@@ -56,7 +56,11 @@ extraEnv: []
 # - name: SOME_VAR
 #   value: 'some value'
 
-resources: {}
+resources: 
+  requests:
+    memory: "100Mi"
+  limits:
+    memory: "200Mi"
   # requests:
   #   cpu: 10m
   #   memory: 32Mi
