@@ -156,3 +156,29 @@ podRestart:
       type: "boolean"
       required: false
       default: true
+resources:
+  __metadata:
+    label: "Resources"
+    description: "Resource requests and limits for cpu and memory for cert-manager deployment"
+  requests:
+    __metadata:
+      label: "Requests"
+      description: "The amount of cpu/memory requested by cert-manager's deployment"
+    memory:
+      __metadata:
+        label: "Memory request"
+        description: "The amount of memory cert-manager requests"
+        required: false
+        default: "150Mi"
+        type: "string"
+  limits:
+    __metadata:
+      label: "Limits"
+      description: "The amount of cpu/memory cert-manager deployment is limited to"
+    memory:
+      __metadata:
+        label: "Memory limit"
+        description: "The memory limit cert-manager has"
+        required: true
+        default: "300Mi"
+        type: "string"
