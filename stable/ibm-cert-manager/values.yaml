@@ -74,6 +74,9 @@ securityContext:
 
 podAnnotations:
   seccomp.security.alpha.kubernetes.io/pod: docker/default
+  productID:
+  productName:
+  productVersion:
 
 podLabels: {}
 # Optional DNS settings, useful if you have a public and private DNS zone for
@@ -117,7 +120,12 @@ cainjector:
 #            operator: In
 #            values:
 #            - master
-affinity: {}
+affinity:
+  nodeAffinity:
+    requiredDuringSchedulingIgnoredDuringExecution:
+      nodeSelectorTerms:
+      - matchExpressions:
+        - key: beta.kubernetes.io/arch
 
 # expects input structure as per specification https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.11/#toleration-v1-core
 # for example:
