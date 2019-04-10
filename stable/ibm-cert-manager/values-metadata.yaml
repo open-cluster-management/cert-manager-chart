@@ -7,8 +7,6 @@ global:
       label: "Image Pull Secrets"
       description: "Any secrets required to pull cert-manager images."
       type: "string"
-      items:
-        type: "string"
       required: false
   priorityClassName:
     __metadata:
@@ -108,16 +106,12 @@ extraArgs:
     label: "Additional arguments"
     description: "Optional flags for cert-manager"
     type: "string"
-    items: 
-      type: "string"
     required: false
 extraEnv:
   __metadata:
     label: "Additional Environment Variables"
     description: "List of additional environment variables and their values to be included in a cert-manager deployment."
     type: "string"
-    items:
-      type: "string"
     required: false
 securityContext:
   __metadata:
