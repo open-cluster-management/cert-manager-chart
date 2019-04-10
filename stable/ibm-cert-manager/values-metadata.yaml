@@ -58,7 +58,6 @@ image:
       description: "The policy used by Kubernetes for images."
       type: "string"
       required: true
-      default: "IfNotPresent"
       options:
       - label: "Never"
         value: "Never"
@@ -144,14 +143,13 @@ podAnnotations:
     name: "podAnnotations"
     label: "Pod Annotations"
     description: "Annotations to add to the cert-manager pod"
-    immutable: "false"
+    immutable: false
     required: false
-    default: {}
   seccomp.security.alpha.kubernetes.io/pod:
     __metadata:
       label: "Default Kubernetes Security"
       description: "Default security context for cert-manager pod."
-      immutable: "true"
+      immutable: true
       required: false
       type: "string"
   productID:
@@ -175,7 +173,7 @@ podLabels:
     label: "Pod Labels"
     description: "Labels to add to the cert-manager pod"
     type: "bool"
-    immutable: "false"
+    immutable: false
     required: false
 nodeSelector:
   __metadata:
@@ -183,7 +181,7 @@ nodeSelector:
     label: "Node selector"
     description: "Node labels for pod assignment"
     type: "bool"
-    immutable: "false"
+    immutable: false
     required: false
 podRestart:
   enabled:
@@ -237,7 +235,7 @@ cainjector:
       description: "If true, enables the CA injector subchart to be installed."
       required: true
       type: "bool"
-      immutable: "true"
+      immutable: true
 webhook:
   __metadata:
     label: "Webhook"
@@ -248,10 +246,29 @@ webhook:
       description: "If true, enables the Webhook subchart."
       required: true
       type: "bool"
-      immutable: "true"
+      immutable: true
 tolerations:
   __metadata:
     label: "Tolerations"
     description: "When specified, tolerates any taint that matches the triple <key, value, effect>"
     type: "string"
     required: false
+affinity:
+  __metadata:
+    label: "Affinity"
+    description: "Pod's affinity"
+  nodeAffinity:
+    __metadata:
+      label: "Node Affinity"
+      description: "Node affinity"
+    requiredDuringSchedulingIgnoredDuringExecution:
+      __metadata:
+        label: "Required During Scheduling"
+      nodeSelectorTerms:
+        __metadata:
+          label: "Node Selector Terms"
+          type: "string"
+containerAffinity:
+  __metadata:
+    label: "Container Affinity"
+    hidden: true
