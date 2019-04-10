@@ -15,5 +15,6 @@ ignoreMessages:
   - '\[ERROR\] Missing test resources: no pods with a helm hook of test-success'
   - '\[ERROR\] expected ibm_cloud_pak.*'
   - '\[ERROR\] subchart not enabled .*'
-  - '\[ERROR\] README.md: .* (ReadmeHasRequiredSections)'
-  - '\[ERROR\] .* missing architecture-based node affinity: expected value \'beta.kubernetes.io/arch\'*'
+  - '\[ERROR\] README.md: .*'
+  - '\[ERROR\] .* missing architecture-based node affinity: expected value \'beta.kubernetes.io/arch\' .*'
+  - '\[ERROR\] .* missing pod security-related keys, see the log and playbook for more details .*'
