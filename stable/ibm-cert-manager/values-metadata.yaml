@@ -170,7 +170,7 @@ podLabels:
     name: "podLabels"
     label: "Pod Labels"
     description: "Labels to add to the cert-manager pod"
-    type: "boolean"
+    type: "string"
     immutable: false
     required: false
 nodeSelector:
@@ -178,7 +178,7 @@ nodeSelector:
     name: "nodeSelector"
     label: "Node selector"
     description: "Node labels for pod assignment"
-    type: "boolean"
+    type: "string"
     immutable: false
     required: false
 podRestart:
