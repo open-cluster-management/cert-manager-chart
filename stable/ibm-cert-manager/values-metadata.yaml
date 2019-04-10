@@ -120,7 +120,7 @@ securityContext:
     __metadata:
       label: "Enabled" 
       description: "If true, enables the security context where cert-manager is limited to a functional group and run as the user specified."
-      type: "bool"
+      type: "boolean"
   fsGroup:
     __metadata:
       label: "FS Group"
@@ -169,7 +169,7 @@ podLabels:
     name: "podLabels"
     label: "Pod Labels"
     description: "Labels to add to the cert-manager pod"
-    type: "bool"
+    type: "boolean"
     immutable: false
     required: false
 nodeSelector:
@@ -177,7 +177,7 @@ nodeSelector:
     name: "nodeSelector"
     label: "Node selector"
     description: "Node labels for pod assignment"
-    type: "bool"
+    type: "boolean"
     immutable: false
     required: false
 podRestart:
@@ -220,7 +220,7 @@ podRestart:
       label: "Enable"
       description: "If true, allows cert-manager to restart pods that mount certificates when the certificates are refreshed."
       required: false
-      type: "bool"
+      type: "boolean"
 
 cainjector:
   __metadata:
@@ -231,7 +231,7 @@ cainjector:
       label: "Enabled"
       description: "If true, enables the CA injector subchart to be installed."
       required: true
-      type: "bool"
+      type: "boolean"
       immutable: true
 webhook:
   __metadata:
@@ -242,7 +242,7 @@ webhook:
       label: "Enabled"
       description: "If true, enables the Webhook subchart."
       required: true
-      type: "bool"
+      type: "boolean"
       immutable: true
 tolerations:
   __metadata:
