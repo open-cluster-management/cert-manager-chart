@@ -140,7 +140,7 @@ podAnnotations:
     description: "Annotations to add to the cert-manager pod"
     immutable: false
     required: false
-  "seccomp.security.alpha.kubernetes.io/pod":
+  'seccomp.security.alpha.kubernetes.io/pod':
     __metadata:
       label: "Default Kubernetes Security"
       description: "Default security context for cert-manager pod."
