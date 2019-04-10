@@ -13,7 +13,7 @@ ignoreMessages:
   - '\[ERROR\] templates/deployment.yaml: found alpha annotation: .*'
   - '\[ERROR\] Missing recommended metering labels .*'
   - '\[ERROR\] Missing test resources: no pods with a helm hook of test-success'
-  - '\[ERROR\] expected ibm_cloud_pak .*'
+  - '\[ERROR\] expected ibm_cloud_pak.*'
   - '\[ERROR\] subchart not enabled .*'
-  - '\[ERROR\] .* (ReadmeHasRequiredSections)'
-  
+  - '\[ERROR\] README.md: .* (ReadmeHasRequiredSections)'
+  - '\[ERROR\] *missing architecture-based node affinity: expected value \'beta.kubernetes.io/arch\'*'
