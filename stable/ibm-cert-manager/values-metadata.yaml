@@ -116,6 +116,7 @@ extraEnv:
 securityContext:
   __metadata:
     label: "Security Context"
+    description: "The security context cert-manager uses."
   enabled:
     __metadata:
       label: "Enabled" 
