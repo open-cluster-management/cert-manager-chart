@@ -16,5 +16,5 @@ ignoreMessages:
   - '\[ERROR\] expected ibm_cloud_pak.*'
   - '\[ERROR\] subchart not enabled .*'
   - '\[ERROR\] README.md: .*'
-  - '\[ERROR\] .* missing architecture-based node affinity: expected value \'beta.kubernetes.io/arch\' .*'
+  - '\[ERROR\] .* missing architecture-based node affinity: expected value .*'
   - '\[ERROR\] .* missing pod security-related keys, see the log and playbook for more details .*'
