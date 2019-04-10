@@ -254,18 +254,4 @@ affinity:
   __metadata:
     label: "Affinity"
     description: "Pod's affinity"
-  nodeAffinity:
-    __metadata:
-      label: "Node Affinity"
-      description: "Node affinity"
-    requiredDuringSchedulingIgnoredDuringExecution:
-      __metadata:
-        label: "Required During Scheduling"
-      nodeSelectorTerms:
-        __metadata:
-          label: "Node Selector Terms"
-          type: "string"
-containerAffinity:
-  __metadata:
-    label: "Container Affinity"
     hidden: true
