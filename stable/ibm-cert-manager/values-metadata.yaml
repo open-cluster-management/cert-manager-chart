@@ -216,7 +216,7 @@ resources:
 podRestart:
   __metadata:
     label: "Restart Pods"
-    description: "Cert-manager's ability to restart pods that mount a certificate."
+    description: "Cert-manager's ability to restart pods that mount a certificate"
   enabled:
     __metadata:
       label: "Enable"
