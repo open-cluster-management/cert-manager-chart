@@ -33,8 +33,6 @@ install:
   # debug: disabled lint
   - $toolsPath/cv-test/bin/validateContent.sh
 
-script: echo "Override default script"
-
 deploy:
   # scp helm repo(s) to location identified (Note: SSHPASS env variable must contain password)
   - provider: script
@@ -53,12 +51,5 @@ deploy:
 
 after_success:
   - |
-    if [[ "$TRAVIS_BRANCH" == "master"  ]] && [[ "$TRAVIS_PULL_REQUEST" == "false"  ]] ; then
-      echo "build chart image and push to docker registry"
-      make build
-      make docker-login
-      make image
-      make release
-    fi
     echo "push chart image to artifactory registry"
     make release-chart
