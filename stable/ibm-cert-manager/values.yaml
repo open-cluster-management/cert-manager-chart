@@ -74,6 +74,9 @@ securityContext:
 
 podAnnotations:
   seccomp.security.alpha.kubernetes.io/pod: docker/default
+  productID: "9191919191"
+  productName: "ICP Cert Manager"
+  productVersion: "0.7.0"
 
 podLabels: {}
 # Optional DNS settings, useful if you have a public and private DNS zone for

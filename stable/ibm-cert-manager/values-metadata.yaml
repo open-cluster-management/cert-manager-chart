@@ -6,18 +6,14 @@ global:
     __metadata:
       label: "Image Pull Secrets"
       description: "Any secrets required to pull cert-manager images."
-      type: "array"
-      items:
-        type: "string"
+      type: "string"
       required: false
-      default: []
   priorityClassName:
     __metadata:
       label: "Priority Class Name"
       description: "Optional priority class to be used for the cert-manager pods."
       type: "string"
       required: false
-      default: ""
   leaderElection:
     namespace:
       __metadata:
@@ -25,7 +21,6 @@ global:
         description: "Override the namespace used to store the ConfigMap for leader election"
         type: "string"
         required: false
-        default: "kube-system"
   rbac:
     create:
       __metadata:
@@ -33,14 +28,12 @@ global:
         description: "If true, create and use RBAC resources"
         type: "boolean"
         required: true
-        default: true
 replicaCount:
   __metadata:
     label: "Replicas"
     description: "Number of cert-manager replicas"
     type: "number"
     required: true
-    default: 1    
 image:
   __metadata:
     label: "Image"
@@ -51,21 +44,18 @@ image:
       description: "Full repository and path to Certificate Manager image."
       type: "string"
       required: true
-      default: "ibmcom/icp-cert-manager-controller"
   tag:
     __metadata:
       label: "Image Tag"
       description: "The tag identifying which Certificate Manager image to deploy."
       type: "string"
       required: true
-      default: "0.7.0"
   pullPolicy:
     __metadata:
       label: "Pull Policy"
       description: "The policy used by Kubernetes for images."
       type: "string"
       required: true
-      default: "IfNotPresent"
       options:
       - label: "Never"
         value: "Never"
@@ -83,71 +73,108 @@ solver:
       description: "Full repository and path to Certificate Manager ACME Solver image."
       type: "string"
       required: true
-      default: "ibmcom/icp-cert-manager-acmesolver"
   tag:
     __metadata:
       label: "Image Tag"
       description: "The tag identifying which Certificate Manager ACME Solver image to deploy."
       type: "string"
       required: true
-      default: "0.5.0"
 clusterResourceNamespace:
   __metadata:
     label: "The namespace for cluster resources"
-    description: "Override the namespace used to store DNS provider credentials etc. for ClusterIssuer resources"
+    description: "Override the namespace used to store DNS provider credentials etc. for ClusterIssuer resources."
     type: "string"
     required: false
-    default: "kube-system"
 serviceAccount:
+  __metadata:
+    label: "Service Account"
+    description: "Creates a new service account."
   create:
     __metadata:
-      label: "Service Account"
-      description: "If true, create a new service account"
+      label: "Create"
+      description: "If true, create a new service account."
       type: "boolean"
       required: true
-      default: true
   name:
     __metadata:
       label: "The name of service account"
-      description: "Service account to be used. If not set and serviceAccount.create is true, a name is generated using the fullname template"
+      description: "Service account to be used. If not set and serviceAccount.create is true, a name is generated using the fullname template."
       type: "string"
       required: false
 extraArgs:
   __metadata:
     label: "Additional arguments"
     description: "Optional flags for cert-manager"
-    type: "array"
-    items: 
-      type: "string"
+    type: "string"
     required: false
-    default: []
+extraEnv:
+  __metadata:
+    label: "Additional Environment Variables"
+    description: "List of additional environment variables and their values to be included in a cert-manager deployment."
+    type: "string"
+    required: false
+securityContext:
+  __metadata:
+    label: "Security Context"
+    description: "The security context cert-manager uses."
+  enabled:
+    __metadata:
+      label: "Enabled" 
+      description: "If true, enables the security context where cert-manager is limited to a functional group and run as the user specified."
+      type: "boolean"
+  fsGroup:
+    __metadata:
+      label: "FS Group"
+      description: "Functional group name to run as."
+      required: false
+      type: "string"
+  runAsUser:
+    __metadata:
+      label: "Run As User"
+      description: "The user to run cert-manager as in the container."
+      type: "string"
 podAnnotations:
   __metadata:
     name: "podAnnotations"
     label: "Pod Annotations"
     description: "Annotations to add to the cert-manager pod"
-    type: "string"
-    immutable: "false"
+    immutable: false
     required: false
-    default: {}
+    type: "string"
+  productID:
+    __metadata:
+      label: "Product ID"
+      description: "Required metering label."
+      required: false
+      hidden: true
+  productName:
+    __metadata:
+      label: "Product Name"
+      description: "Required metering label."
+      required: false
+      hidden: true
+  productVersion:
+    __metadata:
+      label: "Product Version"
+      description: "Required metering label."
+      required: false
+      hidden: true
 podLabels:
   __metadata:
     name: "podLabels"
     label: "Pod Labels"
     description: "Labels to add to the cert-manager pod"
     type: "string"
-    immutable: "false"
+    immutable: false
     required: false
-    default: {}
 nodeSelector:
   __metadata:
     name: "nodeSelector"
     label: "Node selector"
     description: "Node labels for pod assignment"
     type: "string"
-    immutable: "false"
+    immutable: false
     required: false
-    default: {}
 podRestart:
   enabled:
     __metadata:
@@ -155,7 +182,6 @@ podRestart:
       description: "If set to true, will allow cert-manager to restart pods"
       type: "boolean"
       required: false
-      default: true
 resources:
   __metadata:
     label: "Resources"
@@ -169,7 +195,6 @@ resources:
         label: "Memory request"
         description: "The amount of memory cert-manager requests"
         required: false
-        default: "150Mi"
         type: "string"
   limits:
     __metadata:
@@ -180,5 +205,48 @@ resources:
         label: "Memory limit"
         description: "The memory limit cert-manager has"
         required: true
-        default: "300Mi"
         type: "string"
+podRestart:
+  __metadata:
+    label: "Restart Pods"
+    description: "Cert-manager's ability to restart pods that mount a certificate."
+  enabled:
+    __metadata:
+      label: "Enable"
+      description: "If true, allows cert-manager to restart pods that mount certificates when the certificates are refreshed."
+      required: false
+      type: "boolean"
+
+cainjector:
+  __metadata:
+    label: "CA Injector"
+    description: "Cert-manager webhook's CA injector subchart."
+  enabled:
+    __metadata:
+      label: "Enabled"
+      description: "If true, enables the CA injector subchart to be installed."
+      required: true
+      type: "boolean"
+      immutable: true
+webhook:
+  __metadata:
+    label: "Webhook"
+    description: "Cert-manager's Webhook subchart."
+  enabled:
+    __metadata:
+      label: "Enabled"
+      description: "If true, enables the Webhook subchart."
+      required: true
+      type: "boolean"
+      immutable: true
+tolerations:
+  __metadata:
+    label: "Tolerations"
+    description: "When specified, tolerates any taint that matches the triple <key, value, effect>"
+    type: "string"
+    required: false
+affinity:
+  __metadata:
+    label: "Affinity"
+    description: "Pod's affinity"
+    hidden: true
