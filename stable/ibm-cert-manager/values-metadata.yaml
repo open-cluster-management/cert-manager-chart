@@ -167,6 +167,13 @@ podLabels:
     type: "string"
     immutable: false
     required: false
+podDnsPolicy:
+  __metadata:
+    label: "Pod DNS Policy"
+    description: "The dns policy that cert manager uses."
+    type: "string"
+    immutable: false
+    required: false
 nodeSelector:
   __metadata:
     name: "nodeSelector"
