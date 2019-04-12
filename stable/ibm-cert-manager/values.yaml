@@ -72,10 +72,7 @@ securityContext:
   fsGroup: 1001
   runAsUser: 1001
 
-podAnnotations:
-  productID: "9191919191"
-  productName: "ICP Cert Manager"
-  productVersion: "0.7.0"
+podAnnotations: {}
 
 podLabels: {}
 # Optional DNS settings, useful if you have a public and private DNS zone for

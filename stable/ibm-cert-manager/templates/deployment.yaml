@@ -30,9 +30,11 @@ spec:
 {{ toYaml .Values.podLabels | indent 8 }}
 {{- end }}
       annotations:
-      {{- if .Values.podAnnotations }}
-{{ toYaml .Values.podAnnotations | indent 8 }}
-      {{- end }}
+        productID: "9191919191"
+        productName: "ICP Cert Manager"
+        productVersion: "0.7.0"
+        seccomp.security.alpha.kubernetes.io/pod: docker/default
+        scheduler.alpha.kubernetes.io/critical-pod: ""
     spec:
       serviceAccountName: {{ template "cert-manager.serviceAccountName" . }}
       {{- if .Values.global.priorityClassName }}
