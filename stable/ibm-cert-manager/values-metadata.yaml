@@ -147,24 +147,6 @@ podAnnotations:
     immutable: false
     required: false
     type: "string"
-  productID:
-    __metadata:
-      label: "Product ID"
-      description: "Required metering label."
-      required: false
-      hidden: true
-  productName:
-    __metadata:
-      label: "Product Name"
-      description: "Required metering label."
-      required: false
-      hidden: true
-  productVersion:
-    __metadata:
-      label: "Product Version"
-      description: "Required metering label."
-      required: false
-      hidden: true
 podLabels:
   __metadata:
     name: "podLabels"
