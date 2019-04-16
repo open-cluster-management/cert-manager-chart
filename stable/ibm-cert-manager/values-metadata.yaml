@@ -215,6 +215,7 @@ cainjector:
   __metadata:
     label: "CA Injector"
     description: "Cert-manager webhook's CA injector subchart."
+    hidden: true
   enabled:
     __metadata:
       label: "Enabled"
@@ -226,6 +227,7 @@ webhook:
   __metadata:
     label: "Webhook"
     description: "Cert-manager's Webhook subchart."
+    hidden: true
   enabled:
     __metadata:
       label: "Enabled"
