@@ -177,16 +177,6 @@ ingressShim:
     type: "string"
     hidden: true
     required: false
-podRestart:
-  __metadata:
-    label: "Pod Restart"
-    description: "Cert-Manager's ability to restart pods when the certificates it uses are refreshed."
-  enabled:
-    __metadata:
-      label: "Enabled"
-      description: "If set to true, will allow cert-manager to restart pods"
-      type: "boolean"
-      required: false
 resources:
   __metadata:
     label: "Resources"
@@ -214,10 +204,10 @@ resources:
 podRestart:
   __metadata:
     label: "Restart Pods"
-    description: "Cert-manager's ability to restart pods that mount a certificate"
+    description: "Cert-Manager's ability to restart pods when the certificates the pod uses are refreshed."
   enabled:
     __metadata:
-      label: "Enable"
+      label: "Enabled"
       description: "If true, allows cert-manager to restart pods that mount certificates when the certificates are refreshed."
       required: false
       type: "boolean"
