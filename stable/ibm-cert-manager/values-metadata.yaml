@@ -87,8 +87,8 @@ solver:
       required: true
 clusterResourceNamespace:
   __metadata:
-    label: "Resource Namespace"
-    description: "Override the namespace used to store DNS provider credentials etc. for ClusterIssuer resources."
+    label: "Cluster Resource Namespace"
+    description: "The namespace used to store secrets for Issuers that are cluster-scoped."
     type: "string"
     required: false
 serviceAccount:
