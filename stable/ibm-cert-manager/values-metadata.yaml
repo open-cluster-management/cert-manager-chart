@@ -220,7 +220,7 @@ cainjector:
     __metadata:
       label: "Enabled"
       description: "If true, enables the CA injector subchart to be installed."
-      required: true
+      hidden: true
       type: "boolean"
       immutable: true
 webhook:
@@ -232,9 +232,9 @@ webhook:
     __metadata:
       label: "Enabled"
       description: "If true, enables the Webhook subchart."
-      required: true
       type: "boolean"
       immutable: true
+      hidden: true
 tolerations:
   __metadata:
     label: "Tolerations"
