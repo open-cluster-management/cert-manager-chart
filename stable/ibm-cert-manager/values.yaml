@@ -127,11 +127,11 @@ affinity: {}
 #     value: master
 #     effect: NoSchedule
 tolerations:
-  - effect: NoSchedule
-    key: dedicated
-    operator: Exists
-  - key: CriticalAddonsOnly
-    operator: Exists
+- effect: NoSchedule
+  key: dedicated
+  operator: Exists
+- key: CriticalAddonsOnly
+  operator: Exists
 
 podRestart: 
   enabled: true
