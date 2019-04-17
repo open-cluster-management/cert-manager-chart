@@ -31,8 +31,8 @@ spec:
 {{- end }}
       annotations:
         productID: "9191919191"
-        productName: "ICP Cert Manager"
-        productVersion: "0.7.0"
+        productName: {{ .Chart.Name | quote }}
+        productVersion: {{ .Chart.Version | quote }}
         seccomp.security.alpha.kubernetes.io/pod: docker/default
 {{- if .Values.podAnnotations }}
 {{ toYaml .Values.podAnnotations | indent 8 }}
