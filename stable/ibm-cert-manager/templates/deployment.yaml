@@ -86,10 +86,6 @@ spec:
           affinity:
 {{ toYaml .Values.containerAffinity | indent 10 }}
           {{- end }}
-          {{- if .Values.tolerations }}
-          tolerations:
-{{ toYaml .Values.tolerations | indent 10 }}
-          {{- end }}
           livenessProbe:
             exec:
               command: ["sh", "-c", "exec echo start cert-manager"]
@@ -133,6 +129,10 @@ spec:
     {{- end }}
     {{- with .Values.affinity }}
       affinity:
+{{ toYaml . | indent 8 }}
+    {{- end }}
+    {{- with .Values.tolerations }}
+      tolerations:
 {{ toYaml . | indent 8 }}
     {{- end }}
       hostNetwork: true
