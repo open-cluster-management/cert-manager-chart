@@ -162,6 +162,15 @@ podDnsPolicy:
     type: "string"
     immutable: false
     required: false
+    options:
+    - label: Default
+      value: Default
+    - label: ClusterFirst
+      value: ClusterFirst
+    - label: ClusterFirstWithHostNet
+      value: ClusterFirstWithHostNet
+    - label: None
+      value: None
 nodeSelector:
   __metadata:
     name: "nodeSelector"
@@ -222,6 +231,7 @@ cainjector:
       description: "If true, enables the CA injector subchart to be installed."
       type: "boolean"
       immutable: true
+      hidden: true
 webhook:
   __metadata:
     label: "Webhook"
