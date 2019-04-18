@@ -103,7 +103,7 @@ serviceAccount:
       required: true
   name:
     __metadata:
-      label: "The name of service account"
+      label: "Service Account Name"
       description: "Service account to be used. If not set and serviceAccount.create is true, a name is generated using the fullname template."
       type: "string"
       required: false
@@ -220,7 +220,6 @@ cainjector:
     __metadata:
       label: "Enabled"
       description: "If true, enables the CA injector subchart to be installed."
-      hidden: true
       type: "boolean"
       immutable: true
 webhook:
