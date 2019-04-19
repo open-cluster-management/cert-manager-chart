@@ -126,20 +126,12 @@ affinity: {}
 #     operator: Equal
 #     value: master
 #     effect: NoSchedule
-# tolerations:
-# - effect: NoSchedule
-#   key: dedicated
-#   operator: Exists
-# - key: CriticalAddonsOnly
-#   operator: Exists
-tolerations: [{
-  effect: NoSchedule,
-  key: dedicated,
-  operator: Exists 
-}, {
-  key: CriticalAddonsOnly,
+tolerations:
+- effect: NoSchedule
+  key: dedicated
   operator: Exists
-}]
+- key: CriticalAddonsOnly
+  operator: Exists
 
 podRestart: 
   enabled: true
