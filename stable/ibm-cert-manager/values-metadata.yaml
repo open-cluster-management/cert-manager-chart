@@ -34,6 +34,12 @@ replicaCount:
     description: "Number of cert-manager replicas"
     type: "number"
     required: true
+strategy:
+  __metadata:
+    label: "Strategy"
+    description: "The type of update strategy to apply to cert-manager."
+    type: "string"
+    required: false
 image:
   __metadata:
     label: "Image"
@@ -81,8 +87,8 @@ solver:
       required: true
 clusterResourceNamespace:
   __metadata:
-    label: "The namespace for cluster resources"
-    description: "Override the namespace used to store DNS provider credentials etc. for ClusterIssuer resources."
+    label: "Cluster Resource Namespace"
+    description: "The namespace used to store secrets for Issuers that are cluster-scoped."
     type: "string"
     required: false
 serviceAccount:
@@ -97,13 +103,13 @@ serviceAccount:
       required: true
   name:
     __metadata:
-      label: "The name of service account"
+      label: "Service Account Name"
       description: "Service account to be used. If not set and serviceAccount.create is true, a name is generated using the fullname template."
       type: "string"
       required: false
 extraArgs:
   __metadata:
-    label: "Additional arguments"
+    label: "Additional Arguments"
     description: "Optional flags for cert-manager"
     type: "string"
     required: false
@@ -141,24 +147,6 @@ podAnnotations:
     immutable: false
     required: false
     type: "string"
-  productID:
-    __metadata:
-      label: "Product ID"
-      description: "Required metering label."
-      required: false
-      hidden: true
-  productName:
-    __metadata:
-      label: "Product Name"
-      description: "Required metering label."
-      required: false
-      hidden: true
-  productVersion:
-    __metadata:
-      label: "Product Version"
-      description: "Required metering label."
-      required: false
-      hidden: true
 podLabels:
   __metadata:
     name: "podLabels"
@@ -174,6 +162,15 @@ podDnsPolicy:
     type: "string"
     immutable: false
     required: false
+    options:
+    - label: Default
+      value: Default
+    - label: ClusterFirst
+      value: ClusterFirst
+    - label: ClusterFirstWithHostNet
+      value: ClusterFirstWithHostNet
+    - label: None
+      value: None
 nodeSelector:
   __metadata:
     name: "nodeSelector"
@@ -182,13 +179,13 @@ nodeSelector:
     type: "string"
     immutable: false
     required: false
-podRestart:
-  enabled:
-    __metadata:
-      label: "Pod restart"
-      description: "If set to true, will allow cert-manager to restart pods"
-      type: "boolean"
-      required: false
+ingressShim:
+  __metadata:
+    label: "Ingress Shim"
+    description: "Set default names for ingress resources."
+    type: "string"
+    hidden: true
+    required: false
 resources:
   __metadata:
     label: "Resources"
@@ -216,36 +213,37 @@ resources:
 podRestart:
   __metadata:
     label: "Restart Pods"
-    description: "Cert-manager's ability to restart pods that mount a certificate."
+    description: "Cert-Manager's ability to restart pods when the certificates the pod uses are refreshed."
   enabled:
     __metadata:
-      label: "Enable"
+      label: "Enabled"
       description: "If true, allows cert-manager to restart pods that mount certificates when the certificates are refreshed."
       required: false
       type: "boolean"
-
 cainjector:
   __metadata:
     label: "CA Injector"
     description: "Cert-manager webhook's CA injector subchart."
+    hidden: true
   enabled:
     __metadata:
       label: "Enabled"
       description: "If true, enables the CA injector subchart to be installed."
-      required: true
       type: "boolean"
       immutable: true
+      hidden: true
 webhook:
   __metadata:
     label: "Webhook"
     description: "Cert-manager's Webhook subchart."
+    hidden: true
   enabled:
     __metadata:
       label: "Enabled"
       description: "If true, enables the Webhook subchart."
-      required: true
       type: "boolean"
       immutable: true
+      hidden: true
 tolerations:
   __metadata:
     label: "Tolerations"

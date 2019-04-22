@@ -39,5 +39,3 @@ release-chart: build
 	$(eval FILE_NAME := $(NAME)-$(VERSION_NUMBER).tgz)
 	$(eval URL := $(ARTIFACTORY_URL)/$(ARTIFACTORY_REPO))
 	curl -H "X-JFrog-Art-Api: $(ARTIFACTORY_KEY)" -T $(FILE_NAME) $(URL)/$(FILE_NAME)
-
-include Makefile.docker
