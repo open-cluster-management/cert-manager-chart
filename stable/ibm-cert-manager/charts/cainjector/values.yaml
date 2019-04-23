@@ -16,6 +16,16 @@ global:
 
 replicaCount: 1
 
+nodeSelector:
+  master: "true"
+
+tolerations:
+- effect: NoSchedule
+  key: dedicated
+  operator: Exists
+- key: CriticalAddonsOnly
+  operator: Exists
+
 strategy: {}
   # type: RollingUpdate
   # rollingUpdate:
