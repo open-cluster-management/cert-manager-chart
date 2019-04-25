@@ -20,14 +20,14 @@ global:
 replicaCount: 1
 
 strategy: {}
-  # type: RollingUpdate
   # rollingUpdate:
   #   maxSurge: 0
   #   maxUnavailable: 1
 
 image:
-  repository: ibmcom/icp-cert-manager-controller
-  tag: 0.7.0
+  repository: hyc-cloud-private-scratch-docker-local.artifactory.swg-devops.com/crystal/icp-cert-manager-controller-amd64
+  tag: 0.7.0-b3be2387
+  # type: RollingUpdate
   pullPolicy: IfNotPresent
 
 solver:

@@ -29,8 +29,8 @@ resources: {}
   #   memory: 32Mi
 
 image:
-  repository: ibmcom/icp-cert-manager-webhook
-  tag: 0.7.0
+  repository: hyc-cloud-private-scratch-docker-local.artifactory.swg-devops.com/crystal/icp-cert-manager-webhook-amd64
+  tag: 0.7.0-b3be2387
   pullPolicy: IfNotPresent
 
 nodeSelector:
