@@ -96,10 +96,10 @@ ingressShim: {}
   # defaultACMEDNS01ChallengeProvider: ""
 
 webhook:
-  enabled: false
+  enabled: true
 
 cainjector:
-  enabled: false
+  enabled: true
 
 # Use these variables to configure the HTTP_PROXY environment variables
 # http_proxy: "http://proxy:8080"
