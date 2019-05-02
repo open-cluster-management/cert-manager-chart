@@ -52,6 +52,11 @@ spec:
             valueFrom:
               fieldRef:
                 fieldPath: metadata.namespace
+          - name: DEFAULT_ADMIN
+            valueFrom:
+              secretKeyRef: 
+                name: credentials
+                key: admin_username
           livenessProbe:
             exec:
               command: ["sh", "-c", "exec echo start cert-manager webhook"]
@@ -75,7 +80,10 @@ spec:
           secretName: {{ include "webhook.servingCertificate" . }}
       - name: api-key
         secret:
-          secretName: webhook-secret
+          secretName: webhook-api-key
+      - name: credentials
+        secret:
+          secretName: default-credentials
     {{- with .Values.nodeSelector }}
       nodeSelector:
 {{ toYaml . | indent 8 }}

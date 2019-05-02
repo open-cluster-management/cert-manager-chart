@@ -48,3 +48,6 @@ tolerations:
 # configuration caBundle to talk to itself in kubernetes 1.11+
 # see https://github.com/kubernetes/kubernetes/pull/62649
 injectAPIServerCA: true
+
+config:
+  default_admin_user: admin
