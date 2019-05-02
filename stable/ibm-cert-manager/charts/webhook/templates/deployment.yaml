@@ -55,7 +55,7 @@ spec:
           - name: DEFAULT_ADMIN
             valueFrom:
               secretKeyRef: 
-                name: credentials
+                name: {{ .Values.credentials.secretName }}
                 key: admin_username
           livenessProbe:
             exec:
@@ -80,10 +80,7 @@ spec:
           secretName: {{ include "webhook.servingCertificate" . }}
       - name: api-key
         secret:
-          secretName: webhook-api-key
-      - name: credentials
-        secret:
-          secretName: default-credentials
+          secretName: {{ .Values.apiKey.secretName }}
     {{- with .Values.nodeSelector }}
       nodeSelector:
 {{ toYaml . | indent 8 }}

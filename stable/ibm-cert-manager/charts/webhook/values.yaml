@@ -49,5 +49,12 @@ tolerations:
 # see https://github.com/kubernetes/kubernetes/pull/62649
 injectAPIServerCA: true
 
-config:
-  default_admin_user: admin
+credentials:
+  defaultAdminUser: admin
+  secretName: default-credentials
+
+apiKey:
+  secretName: cm-webhook-api-key
+  name: cm-webhook-api-key
+  serviceId: cm-webhook-service-id
+  serviceName: cm-webhook-service-name
