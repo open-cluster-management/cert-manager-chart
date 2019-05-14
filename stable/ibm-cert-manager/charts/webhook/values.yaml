@@ -30,7 +30,7 @@ resources: {}
 
 image:
   repository: hyc-cloud-private-scratch-docker-local.artifactory.swg-devops.com/crystal/icp-cert-manager-webhook-amd64
-  tag: 0.7.0-c6713eb5
+  tag: 0.7.0-0b5b4953
   pullPolicy: IfNotPresent
 
 nodeSelector:
