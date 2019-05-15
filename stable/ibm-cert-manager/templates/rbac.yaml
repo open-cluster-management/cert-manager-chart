@@ -72,4 +72,30 @@ rules:
   - apiGroups: ["certmanager.k8s.io"]
     resources: ["certificates", "issuers"]
     verbs: ["create", "delete", "deletecollection", "patch", "update"]
+
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: cert-manager-icp-operate
+  labels:
+    rbac.icp.com/aggregate-to-icp-admin: "true"
+    rbac.icp.com/aggregate-to-icp-operate: "true"
+rules:
+- apiGroups: ["certmanager.k8s.io"]
+  resources: ["certificates", "issuers"]
+  verbs: ["get", "list", "watch", "create", "update", "patch", ]
+
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: cert-manager-icp-admin
+  labels:
+    rbac.icp.com/aggregate-to-icp-admin: "true"
+rules:
+- apiGroups: ["certmanager.k8s.io"]
+  resources: ["certificates", "issuers"]
+  verbs: ["delete", "deletecollection"]
+
 {{- end -}}
