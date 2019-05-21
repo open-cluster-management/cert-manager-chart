@@ -57,6 +57,11 @@ spec:
               secretKeyRef: 
                 name: {{ .Values.credentials.secretName }}
                 key: admin_username
+          - name: OIDC_URL
+            valueFrom:
+              secretKeyRef:
+                name: {{ .Values.credentials.secretName }}
+                key: oidc_url
           livenessProbe:
             exec:
               command: ["sh", "-c", "exec echo start cert-manager webhook"]
@@ -78,9 +83,6 @@ spec:
       - name: certs
         secret:
           secretName: {{ include "webhook.servingCertificate" . }}
-      - name: api-key
-        secret:
-          secretName: {{ .Values.apiKey.secretName }}
     {{- with .Values.nodeSelector }}
       nodeSelector:
 {{ toYaml . | indent 8 }}

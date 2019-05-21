@@ -52,9 +52,4 @@ injectAPIServerCA: true
 credentials:
   defaultAdminUser: admin
   secretName: default-credentials
-
-apiKey:
-  secretName: cm-webhook-api-key
-  name: cm-webhook-api-key
-  serviceId: cm-webhook-service-id
-  serviceName: cm-webhook-service-name
+  oidcUrl: mycluster.icp
