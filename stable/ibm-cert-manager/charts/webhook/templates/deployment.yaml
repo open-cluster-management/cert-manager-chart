@@ -77,8 +77,6 @@ spec:
           volumeMounts:
           - name: certs
             mountPath: /certs
-          - name: api-key
-            mountPath: /etc/cfc
       volumes:
       - name: certs
         secret:
