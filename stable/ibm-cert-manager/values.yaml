@@ -71,6 +71,7 @@ securityContext:
   enabled: false
   fsGroup: 1001
   runAsUser: 1001
+  allowPrivilegeEscalation: false
 
 podAnnotations: {}
 

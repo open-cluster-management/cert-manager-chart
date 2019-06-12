@@ -139,6 +139,11 @@ securityContext:
       label: "Run As User"
       description: "The user to run cert-manager as in the container."
       type: "string"
+  allowPrivilegeEscalation:
+    __metadata:
+      label: "Allow Privilege Escalation"
+      description: "If true, allows a user within the cert-manager container to escalate their privilege to su."
+      type: "boolean"
 podAnnotations:
   __metadata:
     name: "podAnnotations"
