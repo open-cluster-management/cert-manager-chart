@@ -86,8 +86,7 @@ podDnsPolicy: "ClusterFirstWithHostNet"
 #     - "1.1.1.1"
 #     - "8.8.8.8"
 
-nodeSelector:
-  master: "true"
+nodeSelector: {}
 
 ingressShim: {}
   # defaultIssuerName: ""
