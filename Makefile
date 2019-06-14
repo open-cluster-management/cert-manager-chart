@@ -9,9 +9,6 @@
 ###############################################################################
 GITHUB_USER := $(shell echo $(GITHUB_USER) | sed 's/@/%40/g')
 
-.PHONY: default
-default:: init;
-
 .PHONY: init\:
 init::
 	@mkdir -p variables
