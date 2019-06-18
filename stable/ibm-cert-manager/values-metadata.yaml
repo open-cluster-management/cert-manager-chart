@@ -139,6 +139,11 @@ securityContext:
       label: "Run As User"
       description: "The user to run cert-manager as in the container."
       type: "string"
+  readOnlyRootFilesystem:
+    __metadata:
+      label: "Read Only File System"
+      description: "If true, then only allows reads from the file system."
+      type: "boolean"
 podAnnotations:
   __metadata:
     name: "podAnnotations"

@@ -46,6 +46,7 @@ spec:
       securityContext:
         fsGroup: {{ .Values.securityContext.fsGroup }}
         runAsUser: {{ .Values.securityContext.runAsUser }}
+        readOnlyRootFilesystem: {{ .Values.securityContext.readOnlyRootFilesystem }}
       {{- end }}
       containers:
         - name: {{ .Chart.Name }}
