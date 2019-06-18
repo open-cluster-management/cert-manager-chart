@@ -20,6 +20,7 @@ global:
 replicaCount: 1
 
 strategy: {}
+  # type: RollingUpdate
   # rollingUpdate:
   #   maxSurge: 0
   #   maxUnavailable: 1
@@ -27,7 +28,6 @@ strategy: {}
 image:
   repository: ibmcom/icp-cert-manager-controller
   tag: 0.7.0
-  # type: RollingUpdate
   pullPolicy: IfNotPresent
 
 solver:
