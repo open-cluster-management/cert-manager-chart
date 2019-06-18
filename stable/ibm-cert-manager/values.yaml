@@ -25,8 +25,8 @@ strategy: {}
   #   maxUnavailable: 1
 
 image:
-  repository: hyc-cloud-private-scratch-docker-local.artifactory.swg-devops.com/crystal/icp-cert-manager-controller-amd64
-  tag: 0.7.0-7450f963
+  repository: ibmcom/icp-cert-manager-controller
+  tag: 0.7.0
   # type: RollingUpdate
   pullPolicy: IfNotPresent
 
