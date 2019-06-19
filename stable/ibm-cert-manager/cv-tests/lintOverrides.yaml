@@ -21,3 +21,5 @@ ignoreMessages:
   - '\[ERROR\] values-metadata.yaml: key structure does not match values.yaml: podAnnotations.seccomp.security.alpha.kubernetes.io/pod defined in values.yaml .*'
   - '\[ERROR\] .* use of hostNetwork not .*'
   - '\[ERROR\] .* key structure does not match .*'
+  - '\[ERROR\] .* found metadata.namespace .*'
+  - '\[ERROR\] .* found Secret resource.*'
