@@ -27,6 +27,9 @@ spec:
         app: {{ include "webhook.name" . }}
         release: {{ .Release.Name }}
       annotations:
+        productID: "9191919193"
+        productName: {{ .Chart.Name | quote }}
+        productVersion: {{ .Chart.Version | quote }}
       {{- if .Values.podAnnotations }}
 {{ toYaml .Values.podAnnotations | indent 8 }}
       {{- end }}
