@@ -4,4 +4,4 @@
 # US Government Users Restricted Rights - Use, duplication or disclosure restricted by GSA ADP Schedule Contract with IBM Corp.
 
 ignoreMessages:
-  - '\[ERROR\] templates/serviceaccount.yaml: imagePullSecret with name .*'
+  - '\[ERROR\] .* imagePullSecret with name .*'
