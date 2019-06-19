@@ -16,7 +16,7 @@ ignoreMessages:
   - '\[ERROR\] .* missing pod security-related keys, see the log and playbook for more details .*'
   - '\[ERROR\] cv-tests: no application tests .*'
   - '\[ERROR\] Chart.yaml: chart name, classification keywords, and version are incompatible: .*'
-  - '\[ERROR\] templates/serviceaccount.yaml: imagePullSecret with name .*'
+  - '\[ERROR\] .* imagePullSecret with name .*'
   - '\[ERROR\] .* container must drop .*'
   - '\[ERROR\] values-metadata.yaml: key structure does not match values.yaml: podAnnotations.seccomp.security.alpha.kubernetes.io/pod defined in values.yaml .*'
   - '\[ERROR\] .* use of hostNetwork not .*'
