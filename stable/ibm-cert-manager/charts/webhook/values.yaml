@@ -48,8 +48,3 @@ tolerations:
 # configuration caBundle to talk to itself in kubernetes 1.11+
 # see https://github.com/kubernetes/kubernetes/pull/62649
 injectAPIServerCA: true
-
-credentials:
-  defaultAdminUser: admin
-  secretName: default-credentials
-  oidcUrl: mycluster.icp
