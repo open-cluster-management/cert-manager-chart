@@ -36,3 +36,6 @@ image:
   repository: ibmcom/icp-cert-manager-cainjector
   tag: 0.7.0
   pullPolicy: IfNotPresent
+
+securityContext:
+  allowPrivilegeEscalation: false

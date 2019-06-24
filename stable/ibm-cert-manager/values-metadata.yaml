@@ -150,7 +150,7 @@ securityContext:
     allowPrivilegeEscalation:
       __metadata:
         label: "Allow Privilege Escalation"
-        description: "If true, allows a user within the cert-manager container to escalate their privilege to su."
+        description: "If true, allows a user within the cert-manager container to escalate their privilege to root."
         type: "boolean"
     runAsUser:
       __metadata:

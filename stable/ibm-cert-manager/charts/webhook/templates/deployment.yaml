@@ -65,6 +65,8 @@ spec:
             timeoutSeconds: 2
           resources:
 {{ toYaml .Values.resources | indent 12 }}
+          securityContext:
+            allowPrivilegeEscalation: {{ .Values.securityContext.allowPrivilegeEscalation }}
           volumeMounts:
           - name: certs
             mountPath: /certs
