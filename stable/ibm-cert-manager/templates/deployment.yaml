@@ -44,9 +44,8 @@ spec:
       {{- end }}
       {{- if .Values.securityContext.enabled }}
       securityContext:
-        fsGroup: {{ .Values.securityContext.fsGroup }}
-        runAsUser: {{ .Values.securityContext.runAsUser }}
-        allowPrivilegeEscalation: {{ .Values.securityContext.allowPrivilegeEscalation }}
+        fsGroup: {{ .Values.securityContext.pod.fsGroup }}
+        runAsUser: {{ .Values.securityContext.pod.runAsUser }}
       {{- end }}
       containers:
         - name: {{ .Chart.Name }}
@@ -122,8 +121,9 @@ spec:
           resources:
 {{ toYaml .Values.resources | indent 12 }}
           securityContext:
-            runAsNonRoot: true
-            runAsUser: 100
+            runAsNonRoot: {{ .Values.securityContext.container.runAsNonRoot }}
+            runAsUser: {{ .Values.securityContext.container.runAsUser }}
+            allowPrivilegeEscalation: {{ .Values.securityContext.container.allowPrivilegeEscalation }}
     {{- with .Values.nodeSelector }}
       nodeSelector:
 {{ toYaml . | indent 8 }}
