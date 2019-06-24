@@ -88,7 +88,7 @@ spec:
           {{- end }}
           livenessProbe:
             exec:
-              command: ["sh", "-c", "exec echo start cert-manager"]
+              command: ["sh", "-c", "pgrep cert-manager"]
             initialDelaySeconds: 30
             timeoutSeconds: 5
           readinessProbe:
