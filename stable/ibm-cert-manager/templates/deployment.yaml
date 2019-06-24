@@ -42,7 +42,7 @@ spec:
       {{- if .Values.global.priorityClassName }}
       priorityClassName: {{ .Values.global.priorityClassName | quote }}
       {{- end }}
-      {{- if .Values.securityContext.enabled }}
+      {{- if .Values.securityContext.pod.enabled }}
       securityContext:
         fsGroup: {{ .Values.securityContext.pod.fsGroup }}
         runAsUser: {{ .Values.securityContext.pod.runAsUser }}
