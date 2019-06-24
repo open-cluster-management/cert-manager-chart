@@ -48,6 +48,12 @@ spec:
           {{- if .Values.extraArgs }}
 {{ toYaml .Values.extraArgs | indent 10 }}
           {{- end }}
+          livenessProbe:
+            exec:
+              command:
+              - sh
+              - -c
+              - pgrep cainjector -l
           env:
           - name: POD_NAMESPACE
             valueFrom:
