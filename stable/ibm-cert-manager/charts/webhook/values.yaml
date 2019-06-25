@@ -30,7 +30,7 @@ resources: {}
 
 image:
   repository: ibmcom/icp-cert-manager-webhook
-  tag: 0.7.0
+  tag: 0.7.0.1
   pullPolicy: IfNotPresent
 
 nodeSelector:
