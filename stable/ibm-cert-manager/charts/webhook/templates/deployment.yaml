@@ -57,7 +57,10 @@ spec:
                 fieldPath: metadata.namespace
           livenessProbe:
             exec:
-              command: ["sh", "-c", "exec echo start cert-manager webhook"]
+              command:
+              - sh
+              - -c
+              - pgrep webhook -l
             initialDelaySeconds: 30
             timeoutSeconds: 5
           readinessProbe:

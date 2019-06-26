@@ -53,7 +53,10 @@ spec:
           {{- end }}
           livenessProbe:
             exec:
-              command: ["sh", "-c", "exec echo start cainjector"]
+              command:
+              - sh
+              - -c
+              - pgrep cainjector -l
           env:
           - name: POD_NAMESPACE
             valueFrom:
