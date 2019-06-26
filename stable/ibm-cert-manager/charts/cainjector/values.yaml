@@ -16,6 +16,16 @@ global:
 
 replicaCount: 1
 
+nodeSelector:
+  master: "true"
+
+tolerations:
+- effect: NoSchedule
+  key: dedicated
+  operator: Exists
+- key: CriticalAddonsOnly
+  operator: Exists
+
 strategy: {}
   # type: RollingUpdate
   # rollingUpdate:
@@ -34,5 +44,5 @@ resources: {}
 
 image:
   repository: ibmcom/icp-cert-manager-cainjector
-  tag: 0.7.0
+  tag: 0.7.0.1
   pullPolicy: IfNotPresent
