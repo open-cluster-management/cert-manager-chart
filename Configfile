@@ -7,7 +7,7 @@ DOCKER_PASSWORD ?=
 IMAGE_DESCRIPTION =
 IMAGE_NAME = icp-cert-manager-chart
 IMAGE_REPO ?= registry.ng.bluemix.net/mdelder
-RELEASE_TAG ?= 0.5.0
+RELEASE_TAG ?= 0.7.0.1
 ARCH = $(shell uname -m)
 DOCKER_FLAG =
 

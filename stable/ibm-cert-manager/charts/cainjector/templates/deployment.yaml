@@ -27,6 +27,9 @@ spec:
         app: {{ include "cainjector.name" . }}
         release: {{ .Release.Name }}
       annotations:
+        productID: "9191919192"
+        productName: {{ .Chart.Name | quote }}
+        productVersion: {{ .Chart.Version | quote }}
       {{- if .Values.podAnnotations }}
 {{ toYaml .Values.podAnnotations | indent 8 }}
       {{- end }}
