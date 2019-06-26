@@ -24,3 +24,4 @@ ignoreMessages:
   - '\[ERROR\] .* found metadata.namespace .*'
   - '\[ERROR\] .* found Secret resource.*'
   - '\[ERROR\] .* version .* is not a valid SemVer .*'
+  - '\[ERROR\] .* Invalid Semantic Version .*'
