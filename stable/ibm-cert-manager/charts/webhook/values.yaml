@@ -30,12 +30,24 @@ resources: {}
 
 image:
   repository: ibmcom/icp-cert-manager-webhook
-  tag: 0.7.0
+  tag: 0.7.0.1
   pullPolicy: IfNotPresent
 
+nodeSelector:
+  master: "true"
+
+tolerations:
+- effect: NoSchedule
+  key: dedicated
+  operator: Exists
+- key: CriticalAddonsOnly
+  operator: Exists
 # if true, the apiserver's cabundle will be automatically injected into the
 # webhook's ValidatingWebhookConfiguration resource by the CA injector.
 # in future this will default to false, as the apiserver can use the loopback
 # configuration caBundle to talk to itself in kubernetes 1.11+
 # see https://github.com/kubernetes/kubernetes/pull/62649
 injectAPIServerCA: true
+
+securityContext:
+  allowPrivilegeEscalation: false

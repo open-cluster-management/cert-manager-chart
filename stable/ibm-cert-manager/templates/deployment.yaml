@@ -42,11 +42,11 @@ spec:
       {{- if .Values.global.priorityClassName }}
       priorityClassName: {{ .Values.global.priorityClassName | quote }}
       {{- end }}
-      {{- if .Values.securityContext.enabled }}
+      {{- if .Values.securityContext.pod.enabled }}
       securityContext:
-        fsGroup: {{ .Values.securityContext.fsGroup }}
-        runAsUser: {{ .Values.securityContext.runAsUser }}
-        readOnlyRootFilesystem: {{ .Values.securityContext.readOnlyRootFilesystem }}
+        fsGroup: {{ .Values.securityContext.pod.fsGroup }}
+        runAsUser: {{ .Values.securityContext.pod.runAsUser }}
+        readOnlyRootFilesystem: {{ .Values.securityContext.pod.readOnlyRootFilesystem }}
       {{- end }}
       containers:
         - name: {{ .Chart.Name }}
@@ -89,7 +89,10 @@ spec:
           {{- end }}
           livenessProbe:
             exec:
-              command: ["sh", "-c", "exec echo start cert-manager"]
+              command: 
+              - sh
+              - -c
+              - pgrep cert-manager -l
             initialDelaySeconds: 30
             timeoutSeconds: 5
           readinessProbe:
@@ -122,8 +125,9 @@ spec:
           resources:
 {{ toYaml .Values.resources | indent 12 }}
           securityContext:
-            runAsNonRoot: true
-            runAsUser: 100
+            runAsNonRoot: {{ .Values.securityContext.container.runAsNonRoot }}
+            runAsUser: {{ .Values.securityContext.container.runAsUser }}
+            allowPrivilegeEscalation: {{ .Values.securityContext.container.allowPrivilegeEscalation }}
     {{- with .Values.nodeSelector }}
       nodeSelector:
 {{ toYaml . | indent 8 }}

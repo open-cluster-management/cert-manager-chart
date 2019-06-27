@@ -27,6 +27,9 @@ spec:
         app: {{ include "webhook.name" . }}
         release: {{ .Release.Name }}
       annotations:
+        productID: "9191919193"
+        productName: {{ .Chart.Name | quote }}
+        productVersion: {{ .Chart.Version | quote }}
       {{- if .Values.podAnnotations }}
 {{ toYaml .Values.podAnnotations | indent 8 }}
       {{- end }}
@@ -44,7 +47,6 @@ spec:
           - --secure-port=6443
           - --tls-cert-file=/certs/tls.crt
           - --tls-private-key-file=/certs/tls.key
-          - --disable-admission-plugins=NamespaceLifecycle,MutatingAdmissionWebhook,ValidatingAdmissionWebhook,Initializers
         {{- if .Values.extraArgs }}
 {{ toYaml .Values.extraArgs | indent 10 }}
         {{- end }}
@@ -55,7 +57,10 @@ spec:
                 fieldPath: metadata.namespace
           livenessProbe:
             exec:
-              command: ["sh", "-c", "exec echo start cert-manager webhook"]
+              command:
+              - sh
+              - -c
+              - pgrep webhook -l
             initialDelaySeconds: 30
             timeoutSeconds: 5
           readinessProbe:
@@ -65,6 +70,8 @@ spec:
             timeoutSeconds: 2
           resources:
 {{ toYaml .Values.resources | indent 12 }}
+          securityContext:
+            allowPrivilegeEscalation: {{ .Values.securityContext.allowPrivilegeEscalation }}
           volumeMounts:
           - name: certs
             mountPath: /certs
