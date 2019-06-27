@@ -51,3 +51,4 @@ injectAPIServerCA: true
 
 securityContext:
   allowPrivilegeEscalation: false
+  readOnlyRootFilesystem: true

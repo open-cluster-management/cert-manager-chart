@@ -72,6 +72,7 @@ spec:
 {{ toYaml .Values.resources | indent 12 }}
           securityContext:
             allowPrivilegeEscalation: {{ .Values.securityContext.allowPrivilegeEscalation }}
+            readOnlyRootFileSystem: {{ .Values.securityContext.readOnlyRootFilesystem }}
           volumeMounts:
           - name: certs
             mountPath: /certs
