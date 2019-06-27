@@ -123,22 +123,45 @@ securityContext:
   __metadata:
     label: "Security Context"
     description: "The security context cert-manager uses."
-  enabled:
+  pod:
     __metadata:
-      label: "Enabled" 
-      description: "If true, enables the security context where cert-manager is limited to a functional group and run as the user specified."
-      type: "boolean"
-  fsGroup:
+      label: "Pod"
+      description: "The security context of cert-manager's pod."
+    enabled:
+      __metadata:
+        label: "Enabled" 
+        description: "If true, enables the security context where cert-manager is limited to a functional group and run as the user specified."
+        type: "boolean"
+    fsGroup:
+      __metadata:
+        label: "FS Group"
+        description: "Functional group name to run as."
+        required: false
+        type: "string"
+    runAsUser:
+      __metadata:
+        label: "Run As User"
+        description: "The user to run cert-manager as in all the containers within the cert-manager pod."
+        type: "string"
+  container:
     __metadata:
-      label: "FS Group"
-      description: "Functional group name to run as."
-      required: false
-      type: "string"
-  runAsUser:
-    __metadata:
-      label: "Run As User"
-      description: "The user to run cert-manager as in the container."
-      type: "string"
+      label: "Container"
+      description: "The security context of cert-manager's container."
+    allowPrivilegeEscalation:
+      __metadata:
+        label: "Allow Privilege Escalation"
+        description: "If true, allows a user within the cert-manager container to escalate their privilege to root."
+        type: "boolean"
+    runAsUser:
+      __metadata:
+        label: "Run As User"
+        description: "The user to run cert-manager as in the container."
+        type: "string"
+    runAsNonRoot:
+      __metadata:
+        label: "Run As Non-Root"
+        description: "If true, prevents cert-manager container from being run as a root user."
+        type: "boolean"
 podAnnotations:
   __metadata:
     name: "podAnnotations"

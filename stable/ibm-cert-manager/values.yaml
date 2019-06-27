@@ -68,9 +68,15 @@ resources:
 # Pod Security Context
 # ref: https://kubernetes.io/docs/tasks/configure-pod-container/security-context/
 securityContext:
-  enabled: false
-  fsGroup: 1001
-  runAsUser: 1001
+  pod:
+    enabled: false
+    fsGroup: 1001
+    runAsUser: 1001
+  container:
+    runAsNonRoot: true
+    runAsUser: 100
+    allowPrivilegeEscalation: false
+  
 
 podAnnotations: {}
 
