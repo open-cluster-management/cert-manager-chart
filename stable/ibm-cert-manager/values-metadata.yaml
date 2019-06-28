@@ -167,6 +167,11 @@ securityContext:
         label: "Run As Non-Root"
         description: "If true, prevents cert-manager container from being run as a root user."
         type: "boolean"
+    readOnlyRootFilesystem:
+      __metadata:
+        label: "Read Only File System"
+        description: "If true, then only allows reads from the file system."
+        type: "boolean"        
 podAnnotations:
   __metadata:
     name: "podAnnotations"

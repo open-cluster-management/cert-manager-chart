@@ -77,7 +77,7 @@ securityContext:
     runAsNonRoot: true
     runAsUser: 100
     allowPrivilegeEscalation: false
-  
+    readOnlyRootFilesystem: true
 
 podAnnotations: {}
 
