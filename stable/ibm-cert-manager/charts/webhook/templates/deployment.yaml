@@ -45,8 +45,8 @@ spec:
           args:
           - --v=12
           - --secure-port=6443
-          - --tls-cert-file=/usr/certs/tls.crt
-          - --tls-private-key-file=/usr/certs/tls.key
+          - --tls-cert-file=/certs/tls.crt
+          - --tls-private-key-file=/certs/tls.key
         {{- if .Values.extraArgs }}
 {{ toYaml .Values.extraArgs | indent 10 }}
         {{- end }}
@@ -55,6 +55,8 @@ spec:
             valueFrom:
               fieldRef:
                 fieldPath: metadata.namespace
+          - name: TMPDIR
+            value: "/home/webhook/tmp"
           livenessProbe:
             exec:
               command:
@@ -75,7 +77,7 @@ spec:
             readOnlyRootFilesystem: {{ .Values.securityContext.readOnlyRootFilesystem }}
           volumeMounts:
           - name: certs
-            mountPath: /usr/certs
+            mountPath: /certs
       volumes:
       - name: certs
         secret:
