@@ -45,8 +45,8 @@ spec:
           args:
           - --v=12
           - --secure-port=6443
-          - --tls-cert-file=/certs/tls.crt
-          - --tls-private-key-file=/certs/tls.key
+          - --tls-cert-file=/usr/certs/tls.crt
+          - --tls-private-key-file=/usr/certs/tls.key
         {{- if .Values.extraArgs }}
 {{ toYaml .Values.extraArgs | indent 10 }}
         {{- end }}
@@ -75,7 +75,7 @@ spec:
             readOnlyRootFilesystem: {{ .Values.securityContext.readOnlyRootFilesystem }}
           volumeMounts:
           - name: certs
-            mountPath: /certs
+            mountPath: /usr/certs
       volumes:
       - name: certs
         secret:
