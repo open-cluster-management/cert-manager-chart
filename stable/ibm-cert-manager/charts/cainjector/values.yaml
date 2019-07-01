@@ -49,3 +49,4 @@ image:
 
 securityContext:
   allowPrivilegeEscalation: false
+  readOnlyRootFilesystem: true

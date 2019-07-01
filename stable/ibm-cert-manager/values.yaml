@@ -72,11 +72,12 @@ securityContext:
     enabled: false
     fsGroup: 1001
     runAsUser: 1001
+    readOnlyRootFilesystem: true
   container:
     runAsNonRoot: true
     runAsUser: 100
     allowPrivilegeEscalation: false
-  
+    readOnlyRootFilesystem: true
 
 podAnnotations: {}
 

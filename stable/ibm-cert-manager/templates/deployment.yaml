@@ -46,6 +46,7 @@ spec:
       securityContext:
         fsGroup: {{ .Values.securityContext.pod.fsGroup }}
         runAsUser: {{ .Values.securityContext.pod.runAsUser }}
+        readOnlyRootFilesystem: {{ .Values.securityContext.pod.readOnlyRootFilesystem }}
       {{- end }}
       containers:
         - name: {{ .Chart.Name }}
@@ -127,6 +128,7 @@ spec:
             runAsNonRoot: {{ .Values.securityContext.container.runAsNonRoot }}
             runAsUser: {{ .Values.securityContext.container.runAsUser }}
             allowPrivilegeEscalation: {{ .Values.securityContext.container.allowPrivilegeEscalation }}
+            readOnlyRootFilesystem: {{ .Values.securityContext.container.readOnlyRootFilesystem }}
     {{- with .Values.nodeSelector }}
       nodeSelector:
 {{ toYaml . | indent 8 }}
