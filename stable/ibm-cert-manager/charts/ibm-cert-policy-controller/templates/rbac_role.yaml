@@ -3,6 +3,11 @@ kind: ClusterRole
 metadata:
   creationTimestamp: null
   name: {{ include "controller.name" . }}-role
+  labels:
+    app: {{ include "controller.fullname" . }}
+    chart: {{ include "controller.chart" . }}
+    release: {{ .Release.Name }}
+    heritage: {{ .Release.Service }}
 rules:
 - apiGroups:
   - ""

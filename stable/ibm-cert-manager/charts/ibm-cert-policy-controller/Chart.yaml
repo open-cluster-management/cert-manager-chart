@@ -2,10 +2,8 @@ name: ibm-cert-policy-controller
 version: 0.0.1
 appVersion: 0.0.1
 description: A Helm chart for deploying the Certificate Policy Controller
-home: https://github.ibm.com/IBMPrivateCloud/PolicyFramework
-sources:
-  - https://github.ibm.com/IBMPrivateCloud/PolicyFramework
-  - https://github.ibm.com/Crystal-Chun/PolicyFramework
+tillerVersion: ">=2.7.0"
+kubeVersion: ">=1.9.0"
 keywords:
   - "certificates"
   - "certificate"

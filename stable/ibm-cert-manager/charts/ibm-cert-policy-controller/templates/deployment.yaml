@@ -9,11 +9,6 @@ metadata:
     release: {{ .Release.Name }}
     heritage: {{ .Release.Service }}
 spec:
-  securityContext:
-    allowPrivilegeEscalation: {{ .Values.securityContext.allowPrivilegeEscalation }}
-    runAsUser: {{ .Values.securityContext.runAsUser }}
-    readOnlyRootFilesystem: {{ .Values.securityContext.readOnlyRootFilesystem }}
-    runAsNonRoot: {{ .Values.securityContext.runAsNonRoot }}
   replicas: {{ .Values.replicas }}
   selector:
     matchLabels:
@@ -53,6 +48,18 @@ spec:
             command: ["sh", "-c", "exec echo start certificate-policy-controller"]
           initialDelaySeconds: 10
           timeoutSeconds: 2
+        resources:
+          limits:
+            memory: "300Mi"
+            cpu: "200m"
+          requests:
+            memory: "150Mi"
+            cpu: "100m"
+        securityContext:
+          allowPrivilegeEscalation: {{ .Values.securityContext.allowPrivilegeEscalation }}
+          runAsUser: {{ .Values.securityContext.runAsUser }}
+          readOnlyRootFilesystem: {{ .Values.securityContext.readOnlyRootFilesystem }}
+          runAsNonRoot: {{ .Values.securityContext.runAsNonRoot }}
       {{- with .Values.tolerations }}
       tolerations:
 {{ toYaml . | indent 8 }}
