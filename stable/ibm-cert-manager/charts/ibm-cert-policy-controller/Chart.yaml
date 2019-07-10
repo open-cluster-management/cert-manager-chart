@@ -1,4 +1,4 @@
-name: icp-cert-policy-controller
+name: ibm-cert-policy-controller
 version: 0.0.1
 appVersion: 0.0.1
 description: A Helm chart for deploying the Certificate Policy Controller
@@ -7,11 +7,17 @@ sources:
   - https://github.ibm.com/IBMPrivateCloud/PolicyFramework
   - https://github.ibm.com/Crystal-Chun/PolicyFramework
 keywords:
-  - certificates
-  - certificate
-  - cert
-  - expiration
-  - grc
-  - policy
-  - mcm
-  - tls
+  - "certificates"
+  - "certificate"
+  - "cert"
+  - "expiration"
+  - "grc"
+  - "policy"
+  - "mcm"
+  - "tls"
+  - "ICP"
+  - "amd64"
+  - "ppc64le"
+  - "s390x"
+  - "Development"
+  - "Beta"
