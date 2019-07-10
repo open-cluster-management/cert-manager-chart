@@ -11,4 +11,3 @@ See the IBM Cloud Private product documentation in the [IBM Knowledge Center](ht
 
 ## Limitations
 * There can only be a single deployment of the certificate manager service in a cluster, and it is installed by default.
-* Webhook API validation has not been validated to run on IBM Cloud Private.
