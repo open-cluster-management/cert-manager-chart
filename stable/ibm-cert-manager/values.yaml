@@ -107,6 +107,9 @@ webhook:
 cainjector:
   enabled: true
 
+policy-controller:
+  enabled: true
+
 # Use these variables to configure the HTTP_PROXY environment variables
 # http_proxy: "http://proxy:8080"
 # http_proxy: "http://proxy:8080"
