@@ -75,6 +75,13 @@ spec:
           securityContext:
             allowPrivilegeEscalation: {{ .Values.securityContext.allowPrivilegeEscalation }}
             readOnlyRootFilesystem: {{ .Values.securityContext.readOnlyRootFilesystem }}
+          resources:
+            limits:
+              memory: "300Mi"
+              cpu: "200m"
+            requests:
+              memory: "150Mi"
+              cpu: "100m"          
           volumeMounts:
           - name: certs
             mountPath: /certs

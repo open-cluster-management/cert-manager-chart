@@ -20,4 +20,11 @@ spec:
   - name: {{ .Release.Name }}-test-cm-health
     image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
     command: ["sh", "-c", "echo cert-manager-tests"]
+    resources:
+      limits:
+        memory: "300Mi"
+        cpu: "200m"
+      requests:
+        memory: "150Mi"
+        cpu: "100m"
   restartPolicy: Never
