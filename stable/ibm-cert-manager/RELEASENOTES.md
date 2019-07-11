@@ -18,4 +18,4 @@
 | 0.5.0   | November 2018      | Full release upgrade              |
 | 0.5.0.1 | February 2019      | Image refresh                     |
 | 0.7.0   | May 2019           | Full release upgrade              |
-| 0.7.0.1 | August 2019        | Image refresh                     |
+| 0.7.1   | August 2019        | Image refresh                     |
