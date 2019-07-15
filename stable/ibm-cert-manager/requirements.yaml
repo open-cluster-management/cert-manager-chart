@@ -1,5 +1,8 @@
 # requirements.yaml
 dependencies:
+- name: ibm-cert-manager-crd
+  version: "0.7.0"
+  repository: "file://ibm-cert-manager-crd"
 - name: webhook
   version: "0.7.0"
   repository: "file://webhook"
@@ -8,9 +11,6 @@ dependencies:
   version: "0.7.0"
   repository: "file://cainjector"
   condition: cainjector.enabled
-- name: ibm-cert-manager-crd
-  version: "0.7.0"
-  repository: "file://ibm-cert-manager-crd"
 - name: ibm-cert-policy-controller
   version: "0.0.1"
   repository: "file://icp-cert-policy-controller"
