@@ -28,3 +28,4 @@ ignoreMessages:
   - '\[ERROR\] Chart.yaml: invalid chart description: *'
   - '\[ERROR\] RELEASENOTES.md: missing required sections: *'
   - '\[ERROR\] values-metadata.yaml: expected file to exist: *'
+  - '\[ERROR\] expected at least one helm test to exist *'
