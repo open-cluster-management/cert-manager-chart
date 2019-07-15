@@ -25,3 +25,6 @@ ignoreMessages:
   - '\[ERROR\] .* found Secret resource.*'
   - '\[ERROR\] .* version .* is not a valid SemVer .*'
   - '\[ERROR\] .* Invalid Semantic Version .*'
+  - '\[ERROR\] Chart.yaml: invalid chart description: *'
+  - '\[ERROR\] RELEASENOTES.md: missing required sections: *'
+  - '\[ERROR\] values-metadata.yaml: expected file to exist: *'
