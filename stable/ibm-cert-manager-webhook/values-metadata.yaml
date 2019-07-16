@@ -14,13 +14,6 @@ global:
       description: "Optional priority class to be used for the cert-manager pods."
       type: "string"
       required: false
-  leaderElection:
-    namespace:
-      __metadata:
-        label: "The namespace for ConfigMap"
-        description: "Override the namespace used to store the ConfigMap for leader election"
-        type: "string"
-        required: false
   rbac:
     create:
       __metadata:
@@ -69,28 +62,6 @@ image:
         value: "IfNotPresent"
       - label: "Always"
         value: "Always"
-solver:
-  __metadata:
-    label: "ACME Solver"
-    description: "Configuration for ACME Solver"
-  repository:
-    __metadata:
-      label: "ACME Solver Repository"
-      description: "Full repository and path to Certificate Manager ACME Solver image."
-      type: "string"
-      required: true
-  tag:
-    __metadata:
-      label: "Image Tag"
-      description: "The tag identifying which Certificate Manager ACME Solver image to deploy."
-      type: "string"
-      required: true
-clusterResourceNamespace:
-  __metadata:
-    label: "Cluster Resource Namespace"
-    description: "The namespace used to store secrets for Issuers that are cluster-scoped."
-    type: "string"
-    required: false
 serviceAccount:
   __metadata:
     label: "Service Account"
@@ -113,65 +84,20 @@ extraArgs:
     description: "Optional flags for cert-manager"
     type: "string"
     required: false
-extraEnv:
-  __metadata:
-    label: "Additional Environment Variables"
-    description: "List of additional environment variables and their values to be included in a cert-manager deployment."
-    type: "string"
-    required: false
 securityContext:
   __metadata:
     label: "Security Context"
     description: "The security context cert-manager uses."
-  pod:
+  readOnlyRootFilesystem:
     __metadata:
-      label: "Pod"
-      description: "The security context of cert-manager's pod."
-    enabled:
-      __metadata:
-        label: "Enabled" 
-        description: "If true, enables the security context where cert-manager is limited to a functional group and run as the user specified."
-        type: "boolean"
-    fsGroup:
-      __metadata:
-        label: "FS Group"
-        description: "Functional group name to run as."
-        required: false
-        type: "string"
-    runAsUser:
-      __metadata:
-        label: "Run As User"
-        description: "The user to run cert-manager as in all the containers within the cert-manager pod."
-        type: "string"
-    readOnlyRootFilesystem:
-      __metadata:
-        label: "Read Only File System"
-        description: "If true, then only allows reads from the file system."
-        type: "boolean"
-  container:
+      label: "Read Only File System"
+      description: "If true, then only allows reads from the file system."
+      type: "boolean"
+  allowPrivilegeEscalation:
     __metadata:
-      label: "Container"
-      description: "The security context of cert-manager's container."
-    allowPrivilegeEscalation:
-      __metadata:
-        label: "Allow Privilege Escalation"
-        description: "If true, allows a user within the cert-manager container to escalate their privilege to root."
-        type: "boolean"
-    runAsUser:
-      __metadata:
-        label: "Run As User"
-        description: "The user to run cert-manager as in the container."
-        type: "string"
-    runAsNonRoot:
-      __metadata:
-        label: "Run As Non-Root"
-        description: "If true, prevents cert-manager container from being run as a root user."
-        type: "boolean"
-    readOnlyRootFilesystem:
-      __metadata:
-        label: "Read Only File System"
-        description: "If true, then only allows reads from the file system."
-        type: "boolean"        
+      label: "Allow Privilege Escalation"
+      description: "If true, allows a user within the cert-manager container to escalate their privilege to root."
+      type: "boolean"    
 podAnnotations:
   __metadata:
     name: "podAnnotations"
@@ -180,30 +106,6 @@ podAnnotations:
     immutable: false
     required: false
     type: "string"
-podLabels:
-  __metadata:
-    name: "podLabels"
-    label: "Pod Labels"
-    description: "Labels to add to the cert-manager pod"
-    type: "string"
-    immutable: false
-    required: false
-podDnsPolicy:
-  __metadata:
-    label: "Pod DNS Policy"
-    description: "The dns policy that cert manager uses."
-    type: "string"
-    immutable: false
-    required: false
-    options:
-    - label: Default
-      value: Default
-    - label: ClusterFirst
-      value: ClusterFirst
-    - label: ClusterFirstWithHostNet
-      value: ClusterFirstWithHostNet
-    - label: None
-      value: None
 nodeSelector:
   __metadata:
     name: "nodeSelector"
@@ -211,13 +113,6 @@ nodeSelector:
     description: "Node labels for pod assignment"
     type: "string"
     immutable: false
-    required: false
-ingressShim:
-  __metadata:
-    label: "Ingress Shim"
-    description: "Set default names for ingress resources."
-    type: "string"
-    hidden: true
     required: false
 resources:
   __metadata:
@@ -243,16 +138,18 @@ resources:
         description: "The memory limit cert-manager has"
         required: true
         type: "string"
-podRestart:
+cainjector:
   __metadata:
-    label: "Restart Pods"
-    description: "Cert-Manager's ability to restart pods when the certificates the pod uses are refreshed."
+    label: "CA Injector"
+    description: "Cert-manager webhook's CA injector subchart."
+    hidden: true
   enabled:
     __metadata:
       label: "Enabled"
-      description: "If true, allows cert-manager to restart pods that mount certificates when the certificates are refreshed."
-      required: false
+      description: "If true, enables the CA injector subchart to be installed."
       type: "boolean"
+      immutable: true
+      hidden: true
 tolerations:
   __metadata:
     label: "Tolerations"

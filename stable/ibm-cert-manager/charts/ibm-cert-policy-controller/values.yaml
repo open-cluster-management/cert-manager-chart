@@ -13,7 +13,7 @@ args:
 securityContext:
   allowPrivilegeEscalation: false
   runAsUser: 100
-  readOnlyRootFilesystem: true
+  readOnlyRootFilesystem: false
   runAsNonRoot: true
 
 nodeSelector: {}
@@ -27,3 +27,5 @@ tolerations:
   - effect: NoSchedule
     key: node.kubernetes.io/not-ready
     operator: Exists
+
+podDnsPolicy: "ClusterFirstWithHostNet"
