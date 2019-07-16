@@ -2,6 +2,8 @@ name: webhook
 apiVersion: v1
 version: "0.7.1"
 appVersion: "0.7.1"
+tillerVersion: ">=2.7.0"
+kubeVersion: ">=1.9.0"
 description: A Helm chart for deploying the cert-manager webhook component
 home: https://github.com/jetstack/cert-manager
 sources:
@@ -14,6 +16,9 @@ keywords:
   - Beta
   - Development
   - ICP
+  - amd64
+  - ppc64le
+  - s390x
 maintainers:
   - name: munnerz
     email: james@jetstack.io
