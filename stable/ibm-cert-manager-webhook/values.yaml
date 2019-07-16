@@ -53,8 +53,6 @@ securityContext:
   allowPrivilegeEscalation: false
   readOnlyRootFilesystem: false
 
-podDnsPolicy: "ClusterFirstWithHostNet"
-
 serviceAccount:
   # Specifies whether a service account should be created
   create: false

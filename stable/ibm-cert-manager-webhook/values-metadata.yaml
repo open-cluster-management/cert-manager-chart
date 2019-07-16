@@ -106,22 +106,6 @@ podAnnotations:
     immutable: false
     required: false
     type: "string"
-podDnsPolicy:
-  __metadata:
-    label: "Pod DNS Policy"
-    description: "The dns policy that cert manager uses."
-    type: "string"
-    immutable: false
-    required: false
-    options:
-    - label: Default
-      value: Default
-    - label: ClusterFirst
-      value: ClusterFirst
-    - label: ClusterFirstWithHostNet
-      value: ClusterFirstWithHostNet
-    - label: None
-      value: None
 nodeSelector:
   __metadata:
     name: "nodeSelector"
