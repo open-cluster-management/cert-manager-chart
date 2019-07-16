@@ -51,7 +51,7 @@ injectAPIServerCA: true
 
 securityContext:
   allowPrivilegeEscalation: false
-  readOnlyRootFilesystem: true
+  readOnlyRootFilesystem: false
 
 podDnsPolicy: "ClusterFirstWithHostNet"
 
