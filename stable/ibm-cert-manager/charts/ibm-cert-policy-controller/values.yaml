@@ -13,7 +13,7 @@ args:
 securityContext:
   allowPrivilegeEscalation: false
   runAsUser: 100
-  readOnlyRootFilesystem: true
+  readOnlyRootFilesystem: false
   runAsNonRoot: true
 
 nodeSelector: {}
