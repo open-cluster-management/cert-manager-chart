@@ -50,3 +50,5 @@ image:
 securityContext:
   allowPrivilegeEscalation: false
   readOnlyRootFilesystem: true
+
+podDnsPolicy: "ClusterFirstWithHostNet"

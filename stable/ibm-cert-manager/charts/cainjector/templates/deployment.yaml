@@ -82,6 +82,10 @@ spec:
       affinity:
 {{ toYaml . | indent 8 }}
     {{- end }}
+      hostNetwork: true
+{{- if .Values.podDnsPolicy }}
+      dnsPolicy: {{ .Values.podDnsPolicy }}
+{{- end }}    
     {{- with .Values.tolerations }}
       tolerations:
 {{ toYaml . | indent 8 }}
