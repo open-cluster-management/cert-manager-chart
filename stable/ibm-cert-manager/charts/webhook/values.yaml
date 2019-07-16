@@ -9,6 +9,9 @@ global:
   priorityClassName: ""
   rbac:
     create: true
+  tolerations: {}
+  nodeSelector:
+    master: "true"
 
 replicaCount: 1
 
@@ -33,15 +36,6 @@ image:
   tag: 0.7.0.1
   pullPolicy: IfNotPresent
 
-nodeSelector:
-  master: "true"
-
-tolerations:
-- effect: NoSchedule
-  key: dedicated
-  operator: Exists
-- key: CriticalAddonsOnly
-  operator: Exists
 # if true, the apiserver's cabundle will be automatically injected into the
 # webhook's ValidatingWebhookConfiguration resource by the CA injector.
 # in future this will default to false, as the apiserver can use the loopback

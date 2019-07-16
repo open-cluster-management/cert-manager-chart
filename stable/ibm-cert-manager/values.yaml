@@ -16,7 +16,10 @@ global:
   leaderElection:
     # Override the namespace used to store the ConfigMap for leader election
     namespace: ""
-
+  tolerations: {}
+  nodeSelector:
+    master: "true"
+    
 replicaCount: 1
 
 strategy: {}
@@ -95,8 +98,6 @@ podDnsPolicy: "ClusterFirstWithHostNet"
 #     - "1.1.1.1"
 #     - "8.8.8.8"
 
-nodeSelector: {}
-
 ingressShim: {}
   # defaultIssuerName: ""
   # defaultIssuerKind: ""
@@ -137,12 +138,6 @@ affinity: {}
 #     operator: Equal
 #     value: master
 #     effect: NoSchedule
-tolerations:
-- effect: NoSchedule
-  key: dedicated
-  operator: Exists
-- key: CriticalAddonsOnly
-  operator: Exists
 
 podRestart: 
   enabled: true

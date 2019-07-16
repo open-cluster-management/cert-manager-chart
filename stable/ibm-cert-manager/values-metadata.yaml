@@ -28,6 +28,20 @@ global:
         description: "If true, create and use RBAC resources"
         type: "boolean"
         required: true
+  tolerations:
+    __metadata:
+      label: "Tolerations"
+      description: "When specified, tolerates any taint that matches the triple <key, value, effect>"
+      type: "string"
+      required: false
+  nodeSelector:
+    __metadata:
+      name: "nodeSelector"
+      label: "Node selector"
+      description: "Node labels for pod assignment"
+      type: "string"
+      immutable: false
+      required: false
 replicaCount:
   __metadata:
     label: "Replicas"
@@ -204,14 +218,6 @@ podDnsPolicy:
       value: ClusterFirstWithHostNet
     - label: None
       value: None
-nodeSelector:
-  __metadata:
-    name: "nodeSelector"
-    label: "Node selector"
-    description: "Node labels for pod assignment"
-    type: "string"
-    immutable: false
-    required: false
 ingressShim:
   __metadata:
     label: "Ingress Shim"
@@ -277,12 +283,6 @@ webhook:
       type: "boolean"
       immutable: true
       hidden: true
-tolerations:
-  __metadata:
-    label: "Tolerations"
-    description: "When specified, tolerates any taint that matches the triple <key, value, effect>"
-    type: "string"
-    required: false
 affinity:
   __metadata:
     label: "Affinity"

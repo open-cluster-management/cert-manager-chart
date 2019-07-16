@@ -74,7 +74,7 @@ spec:
             requests:
               memory: "150Mi"
               cpu: "100m"            
-    {{- with .Values.nodeSelector }}
+    {{- with .Values.global.nodeSelector }}
       nodeSelector:
 {{ toYaml . | indent 8 }}
     {{- end }}
@@ -82,7 +82,7 @@ spec:
       affinity:
 {{ toYaml . | indent 8 }}
     {{- end }}
-    {{- with .Values.tolerations }}
+    {{- with .Values.global.tolerations }}
       tolerations:
 {{ toYaml . | indent 8 }}
     {{- end }}
