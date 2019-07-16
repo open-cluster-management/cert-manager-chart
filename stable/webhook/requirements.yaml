@@ -1,0 +1,5 @@
+requirements:
+- name: cainjector
+  version: "0.7.0"
+  repository: "file://cainjector"
+  condition: cainjector.enabled

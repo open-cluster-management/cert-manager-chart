@@ -54,3 +54,4 @@ after_success:
     echo "push chart image to artifactory registry"
     make CHART_NAME=stable/ibm-cert-manager release-chart
     make CHART_NAME=stable/ibm-cert-manager-crd release-chart
+    make CHART_NAME=stable/webhook release-chart
