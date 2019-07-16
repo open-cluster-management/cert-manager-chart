@@ -103,12 +103,6 @@ ingressShim: {}
   # defaultACMEChallengeType: ""
   # defaultACMEDNS01ChallengeProvider: ""
 
-webhook:
-  enabled: true
-
-cainjector:
-  enabled: true
-
 policy-controller:
   enabled: true
 
