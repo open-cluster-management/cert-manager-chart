@@ -46,3 +46,14 @@ Create chart name and version as used by the chart label.
 {{- define "webhook.servingCertificate" -}}
 {{ printf "%s-webhook-tls" (include "webhook.fullname" .) }}
 {{- end -}}
+
+{{/*
+Create the name of the service account to use
+*/}}
+{{- define "webhook.serviceAccountName" -}}
+{{- if .Values.serviceAccount.create -}}
+    {{ default (include "webhook.fullname" .) .Values.serviceAccount.name }}
+{{- else -}}
+    {{ default "default" .Values.serviceAccount.name }}
+{{- end -}}
+{{- end -}}
