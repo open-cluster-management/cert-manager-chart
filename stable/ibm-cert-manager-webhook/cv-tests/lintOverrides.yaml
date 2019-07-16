@@ -25,3 +25,4 @@ ignoreMessages:
   - '\[ERROR\] .* found Secret resource.*'
   - '\[ERROR\] .* version .* is not a valid SemVer .*'
   - '\[ERROR\] .* Invalid Semantic Version .*'
+  - '\[ERROR\] parameter is defined but not used: *'
