@@ -10,7 +10,7 @@ metadata:
   annotations:
     "helm.sh/hook": test-success
   labels:
-    app: {{ template "cert-manager.fullname" . }}
+    app: {{ template "webhook.fullname" . }}
     chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
     component: "cert-manager-test"
     release: {{ .Release.Name }}
@@ -19,7 +19,7 @@ spec:
   containers:
   - name: {{ .Release.Name }}-test-cm-health
     image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
-    command: ["sh", "-c", "echo cert-manager-tests"]
+    command: ["sh", "-c", "echo cert-manager-webhook-tests"]
     resources:
       limits:
         memory: "300Mi"
