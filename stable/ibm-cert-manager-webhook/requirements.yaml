@@ -1,5 +1,5 @@
 requirements:
-- name: cainjector
+- name: ibm-cert-manager-cainjector
   version: "0.7.0"
-  repository: "file://cainjector"
-  condition: cainjector.enabled
+  repository: "file://ibm-cert-manager-cainjector"
+  condition: ibm-cert-manager-cainjector.enabled
