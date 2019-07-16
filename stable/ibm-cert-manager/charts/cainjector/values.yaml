@@ -14,12 +14,17 @@ global:
     # Override the namespace used to store the ConfigMap for leader election
     namespace: ""
 
-  nodeSelector:
-    master: "true"
-
-  tolerations: {}    
-
 replicaCount: 1
+
+nodeSelector:
+  master: "true"
+
+tolerations:
+- effect: NoSchedule
+  key: dedicated
+  operator: Exists
+- key: CriticalAddonsOnly
+  operator: Exists
 
 strategy: {}
   # type: RollingUpdate
