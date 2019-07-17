@@ -34,6 +34,9 @@ spec:
 {{ toYaml .Values.podAnnotations | indent 8 }}
       {{- end }}
     spec:
+      securityContext:
+        allowPrivilegeEscalation: {{ .Values.securityContext.pod.allowPrivilegeEscalation }}
+        readOnlyRootFilesystem: {{ .Values.securityContext.pod.readOnlyRootFilesystem }}
       serviceAccountName: {{ template "cainjector.serviceAccountName" . }}
       {{- if .Values.global.priorityClassName }}
       priorityClassName: {{ .Values.global.priorityClassName | quote }}
@@ -65,8 +68,8 @@ spec:
           resources:
 {{ toYaml .Values.resources | indent 12 }}
           securityContext:
-            allowPrivilegeEscalation: {{ .Values.securityContext.allowPrivilegeEscalation }}
-            readOnlyRootFilesystem: {{ .Values.securityContext.readOnlyRootFilesystem }}
+            allowPrivilegeEscalation: {{ .Values.securityContext.container.allowPrivilegeEscalation }}
+            readOnlyRootFilesystem: {{ .Values.securityContext.container.readOnlyRootFilesystem }}
           resources:
             limits:
               memory: "300Mi"
