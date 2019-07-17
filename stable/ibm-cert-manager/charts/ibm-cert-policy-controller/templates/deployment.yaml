@@ -27,6 +27,11 @@ spec:
         productName: {{ include "controller.name" . }}
         productVersion: {{ .Chart.Version }}
     spec:
+      securityContext:
+        allowPrivilegeEscalation: {{ .Values.securityContext.pod.allowPrivilegeEscalation }}
+        runAsUser: {{ .Values.securityContext.pod.runAsUser }}
+        readOnlyRootFilesystem: {{ .Values.securityContext.pod.readOnlyRootFilesystem }}
+        runAsNonRoot: {{ .Values.securityContext.pod.runAsNonRoot }}
       containers:
       - name: {{ .Chart.Name }}
         image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
@@ -60,10 +65,10 @@ spec:
             memory: "150Mi"
             cpu: "100m"
         securityContext:
-          allowPrivilegeEscalation: {{ .Values.securityContext.allowPrivilegeEscalation }}
-          runAsUser: {{ .Values.securityContext.runAsUser }}
-          readOnlyRootFilesystem: {{ .Values.securityContext.readOnlyRootFilesystem }}
-          runAsNonRoot: {{ .Values.securityContext.runAsNonRoot }}
+          allowPrivilegeEscalation: {{ .Values.securityContext.contianer.allowPrivilegeEscalation }}
+          runAsUser: {{ .Values.securityContext.container.runAsUser }}
+          readOnlyRootFilesystem: {{ .Values.securityContext.container.readOnlyRootFilesystem }}
+          runAsNonRoot: {{ .Values.securityContext.container.runAsNonRoot }}
       {{- with .Values.tolerations }}
       tolerations:
 {{ toYaml . | indent 8 }}
