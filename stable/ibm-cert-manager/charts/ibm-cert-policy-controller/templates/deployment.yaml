@@ -28,9 +28,7 @@ spec:
         productVersion: {{ .Chart.Version }}
     spec:
       securityContext:
-        allowPrivilegeEscalation: {{ .Values.securityContext.pod.allowPrivilegeEscalation }}
         runAsUser: {{ .Values.securityContext.pod.runAsUser }}
-        readOnlyRootFilesystem: {{ .Values.securityContext.pod.readOnlyRootFilesystem }}
         runAsNonRoot: {{ .Values.securityContext.pod.runAsNonRoot }}
       containers:
       - name: {{ .Chart.Name }}

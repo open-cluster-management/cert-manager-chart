@@ -63,23 +63,11 @@ securityContext:
     __metadata:
       label: "Pod"
       description: "Security context at the pod level"
-    allowPrivilegeEscalation:
-      __metadata:
-        label: "Allow Privilege Escalation"
-        description: "Allows the user running in the container to gain root privileges if set to true."
-        type: "boolean"
-        required: true
     runAsUser:
       __metadata:
         label: "Run As User"
         description: "Specifies which user to run as within the container."
         type: "string"
-        required: true
-    readOnlyRootFilesystem:
-      __metadata:
-        label: "Read Only Root Filesystem"
-        description: "If true, only allows reading from the root directory (no writes or executions)."
-        type: "boolean"
         required: true
     runAsNonRoot:
       __metadata:

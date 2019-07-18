@@ -12,9 +12,7 @@ args:
 
 securityContext:
   pod:
-    allowPrivilegeEscalation: false
     runAsUser: 100
-    readOnlyRootFilesystem: false
     runAsNonRoot: true    
   container:
     allowPrivilegeEscalation: false
