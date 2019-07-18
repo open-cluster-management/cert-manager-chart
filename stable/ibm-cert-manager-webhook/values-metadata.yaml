@@ -88,20 +88,6 @@ securityContext:
   __metadata:
     label: "Security Context"
     description: "The security context cert-manager-webhook uses."
-  pod:
-    __metadata:
-      label: "Pod"
-      description: "Security context at the pod level"
-    readOnlyRootFilesystem:
-      __metadata:
-        label: "Read Only File System"
-        description: "If true, then only allows reads from the file system."
-        type: "boolean"
-    allowPrivilegeEscalation:
-      __metadata:
-        label: "Allow Privilege Escalation"
-        description: "If true, allows a user within the cert-manager-webhook container to escalate their privilege to root."
-        type: "boolean"    
   container:
     __metadata:
       label: "Container"

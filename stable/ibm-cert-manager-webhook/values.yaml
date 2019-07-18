@@ -50,9 +50,6 @@ tolerations:
 injectAPIServerCA: true
 
 securityContext:
-  pod:
-    allowPrivilegeEscalation: false
-    readOnlyRootFilesystem: false
   container:
     allowPrivilegeEscalation: false
     readOnlyRootFilesystem: false

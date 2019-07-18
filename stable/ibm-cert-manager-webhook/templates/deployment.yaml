@@ -38,9 +38,6 @@ spec:
       {{- if .Values.global.priorityClassName }}
       priorityClassName: {{ .Values.global.priorityClassName | quote }}
       {{- end }}
-      securityContext:
-        allowPrivilegeEscalation: {{ .Values.securityContext.pod.allowPrivilegeEscalation }}
-        readOnlyRootFilesystem: {{ .Values.securityContext.pod.readOnlyRootFilesystem }}
       containers:
         - name: {{ .Chart.Name }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
