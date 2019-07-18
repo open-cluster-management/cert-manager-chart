@@ -34,9 +34,6 @@ spec:
 {{ toYaml .Values.podAnnotations | indent 8 }}
       {{- end }}
     spec:
-      securityContext:
-        allowPrivilegeEscalation: {{ .Values.securityContext.pod.allowPrivilegeEscalation }}
-        readOnlyRootFilesystem: {{ .Values.securityContext.pod.readOnlyRootFilesystem }}
       serviceAccountName: {{ template "cainjector.serviceAccountName" . }}
       {{- if .Values.global.priorityClassName }}
       priorityClassName: {{ .Values.global.priorityClassName | quote }}

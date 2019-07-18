@@ -48,9 +48,6 @@ image:
   pullPolicy: IfNotPresent
 
 securityContext:
-  pod:
-    allowPrivilegeEscalation: false
-    readOnlyRootFilesystem: true
   container:
     allowPrivilegeEscalation: false
     readOnlyRootFilesystem: true
