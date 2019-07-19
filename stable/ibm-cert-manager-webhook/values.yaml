@@ -50,8 +50,9 @@ tolerations:
 injectAPIServerCA: true
 
 securityContext:
-  allowPrivilegeEscalation: false
-  readOnlyRootFilesystem: false
+  container:
+    allowPrivilegeEscalation: false
+    readOnlyRootFilesystem: false
 
 serviceAccount:
   # Specifies whether a service account should be created
