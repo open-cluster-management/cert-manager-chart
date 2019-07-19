@@ -59,30 +59,50 @@ securityContext:
   __metadata:
     label: "Security Context"
     description: "The security context used for the certificate policy controller pod."
-  allowPrivilegeEscalation:
+  pod:
     __metadata:
-      label: "Allow Privilege Escalation"
-      description: "Allows the user running in the container to gain root privileges if set to true."
-      type: "boolean"
-      required: true
-  runAsUser:
+      label: "Pod"
+      description: "Security context at the pod level"
+    runAsUser:
+      __metadata:
+        label: "Run As User"
+        description: "Specifies which user to run as within the container."
+        type: "string"
+        required: true
+    runAsNonRoot:
+      __metadata:
+        label: "Run As Non-Root"
+        description: "If true, then the user in the running container must be a non-root user."
+        type: "boolean"
+        required: true
+  container:
     __metadata:
-      label: "Run As User"
-      description: "Specifies which user to run as within the container."
-      type: "string"
-      required: true
-  readOnlyRootFilesystem:
-    __metadata:
-      label: "Read Only Root Filesystem"
-      description: "If true, only allows reading from the root directory (no writes or executions)."
-      type: "boolean"
-      required: true
-  runAsNonRoot:
-    __metadata:
-      label: "Run As Non-Root"
-      description: "If true, then the user in the running container must be a non-root user."
-      type: "boolean"
-      required: true
+      label: "Container"
+      description: "Security context at the container level, overrides the pod level securityContext"
+    allowPrivilegeEscalation:
+      __metadata:
+        label: "Allow Privilege Escalation"
+        description: "Allows the user running in the container to gain root privileges if set to true."
+        type: "boolean"
+        required: true
+    runAsUser:
+      __metadata:
+        label: "Run As User"
+        description: "Specifies which user to run as within the container."
+        type: "string"
+        required: true
+    readOnlyRootFilesystem:
+      __metadata:
+        label: "Read Only Root Filesystem"
+        description: "If true, only allows reading from the root directory (no writes or executions)."
+        type: "boolean"
+        required: true
+    runAsNonRoot:
+      __metadata:
+        label: "Run As Non-Root"
+        description: "If true, then the user in the running container must be a non-root user."
+        type: "boolean"
+        required: true
 nodeSelector:
   __metadata:
     label: "Node Selector"

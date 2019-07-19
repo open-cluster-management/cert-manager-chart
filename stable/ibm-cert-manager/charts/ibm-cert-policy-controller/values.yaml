@@ -11,10 +11,14 @@ args:
   defaultDuration:
 
 securityContext:
-  allowPrivilegeEscalation: false
-  runAsUser: 100
-  readOnlyRootFilesystem: false
-  runAsNonRoot: true
+  pod:
+    runAsUser: 100
+    runAsNonRoot: true    
+  container:
+    allowPrivilegeEscalation: false
+    runAsUser: 100
+    readOnlyRootFilesystem: false
+    runAsNonRoot: true
 
 nodeSelector: {}
 
