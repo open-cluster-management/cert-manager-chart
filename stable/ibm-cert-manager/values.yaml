@@ -73,11 +73,11 @@ securityContext:
   pod:
     enabled: false
     fsGroup: 1001
-    runAsUser: 1001
+    runAsUser: 10000
     readOnlyRootFilesystem: true
   container:
     runAsNonRoot: true
-    runAsUser: 100
+    runAsUser: 10000
     allowPrivilegeEscalation: false
     readOnlyRootFilesystem: true
 

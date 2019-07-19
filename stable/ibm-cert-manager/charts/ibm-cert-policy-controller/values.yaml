@@ -12,7 +12,7 @@ args:
 
 securityContext:
   allowPrivilegeEscalation: false
-  runAsUser: 100
+  runAsUser: 10000
   readOnlyRootFilesystem: false
   runAsNonRoot: true
 
