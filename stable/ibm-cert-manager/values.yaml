@@ -73,11 +73,10 @@ securityContext:
   pod:
     enabled: false
     fsGroup: 1001
-    runAsUser: 1001
-    readOnlyRootFilesystem: true
+    runAsUser: 10000
   container:
     runAsNonRoot: true
-    runAsUser: 100
+    runAsUser: 10000
     allowPrivilegeEscalation: false
     readOnlyRootFilesystem: true
 
@@ -102,12 +101,6 @@ ingressShim: {}
   # defaultIssuerKind: ""
   # defaultACMEChallengeType: ""
   # defaultACMEDNS01ChallengeProvider: ""
-
-webhook:
-  enabled: true
-
-cainjector:
-  enabled: true
 
 policy-controller:
   enabled: true

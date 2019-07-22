@@ -2,7 +2,7 @@ replicas: 1
 
 image: 
   repository: ibmcom/icp-cert-policy-controller
-  tag: 0.0.1
+  tag: 4.1.0
   pullPolicy: IfNotPresent
 
 args:
@@ -11,10 +11,14 @@ args:
   defaultDuration:
 
 securityContext:
-  allowPrivilegeEscalation: false
-  runAsUser: 100
-  readOnlyRootFilesystem: true
-  runAsNonRoot: true
+  pod:
+    runAsUser: 10000
+    runAsNonRoot: true    
+  container:
+    allowPrivilegeEscalation: false
+    runAsUser: 10000
+    readOnlyRootFilesystem: false
+    runAsNonRoot: true
 
 nodeSelector: {}
 
@@ -27,3 +31,5 @@ tolerations:
   - effect: NoSchedule
     key: node.kubernetes.io/not-ready
     operator: Exists
+
+podDnsPolicy: "ClusterFirstWithHostNet"

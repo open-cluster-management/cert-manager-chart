@@ -52,4 +52,6 @@ deploy:
 after_success:
   - |
     echo "push chart image to artifactory registry"
-    make release-chart
+    make CHART_NAME=stable/ibm-cert-manager release-chart
+    make CHART_NAME=stable/ibm-cert-manager-crd release-chart
+    make CHART_NAME=stable/ibm-cert-manager-webhook release-chart

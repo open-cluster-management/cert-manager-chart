@@ -1,18 +1,18 @@
 apiVersion: apps/v1beta1
 kind: Deployment
 metadata:
-  name: {{ include "cainjector.fullname" . }}
+  name: {{ include "webhook.fullname" . }}
   namespace: {{ .Release.Namespace | quote }}
   labels:
-    app: {{ include "cainjector.name" . }}
-    chart: {{ include "cainjector.chart" . }}
+    app: {{ include "webhook.name" . }}
+    chart: {{ include "webhook.chart" . }}
     release: {{ .Release.Name }}
     heritage: {{ .Release.Service }}
 spec:
   replicas: {{ .Values.replicaCount }}
   selector:
     matchLabels:
-      app: {{ include "cainjector.name" . }}
+      app: {{ include "webhook.name" . }}
       release: {{ .Release.Name }}
   {{- with .Values.strategy }}
   strategy:
@@ -21,20 +21,20 @@ spec:
   template:
     metadata:
       labels:
-        k8s-app: "cert-manager-cainjector"
-        chart: {{ template "cainjector.chart" . }}
+        k8s-app: "cert-manager-webhook"
+        chart: {{ template "webhook.chart" . }}
         heritage: {{ .Release.Service }}
-        app: {{ include "cainjector.name" . }}
+        app: {{ include "webhook.name" . }}
         release: {{ .Release.Name }}
       annotations:
-        productID: "9191919192"
+        productID: "9191919193"
         productName: {{ .Chart.Name | quote }}
         productVersion: {{ .Chart.Version | quote }}
       {{- if .Values.podAnnotations }}
 {{ toYaml .Values.podAnnotations | indent 8 }}
       {{- end }}
     spec:
-      serviceAccountName: {{ include "cainjector.fullname" . }}
+      serviceAccountName: {{ template "webhook.serviceAccountName" . }}
       {{- if .Values.global.priorityClassName }}
       priorityClassName: {{ .Values.global.priorityClassName | quote }}
       {{- end }}
@@ -43,37 +43,52 @@ spec:
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           args:
-          {{- if .Values.global.leaderElection.namespace }}
-          - --leader-election-namespace={{ .Values.global.leaderElection.namespace }}
-          {{- else }}
-          - --leader-election-namespace=$(POD_NAMESPACE)
-          {{- end }}
-          {{- if .Values.extraArgs }}
+          - --v=12
+          - --secure-port=1443
+          - --tls-cert-file=/certs/tls.crt
+          - --tls-private-key-file=/certs/tls.key
+        {{- if .Values.extraArgs }}
 {{ toYaml .Values.extraArgs | indent 10 }}
-          {{- end }}
-          livenessProbe:
-            exec:
-              command:
-              - sh
-              - -c
-              - pgrep cainjector -l
+        {{- end }}
           env:
           - name: POD_NAMESPACE
             valueFrom:
               fieldRef:
                 fieldPath: metadata.namespace
+          - name: TMPDIR
+            value: "/home/webhook/tmp"
+          livenessProbe:
+            exec:
+              command:
+              - sh
+              - -c
+              - pgrep webhook -l
+            initialDelaySeconds: 30
+            timeoutSeconds: 5
+          readinessProbe:
+            exec:
+              command: ["sh", "-c", "exec echo start cert-manager webhook"]
+            initialDelaySeconds: 10
+            timeoutSeconds: 2
           resources:
 {{ toYaml .Values.resources | indent 12 }}
           securityContext:
-            allowPrivilegeEscalation: {{ .Values.securityContext.allowPrivilegeEscalation }}
-            readOnlyRootFilesystem: {{ .Values.securityContext.readOnlyRootFilesystem }}
+            allowPrivilegeEscalation: {{ .Values.securityContext.container.allowPrivilegeEscalation }}
+            readOnlyRootFilesystem: {{ .Values.securityContext.container.readOnlyRootFilesystem }}
           resources:
             limits:
               memory: "300Mi"
               cpu: "200m"
             requests:
               memory: "150Mi"
-              cpu: "100m"            
+              cpu: "100m"          
+          volumeMounts:
+          - name: certs
+            mountPath: /certs
+      volumes:
+      - name: certs
+        secret:
+          secretName: {{ include "webhook.servingCertificate" . }}
     {{- with .Values.nodeSelector }}
       nodeSelector:
 {{ toYaml . | indent 8 }}

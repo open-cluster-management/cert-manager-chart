@@ -2,7 +2,7 @@
 {{/*
 Expand the name of the chart.
 */}}
-{{- define "webhook.name" -}}
+{{- define "cainjector.name" -}}
 {{- default .Chart.Name .Values.nameOverride | trunc 63 | trimSuffix "-" -}}
 {{- end -}}
 
@@ -11,7 +11,7 @@ Create a default fully qualified app name.
 We truncate at 63 chars because some Kubernetes name fields are limited to this (by the DNS naming spec).
 If release name contains chart name it will be used as a full name.
 */}}
-{{- define "webhook.fullname" -}}
+{{- define "cainjector.fullname" -}}
 {{- if .Values.fullnameOverride -}}
 {{- .Values.fullnameOverride | trunc 63 | trimSuffix "-" -}}
 {{- else -}}
@@ -27,22 +27,17 @@ If release name contains chart name it will be used as a full name.
 {{/*
 Create chart name and version as used by the chart label.
 */}}
-{{- define "webhook.chart" -}}
+{{- define "cainjector.chart" -}}
 {{- printf "%s-%s" .Chart.Name .Chart.Version | replace "+" "_" | trunc 63 | trimSuffix "-" -}}
 {{- end -}}
 
-{{- define "webhook.selfSignedIssuer" -}}
-{{ printf "%s-selfsign" (include "webhook.fullname" .) }}
+{{/*
+Create the name of the service account to use
+*/}}
+{{- define "cainjector.serviceAccountName" -}}
+{{- if .Values.serviceAccount.create -}}
+    {{ default (include "cainjector.fullname" .) .Values.serviceAccount.name }}
+{{- else -}}
+    {{ default "default" .Values.serviceAccount.name }}
 {{- end -}}
-
-{{- define "webhook.rootCAIssuer" -}}
-{{ printf "%s-ca" (include "webhook.fullname" .) }}
-{{- end -}}
-
-{{- define "webhook.rootCACertificate" -}}
-{{ printf "%s-ca" (include "webhook.fullname" .) }}
-{{- end -}}
-
-{{- define "webhook.servingCertificate" -}}
-{{ printf "%s-webhook-tls" (include "webhook.fullname" .) }}
 {{- end -}}

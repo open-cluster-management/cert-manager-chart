@@ -143,11 +143,6 @@ securityContext:
         label: "Run As User"
         description: "The user to run cert-manager as in all the containers within the cert-manager pod."
         type: "string"
-    readOnlyRootFilesystem:
-      __metadata:
-        label: "Read Only File System"
-        description: "If true, then only allows reads from the file system."
-        type: "boolean"
   container:
     __metadata:
       label: "Container"
@@ -253,30 +248,6 @@ podRestart:
       description: "If true, allows cert-manager to restart pods that mount certificates when the certificates are refreshed."
       required: false
       type: "boolean"
-cainjector:
-  __metadata:
-    label: "CA Injector"
-    description: "Cert-manager webhook's CA injector subchart."
-    hidden: true
-  enabled:
-    __metadata:
-      label: "Enabled"
-      description: "If true, enables the CA injector subchart to be installed."
-      type: "boolean"
-      immutable: true
-      hidden: true
-webhook:
-  __metadata:
-    label: "Webhook"
-    description: "Cert-manager's Webhook subchart."
-    hidden: true
-  enabled:
-    __metadata:
-      label: "Enabled"
-      description: "If true, enables the Webhook subchart."
-      type: "boolean"
-      immutable: true
-      hidden: true
 tolerations:
   __metadata:
     label: "Tolerations"
