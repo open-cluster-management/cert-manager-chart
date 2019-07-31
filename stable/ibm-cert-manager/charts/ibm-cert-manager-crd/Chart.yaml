@@ -1,7 +1,7 @@
 apiVersion: v1
 appVersion: 0.7.0.1
 version: 0.7.1
-description: Create custom resource definitions needed by IBM Cloud Private cert-manager chart
+description: Create custom resource definitions needed by IBM Cloud Private cert-manager
 keywords:
 - amd64
 - ppc64le
