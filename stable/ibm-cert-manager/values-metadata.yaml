@@ -124,9 +124,6 @@ securityContext:
     label: "Security Context"
     description: "The security context cert-manager uses."
   pod:
-    __metadata:
-      label: "Pod"
-      description: "The security context of cert-manager's pod."
     enabled:
       __metadata:
         label: "Enabled" 
@@ -144,9 +141,6 @@ securityContext:
         description: "The user to run cert-manager as in all the containers within the cert-manager pod."
         type: "string"
   container:
-    __metadata:
-      label: "Container"
-      description: "The security context of cert-manager's container."
     allowPrivilegeEscalation:
       __metadata:
         label: "Allow Privilege Escalation"
