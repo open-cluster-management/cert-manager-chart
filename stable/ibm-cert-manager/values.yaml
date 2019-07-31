@@ -102,7 +102,7 @@ ingressShim: {}
   # defaultACMEChallengeType: ""
   # defaultACMEDNS01ChallengeProvider: ""
 
-policy-controller:
+policyController:
   enabled: true
 
 # Use these variables to configure the HTTP_PROXY environment variables

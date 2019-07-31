@@ -7,4 +7,4 @@ dependencies:
 - name: ibm-cert-policy-controller
   version: "0.0.1"
   repository: "file://ibm-cert-policy-controller"
-  condition: policy-controller.enabled
+  condition: policyController.enabled
