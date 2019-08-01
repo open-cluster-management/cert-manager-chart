@@ -208,6 +208,16 @@ ingressShim:
     type: "string"
     hidden: true
     required: false
+policyController:
+  __metadata:
+    label: "Certificate Policy Controller"
+    description: "Controls whether or not the certificate policy controller is deployed with the certificate management chart."
+  enabled:
+    __metadata:
+      label: "Enabled"
+      description: "Deploys the certificate policy controller if set to true, otherwise it does not deploy it."
+      type: "boolean"
+      required: true
 resources:
   __metadata:
     label: "Resources"
@@ -222,6 +232,12 @@ resources:
         description: "The amount of memory cert-manager requests"
         required: false
         type: "string"
+    cpu:
+      __metadata:
+        label: "CPU request"
+        description: "The amount of cpu cert-manager requests to have."
+        required: false
+        type: "string"
   limits:
     __metadata:
       label: "Limits"
@@ -230,6 +246,12 @@ resources:
       __metadata:
         label: "Memory limit"
         description: "The memory limit cert-manager has"
+        required: true
+        type: "string"
+    cpu:
+      __metadata:
+        label: "CPU Limit"
+        description: "The maximum cpu cert-manager can have."
         required: true
         type: "string"
 podRestart:
