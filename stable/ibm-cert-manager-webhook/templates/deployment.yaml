@@ -74,14 +74,7 @@ spec:
 {{ toYaml .Values.resources | indent 12 }}
           securityContext:
             allowPrivilegeEscalation: {{ .Values.securityContext.container.allowPrivilegeEscalation }}
-            readOnlyRootFilesystem: {{ .Values.securityContext.container.readOnlyRootFilesystem }}
-          resources:
-            limits:
-              memory: "300Mi"
-              cpu: "200m"
-            requests:
-              memory: "150Mi"
-              cpu: "100m"          
+            readOnlyRootFilesystem: {{ .Values.securityContext.container.readOnlyRootFilesystem }}         
           volumeMounts:
           - name: certs
             mountPath: /certs

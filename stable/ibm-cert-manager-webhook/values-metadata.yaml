@@ -132,6 +132,12 @@ resources:
         description: "The amount of memory cert-manager-webhook requests"
         required: false
         type: "string"
+    cpu:
+      __metadata:
+        label: "CPU request"
+        description: "The amount of CPU cert-manager-webhook requests"
+        required: false
+        type: "string"
   limits:
     __metadata:
       label: "Limits"
@@ -142,26 +148,21 @@ resources:
         description: "The memory limit cert-manager-webhook has"
         required: true
         type: "string"
-cainjector:
+    cpu:
+      __metadata:
+        label: "CPU limit"
+        description: "The limit on CPU that that cert-manager-webhook is allowed to have"
+        required: true
+        type: "string"
+injectAPIServerCA:
   __metadata:
-    label: "CA Injector"
-    description: "Cert-manager webhook's CA injector subchart."
-    hidden: true
-  enabled:
-    __metadata:
-      label: "Enabled"
-      description: "If true, enables the CA injector subchart to be installed."
-      type: "boolean"
-      immutable: true
-      hidden: true
+    label: "Inject CA"
+    description: "If true, the apiserver's cabundle will automatically be injected into the webhook"
+    required: true
+    type: "boolean"
 tolerations:
   __metadata:
     label: "Tolerations"
     description: "When specified, tolerates any taint that matches the triple <key, value, effect>"
     type: "string"
     required: false
-affinity:
-  __metadata:
-    label: "Affinity"
-    description: "Pod's affinity"
-    hidden: true
