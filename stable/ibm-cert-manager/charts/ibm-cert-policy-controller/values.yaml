@@ -33,3 +33,7 @@ tolerations:
     operator: Exists
 
 podDnsPolicy: "ClusterFirstWithHostNet"
+
+serviceAccount:
+  create: false
+  name: "default"

@@ -27,6 +27,7 @@ spec:
         productName: {{ include "controller.name" . }}
         productVersion: {{ .Chart.Version }}
     spec:
+      serviceAccount: {{ template "controller.serviceAccountName" . }}
       securityContext:
         runAsUser: {{ .Values.securityContext.pod.runAsUser }}
         runAsNonRoot: {{ .Values.securityContext.pod.runAsNonRoot }}
