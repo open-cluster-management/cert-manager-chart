@@ -19,6 +19,8 @@ keywords:
   - amd64
   - ppc64le
   - s390x
+  - Commercial
+  - Limited
 maintainers:
   - name: munnerz
     email: james@jetstack.io
