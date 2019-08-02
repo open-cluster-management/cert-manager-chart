@@ -1,0 +1,24 @@
+{{- if .Values.global.rbac.create -}}
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: {{ template "cert-manager.fullname" . }}
+  labels:
+    app: {{ template "cert-manager.name" . }}
+    chart: {{ template "cert-manager.chart" . }}
+    release: {{ .Release.Name }}
+    heritage: {{ .Release.Service }}
+rules:
+  - apiGroups: ["certmanager.k8s.io"]
+    resources: ["certificates", "certificates/finalizers", "issuers", "clusterissuers", "orders", "orders/finalizers", "challenges"]
+    verbs: ["*"]
+  - apiGroups: [""]
+    resources: ["configmaps", "secrets", "events", "services", "pods"]
+    verbs: ["*"]
+  - apiGroups: ["apps"]
+    resources: ["deployments", "statefulsets", "daemonsets"]
+    verbs: ["*"]
+  - apiGroups: ["extensions"]
+    resources: ["ingresses"]
+    verbs: ["*"]
+{{- end -}}
