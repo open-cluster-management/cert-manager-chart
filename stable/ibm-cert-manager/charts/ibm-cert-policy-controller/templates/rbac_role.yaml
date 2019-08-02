@@ -37,9 +37,9 @@ rules:
   - update
   - patch
 - apiGroups:
-  - grc-mcmpolicy.ibm.com
+  - policy.ibm.com
   resources:
-  - Certpolicies
+  - Certificatepolicies
   verbs:
   - get
   - list
@@ -49,9 +49,9 @@ rules:
   - patch
   - delete
 - apiGroups:
-  - grc-mcmpolicy.ibm.com
+  - policy.ibm.com
   resources:
-  - Certpolicies/status
+  - Certificatepolicies/status
   verbs:
   - get
   - update
