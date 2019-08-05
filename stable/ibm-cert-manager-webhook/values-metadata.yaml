@@ -89,9 +89,6 @@ securityContext:
     label: "Security Context"
     description: "The security context cert-manager-webhook uses."
   container:
-    __metadata:
-      label: "Container"
-      description: "Security context at the container level, can override the pod level."
     readOnlyRootFilesystem:
       __metadata:
         label: "Read Only File System"
@@ -123,9 +120,6 @@ resources:
     label: "Resources"
     description: "Resource requests and limits for cpu and memory for cert-manager-webhook deployment"
   requests:
-    __metadata:
-      label: "Requests"
-      description: "The amount of cpu/memory requested by cert-manager-webhook's deployment"
     memory:
       __metadata:
         label: "Memory request"
@@ -139,9 +133,6 @@ resources:
         required: false
         type: "string"
   limits:
-    __metadata:
-      label: "Limits"
-      description: "The amount of cpu/memory cert-manager-webhook deployment is limited to"
     memory:
       __metadata:
         label: "Memory limit"
