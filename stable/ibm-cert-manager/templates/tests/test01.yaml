@@ -27,4 +27,8 @@ spec:
       requests:
         memory: "150Mi"
         cpu: "100m"
+    securityContext:
+      capabilities:
+        drop:
+        - ALL
   restartPolicy: Never

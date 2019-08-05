@@ -68,6 +68,9 @@ spec:
           runAsUser: {{ .Values.securityContext.container.runAsUser }}
           readOnlyRootFilesystem: {{ .Values.securityContext.container.readOnlyRootFilesystem }}
           runAsNonRoot: {{ .Values.securityContext.container.runAsNonRoot }}
+          capabilities:
+            drop:
+            - ALL
       {{- with .Values.tolerations }}
       tolerations:
 {{ toYaml . | indent 8 }}
