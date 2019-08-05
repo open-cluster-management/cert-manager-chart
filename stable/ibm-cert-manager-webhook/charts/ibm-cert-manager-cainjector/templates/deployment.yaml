@@ -68,6 +68,9 @@ spec:
           securityContext:
             allowPrivilegeEscalation: {{ .Values.securityContext.container.allowPrivilegeEscalation }}
             readOnlyRootFilesystem: {{ .Values.securityContext.container.readOnlyRootFilesystem }}
+            capabilities:
+              drop:
+              - ALL
           resources:
             limits:
               memory: "300Mi"
