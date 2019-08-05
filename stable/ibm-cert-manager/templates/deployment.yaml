@@ -45,6 +45,7 @@ spec:
       {{- if .Values.securityContext.pod.enabled }}
       securityContext:
         fsGroup: {{ .Values.securityContext.pod.fsGroup }}
+        runAsNonRoot: {{ .Values.securityContext.pod.runAsNonRoot }}
         runAsUser: {{ .Values.securityContext.pod.runAsUser }}
       {{- end }}
       containers:

@@ -135,6 +135,11 @@ securityContext:
         description: "Functional group name to run as."
         required: false
         type: "string"
+    runAsNonRoot:
+      __metadata:
+        label: "Run As Non-Root"
+        description: "If true, prevents cert-manager containers from being run as a root user."
+        type: "boolean"
     runAsUser:
       __metadata:
         label: "Run As User"
