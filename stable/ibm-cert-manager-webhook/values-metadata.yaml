@@ -126,6 +126,12 @@ nodeSelector:
     type: "string"
     immutable: false
     required: false
+  master:
+    __metadata:
+      label: "Master"
+      description: "Runs on master node if true, otherwise runs on other nodes if false."
+      type: "boolean"
+      required: true
 resources:
   __metadata:
     label: "Resources"

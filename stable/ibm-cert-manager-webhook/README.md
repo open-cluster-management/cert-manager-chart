@@ -9,10 +9,9 @@ One instance of cert-manager-webhook is deployed to a single master node when IB
 ## How to use IBM-Cert-Manager webhook
 See the IBM Cloud Private product documentation in the [IBM Knowledge Center](https://www.ibm.com/support/knowledgecenter/) for more details on cert-manager-webhook, IBM Cloud Private's Kubernetes certificate manager service.
 
-## Preqrequisites
+## Prerequisites
 * Kubernetes version 1.13 or above
 * Helm version 2.9 or above
-
 
 ### PodSecurityPolicy Requirements
 The predefined `PodSecurityPolicy` name: [`ibm-restricted-psp`](https://ibm.biz/cpkspec-psp) has been verified for this chart, if your target namespace is bound to this `PodSecurityPolicy` you can proceed to install the chart.
