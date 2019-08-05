@@ -8,3 +8,11 @@ overrides:
   rule: "ServiceAccountHasSANamespacePullSecret"
 - reason: "The webhook and its subcharts are deployed into the cert-manager namespace and use the default service account in that namespace. It doesn't need to create its own service account."
   rule: "ServiceAccountHasPullSecret"
+- reason: "The webhook and its subcharts should only run on master nodes."
+  rule: "PodHasArchBasedNodeAffinity"
+- reason: "If it were enabled, the rolebinding must be run on the kube-system namespace in order to read the specific configmap that has the requestheader-* entries."
+  rule: "NoNamespace"
+  fileNames:
+    - templates/rbac_rolebinding.yaml
+- reason: "Having an application test will mess with the shared testing environment since we are a platform service."
+  rule: "AppTestMustExist"

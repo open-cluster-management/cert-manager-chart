@@ -130,7 +130,7 @@ nodeSelector:
     __metadata:
       label: "Master"
       description: "Runs on master node if true, otherwise runs on other nodes if false."
-      type: "boolean"
+      type: "string"
       required: true
 resources:
   __metadata:

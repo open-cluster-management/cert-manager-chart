@@ -9,3 +9,5 @@ overrides:
   rule: "ServiceAccountHasPullSecret"
 - reason: "Cert-manager and its subcharts uses the default service account on its namespace and doesn't need to create its own"
   rule: "ServiceAccountHasSANamespacePullSecret"
+- reason: "Having an application test will mess with the shared testing environment since we are a platform service."
+  rule: "AppTestMustExist"
