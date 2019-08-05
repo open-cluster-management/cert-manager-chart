@@ -4,11 +4,11 @@
 # US Government Users Restricted Rights - Use, duplication or disclosure restricted by GSA ADP Schedule Contract with IBM Corp.
 
 ignoreMessages:
-  - '\[ERROR\] expected ibm_cloud_pak*'
-  - '\[ERROR\] README.md:*: ICP references not allowed*'
-  - '\[ERROR\] Chart.yaml: chart name, classification keywords, and version are incompatible: .*'
-  - '\[ERROR\] README.md: missing required sections*'
-  - '\[ERROR\] .* missing architecture-based node affinity: expected value .*'
-  - '\[ERROR\] .* container must drop .*'
-  - '\[ERROR\] .* missing pod security-related keys, see the log and playbook for more details .*'
-  - '\[ERROR\] cv-tests: no application tests .*'
+#  - '\[ERROR\] expected ibm_cloud_pak*'
+#  - '\[ERROR\] README.md:*: ICP references not allowed*'
+#  - '\[ERROR\] Chart.yaml: chart name, classification keywords, and version are incompatible: .*'
+#  - '\[ERROR\] README.md: missing required sections*'
+#  - '\[ERROR\] .* missing architecture-based node affinity: expected value .*'
+#  - '\[ERROR\] .* container must drop .*'
+#  - '\[ERROR\] .* missing pod security-related keys, see the log and playbook for more details .*'
+#  - '\[ERROR\] cv-tests: no application tests .*'
