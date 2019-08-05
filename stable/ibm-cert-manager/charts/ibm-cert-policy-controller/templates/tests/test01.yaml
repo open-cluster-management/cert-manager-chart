@@ -27,4 +27,8 @@ spec:
       limits:
         cpu: "200m"
         memory: "300Mi"
+    securityContext:
+      capabilities:
+        drop:
+        - ALL
   restartPolicy: Never
