@@ -53,9 +53,12 @@ tolerations:
 injectAPIServerCA: true
 
 securityContext:
+  pod:
+    runAsNonRoot: true
   container:
     allowPrivilegeEscalation: false
     readOnlyRootFilesystem: false
+    runAsNonRoot: true
 
 serviceAccount:
   # Specifies whether a service account should be created

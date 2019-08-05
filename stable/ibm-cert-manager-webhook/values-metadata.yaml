@@ -88,6 +88,12 @@ securityContext:
   __metadata:
     label: "Security Context"
     description: "The security context cert-manager-webhook uses."
+  pod:
+    runAsNonRoot:
+      __metadata:
+        label: "Run As Non-Root"
+        description: "If true, prevents cert-manager-webhook containers from being run as a root user."
+        type: "boolean"  
   container:
     readOnlyRootFilesystem:
       __metadata:
@@ -98,7 +104,12 @@ securityContext:
       __metadata:
         label: "Allow Privilege Escalation"
         description: "If true, allows a user within the cert-manager-webhook container to escalate their privilege to root."
-        type: "boolean"    
+        type: "boolean"
+    runAsNonRoot:
+      __metadata:
+        label: "Run As Non-Root"
+        description: "If true, prevents cert-manager-webhook container from being run as a root user."
+        type: "boolean"          
 podAnnotations:
   __metadata:
     name: "podAnnotations"

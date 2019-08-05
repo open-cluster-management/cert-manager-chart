@@ -39,6 +39,8 @@ spec:
       {{- if .Values.global.priorityClassName }}
       priorityClassName: {{ .Values.global.priorityClassName | quote }}
       {{- end }}
+      securityContext:
+        runAsNonRoot: {{ .Values.securityContext.pod.runAsNonRoot }}
       containers:
         - name: {{ .Chart.Name }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
@@ -79,6 +81,7 @@ spec:
             capabilities:
               drop:
               - ALL
+            runAsNonRoot: {{ .Values.securityContext.container.runAsNonRoot }}
           volumeMounts:
           - name: certs
             mountPath: /certs

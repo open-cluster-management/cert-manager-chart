@@ -48,9 +48,12 @@ image:
   pullPolicy: IfNotPresent
 
 securityContext:
+  pod:
+    runAsNonRoot: true
   container:
     allowPrivilegeEscalation: false
     readOnlyRootFilesystem: true
+    runAsNonRoot: true
 
 podDnsPolicy: "ClusterFirstWithHostNet"
 
