@@ -16,3 +16,5 @@ overrides:
     - templates/rbac_rolebinding.yaml
 - reason: "Having an application test will mess with the shared testing environment since we are a platform service."
   rule: "AppTestMustExist"
+- reason: " If the helm chart supports earlier versions than ICP 3.2, it is acceptable to leave qualification.levelName: ibm-cloud-pak so that older versions of ICP display the IBM Cloud Pak badge"
+  message: "qualification.levelName will not be valid for future versions of ICP: 'ibm-cloud-pak'"
