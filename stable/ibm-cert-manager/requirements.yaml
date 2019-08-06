@@ -8,3 +8,4 @@ dependencies:
   version: "0.0.1"
   repository: "file://ibm-cert-policy-controller"
   condition: policyController.enabled
+  alias: controller
