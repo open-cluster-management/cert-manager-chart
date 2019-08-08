@@ -103,6 +103,12 @@ securityContext:
         description: "If true, then the user in the running container must be a non-root user."
         type: "boolean"
         required: true
+    privileged:
+      __metadata:
+        label: "Privileged"
+        description: "If true, allows the container to be privileged, false doesn't allow it to be privileged."
+        type: "boolean"
+        required: true
 nodeSelector:
   __metadata:
     label: "Node Selector"

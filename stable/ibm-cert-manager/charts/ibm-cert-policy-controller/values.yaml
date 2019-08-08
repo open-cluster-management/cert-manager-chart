@@ -19,6 +19,7 @@ securityContext:
     runAsUser: 10000
     readOnlyRootFilesystem: false
     runAsNonRoot: true
+    privileged: false
 
 nodeSelector: {}
 
