@@ -35,12 +35,18 @@ spec:
 {{ toYaml .Values.podAnnotations | indent 8 }}
       {{- end }}
     spec:
+      hostNetwork: false
+      hostPID: false
+      hostIPC: false
       serviceAccountName: {{ template "webhook.serviceAccountName" . }}
       {{- if .Values.global.priorityClassName }}
       priorityClassName: {{ .Values.global.priorityClassName | quote }}
       {{- end }}
       securityContext:
         runAsNonRoot: {{ .Values.securityContext.pod.runAsNonRoot }}
+{{- if not (.Capabilities.APIVersions.Has "security.openshift.io/v1") }} 
+        runAsUser: {{ .Values.securityContext.pod.runAsUser }}
+{{- end }}          
       containers:
         - name: {{ .Chart.Name }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
@@ -76,11 +82,15 @@ spec:
           resources:
 {{ toYaml .Values.resources | indent 12 }}
           securityContext:
+            privileged: false
             allowPrivilegeEscalation: {{ .Values.securityContext.container.allowPrivilegeEscalation }}
             readOnlyRootFilesystem: {{ .Values.securityContext.container.readOnlyRootFilesystem }}
             capabilities:
               drop:
               - ALL
+{{- if not (.Capabilities.APIVersions.Has "security.openshift.io/v1") }} 
+            runAsUser: {{ .Values.securityContext.container.runAsUser }}
+{{- end }}              
             runAsNonRoot: {{ .Values.securityContext.container.runAsNonRoot }}
           volumeMounts:
           - name: certs
