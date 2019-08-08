@@ -38,16 +38,18 @@ spec:
 {{ toYaml .Values.podAnnotations | indent 8 }}
 {{- end }}
     spec:
+      hostPID: false
+      hostIPC: false
       serviceAccountName: {{ template "cert-manager.serviceAccountName" . }}
       {{- if .Values.global.priorityClassName }}
       priorityClassName: {{ .Values.global.priorityClassName | quote }}
       {{- end }}
-      {{- if .Values.securityContext.pod.enabled }}
       securityContext:
+{{- if .Values.securityContext.pod.enabled }}
         fsGroup: {{ .Values.securityContext.pod.fsGroup }}
+{{- end }}        
         runAsNonRoot: {{ .Values.securityContext.pod.runAsNonRoot }}
         runAsUser: {{ .Values.securityContext.pod.runAsUser }}
-      {{- end }}
       containers:
         - name: {{ .Chart.Name }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"

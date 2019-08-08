@@ -16,6 +16,14 @@ metadata:
     release: {{ .Release.Name }}
     heritage: "{{ .Release.Service }}"
 spec:
+  hostNetwork: false
+  hostPID: false
+  hostIPC: false
+  securityContext:
+{{- if not (.Capabilities.APIVersions.Has "security.openshift.io/v1") }} 
+    runAsUser: {{ .Values.securityContext.pod.runAsUser }}
+{{- end }}
+    runAsNonRoot: {{ .Values.securityContext.pod.runAsNonRoot }}  
   containers:
   - name: {{ .Release.Name }}-test-cm-health
     image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
@@ -28,6 +36,13 @@ spec:
         memory: "150Mi"
         cpu: "100m"
     securityContext:
+      allowPrivilegeEscalation: {{ .Values.securityContext.container.allowPrivilegeEscalation }}
+{{- if not (.Capabilities.APIVersions.Has "security.openshift.io/v1") }} 
+      runAsUser: {{ .Values.securityContext.container.runAsUser }}
+{{- end }}          
+      readOnlyRootFilesystem: {{ .Values.securityContext.container.readOnlyRootFilesystem }}
+      runAsNonRoot: {{ .Values.securityContext.container.runAsNonRoot }}
+      privileged: {{ .Values.securityContext.container.privileged }}    
       capabilities:
         drop:
         - ALL

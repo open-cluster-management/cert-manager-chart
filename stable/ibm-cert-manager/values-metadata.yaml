@@ -165,7 +165,12 @@ securityContext:
       __metadata:
         label: "Read Only File System"
         description: "If true, then only allows reads from the file system."
-        type: "boolean"        
+        type: "boolean"
+    privileged:
+      __metadata:
+        label: "Privileged"
+        description: "If true, allows container to run with privileged access."
+        type: "boolean"
 podAnnotations:
   __metadata:
     name: "podAnnotations"

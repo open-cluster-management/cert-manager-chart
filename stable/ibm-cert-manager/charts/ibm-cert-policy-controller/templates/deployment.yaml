@@ -27,6 +27,8 @@ spec:
         productName: {{ include "controller.name" . }}
         productVersion: {{ .Chart.Version }}
     spec:
+      hostPID: false
+      hostIPC: false
       serviceAccount: {{ template "controller.serviceAccountName" . }}
       securityContext:
 {{- if not (.Capabilities.APIVersions.Has "security.openshift.io/v1") }} 
