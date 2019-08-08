@@ -8,12 +8,14 @@ metadata:
     chart: {{ include "controller.chart" . }}
     release: {{ .Release.Name }}
     heritage: {{ .Release.Service }}
-  name: certpolicies.mcm-grcpolicy.ibm.com
+  name: certificatepolicies.policy.ibm.com
 spec:
-  group: mcm-grcpolicy.ibm.com
+  group: policy.ibm.com
   names:
-    kind: CertPolicy
-    plural: certpolicies
+    kind: CertificatePolicy
+    plural: certificatepolicies
+    shortNames:
+    - certpl
   scope: Namespaced
   validation:
     openAPIV3Schema:
