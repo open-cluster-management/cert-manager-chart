@@ -50,10 +50,13 @@ image:
 securityContext:
   pod:
     runAsNonRoot: true
+    runAsUser: 10000
   container:
     allowPrivilegeEscalation: false
-    readOnlyRootFilesystem: true
+    readOnlyRootFilesystem: false
     runAsNonRoot: true
+    runAsUser: 10000
+    privileged: false
 
 podDnsPolicy: "ClusterFirstWithHostNet"
 

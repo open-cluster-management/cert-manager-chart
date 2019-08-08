@@ -55,10 +55,13 @@ injectAPIServerCA: true
 securityContext:
   pod:
     runAsNonRoot: true
+    runAsUser: 10000
   container:
     allowPrivilegeEscalation: false
     readOnlyRootFilesystem: false
     runAsNonRoot: true
+    runAsUser: 10000
+    privileged: false
 
 serviceAccount:
   # Specifies whether a service account should be created
