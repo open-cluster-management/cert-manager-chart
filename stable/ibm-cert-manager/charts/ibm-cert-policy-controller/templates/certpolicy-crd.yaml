@@ -4,16 +4,14 @@ metadata:
   creationTimestamp: null
   labels:
     controller-tools.k8s.io: "1.0"
-    app: {{ include "controller.fullname" . }}
-    chart: {{ include "controller.chart" . }}
-    release: {{ .Release.Name }}
-    heritage: {{ .Release.Service }}
   name: certificatepolicies.policy.ibm.com
 spec:
   group: policy.ibm.com
   names:
     kind: CertificatePolicy
     plural: certificatepolicies
+    shortNames:
+    - certpl
   scope: Namespaced
   validation:
     openAPIV3Schema:
