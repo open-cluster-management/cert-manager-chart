@@ -22,3 +22,5 @@ overrides:
   rule: "MeteringAnnotationLabels"
 - reason: "This service is specifically for ibm cloud private"
   rule: "NoICPReferencesInHeadersAndChartDetails"
+- reason: "Not for internal services"
+  rule: "CheckForGrafanaDashboard"
