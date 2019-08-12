@@ -11,7 +11,7 @@ prereqs:
         name: "ibm-privileged-psp"
     openshift:
       securityContextConstraints:
-        name: ""
+        name: "icp-scc"
     ibmCloudPrivate:
       installerRole:
         name: "ClusterAdministrator"  
