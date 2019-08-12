@@ -27,9 +27,6 @@ spec:
         app: {{ include "webhook.name" . }}
         release: {{ .Release.Name }}
       annotations:
-        productID: "9191919193"
-        productName: {{ .Chart.Name | quote }}
-        productVersion: {{ .Chart.Version | quote }}
         seccomp.security.alpha.kubernetes.io/pod: docker/default
       {{- if .Values.podAnnotations }}
 {{ toYaml .Values.podAnnotations | indent 8 }}

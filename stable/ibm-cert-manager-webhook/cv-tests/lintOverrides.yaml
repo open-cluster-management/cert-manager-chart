@@ -18,3 +18,5 @@ overrides:
   rule: "AppTestMustExist"
 - reason: " If the helm chart supports earlier versions than ICP 3.2, it is acceptable to leave qualification.levelName: ibm-cloud-pak so that older versions of ICP display the IBM Cloud Pak badge"
   message: "qualification.levelName will not be valid for future versions of ICP: 'ibm-cloud-pak'"
+- reason: "According to this page (http://icp-content-playbook.rch.stglabs.ibm.com/designing-content/ilmt-licensing/), IBM Cloud Private is not on the list to include metering annotations"
+  rule : "MeteringAnnotationLabels"
