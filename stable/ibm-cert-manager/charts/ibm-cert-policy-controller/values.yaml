@@ -6,7 +6,7 @@ image:
   pullPolicy: IfNotPresent
 
 args:
-  frequency:
+  frequency: 60
   verbosity: 0
   defaultDuration:
 
