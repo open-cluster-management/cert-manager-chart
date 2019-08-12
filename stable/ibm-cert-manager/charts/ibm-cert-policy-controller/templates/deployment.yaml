@@ -22,10 +22,6 @@ spec:
         release: {{ .Release.Name }}
         heritage: {{ .Release.Service }}
         chart: {{ include "controller.chart" . }}
-      annotations:
-        productID: "1293014934"
-        productName: {{ include "controller.name" . }}
-        productVersion: {{ .Chart.Version }}
     spec:
       hostPID: false
       hostIPC: false

@@ -15,3 +15,5 @@ overrides:
   message: "qualification.levelName will not be valid for future versions of ICP: 'ibm-cloud-pak'"
 - reason: "Host network must be enabled for cert-manager and its subchart components since cert-manager will be installed first during an ICP install (before calico network) and it requires the host network to function properly. The other PSP keys have been added"
   rule: "PodSecurityInPodSecurityContext"
+- reason: "According to this page (http://icp-content-playbook.rch.stglabs.ibm.com/designing-content/ilmt-licensing/), IBM Cloud Private is not on the list to include metering annotations"
+  rule : "MeteringAnnotationLabels"
