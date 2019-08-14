@@ -124,9 +124,6 @@ securityContext:
     label: "Security Context"
     description: "The security context cert-manager uses."
   pod:
-    __metadata:
-      label: "Pod"
-      description: "The security context of cert-manager's pod."
     enabled:
       __metadata:
         label: "Enabled" 
@@ -138,15 +135,17 @@ securityContext:
         description: "Functional group name to run as."
         required: false
         type: "string"
+    runAsNonRoot:
+      __metadata:
+        label: "Run As Non-Root"
+        description: "If true, prevents cert-manager containers from being run as a root user."
+        type: "boolean"
     runAsUser:
       __metadata:
         label: "Run As User"
         description: "The user to run cert-manager as in all the containers within the cert-manager pod."
         type: "string"
   container:
-    __metadata:
-      label: "Container"
-      description: "The security context of cert-manager's container."
     allowPrivilegeEscalation:
       __metadata:
         label: "Allow Privilege Escalation"
@@ -166,7 +165,12 @@ securityContext:
       __metadata:
         label: "Read Only File System"
         description: "If true, then only allows reads from the file system."
-        type: "boolean"        
+        type: "boolean"
+    privileged:
+      __metadata:
+        label: "Privileged"
+        description: "If true, allows container to run with privileged access."
+        type: "boolean"
 podAnnotations:
   __metadata:
     name: "podAnnotations"
@@ -214,28 +218,44 @@ ingressShim:
     type: "string"
     hidden: true
     required: false
+policyController:
+  __metadata:
+    label: "Certificate Policy Controller"
+    description: "Controls whether or not the certificate policy controller is deployed with the certificate management chart."
+  enabled:
+    __metadata:
+      label: "Enabled"
+      description: "Deploys the certificate policy controller if set to true, otherwise it does not deploy it."
+      type: "boolean"
+      required: true
 resources:
   __metadata:
     label: "Resources"
     description: "Resource requests and limits for cpu and memory for cert-manager deployment"
   requests:
-    __metadata:
-      label: "Requests"
-      description: "The amount of cpu/memory requested by cert-manager's deployment"
     memory:
       __metadata:
         label: "Memory request"
         description: "The amount of memory cert-manager requests"
         required: false
         type: "string"
+    cpu:
+      __metadata:
+        label: "CPU request"
+        description: "The amount of cpu cert-manager requests to have."
+        required: false
+        type: "string"
   limits:
-    __metadata:
-      label: "Limits"
-      description: "The amount of cpu/memory cert-manager deployment is limited to"
     memory:
       __metadata:
         label: "Memory limit"
         description: "The memory limit cert-manager has"
+        required: true
+        type: "string"
+    cpu:
+      __metadata:
+        label: "CPU Limit"
+        description: "The maximum cpu cert-manager can have."
         required: true
         type: "string"
 podRestart:

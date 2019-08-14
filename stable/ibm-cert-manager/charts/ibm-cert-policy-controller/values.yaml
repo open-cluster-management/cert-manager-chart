@@ -6,7 +6,7 @@ image:
   pullPolicy: IfNotPresent
 
 args:
-  frequency:
+  frequency: 60
   verbosity: 0
   defaultDuration:
 
@@ -19,6 +19,7 @@ securityContext:
     runAsUser: 10000
     readOnlyRootFilesystem: false
     runAsNonRoot: true
+    privileged: false
 
 nodeSelector: {}
 
@@ -33,3 +34,7 @@ tolerations:
     operator: Exists
 
 podDnsPolicy: "ClusterFirstWithHostNet"
+
+serviceAccount:
+  create: false
+  name: "default"

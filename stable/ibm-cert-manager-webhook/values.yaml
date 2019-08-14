@@ -23,10 +23,13 @@ podAnnotations: {}
 # Optional additional arguments for webhook
 extraArgs: []
 
-resources: {}
-  # requests:
-  #   cpu: 10m
-  #   memory: 32Mi
+resources:
+  limits:
+    memory: "300Mi"
+    cpu: "200m"
+  requests:
+    memory: "150Mi"
+    cpu: "100m" 
 
 image:
   repository: ibmcom/icp-cert-manager-webhook
@@ -50,9 +53,15 @@ tolerations:
 injectAPIServerCA: true
 
 securityContext:
+  pod:
+    runAsNonRoot: true
+    runAsUser: 10000
   container:
     allowPrivilegeEscalation: false
     readOnlyRootFilesystem: false
+    runAsNonRoot: true
+    runAsUser: 10000
+    privileged: false
 
 serviceAccount:
   # Specifies whether a service account should be created
@@ -61,5 +70,4 @@ serviceAccount:
   # If not set and create is true, a name is generated using the fullname template
   name: "default"
 
-ibm-cert-manager-cainjector:
-  enabled: true
+affinity: {}

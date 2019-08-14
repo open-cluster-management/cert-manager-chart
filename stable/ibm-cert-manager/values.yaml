@@ -63,9 +63,6 @@ resources:
   limits:
     memory: "300Mi"
     cpu: "300m"
-  # requests:
-  #   cpu: 10m
-  #   memory: 32Mi
 
 # Pod Security Context
 # ref: https://kubernetes.io/docs/tasks/configure-pod-container/security-context/
@@ -73,12 +70,14 @@ securityContext:
   pod:
     enabled: false
     fsGroup: 1001
+    runAsNonRoot: true
     runAsUser: 10000
   container:
     runAsNonRoot: true
     runAsUser: 10000
     allowPrivilegeEscalation: false
     readOnlyRootFilesystem: true
+    privileged: false    
 
 podAnnotations: {}
 
@@ -102,7 +101,7 @@ ingressShim: {}
   # defaultACMEChallengeType: ""
   # defaultACMEDNS01ChallengeProvider: ""
 
-policy-controller:
+policyController:
   enabled: true
 
 # Use these variables to configure the HTTP_PROXY environment variables

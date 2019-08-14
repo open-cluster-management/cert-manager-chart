@@ -88,10 +88,18 @@ securityContext:
   __metadata:
     label: "Security Context"
     description: "The security context cert-manager-webhook uses."
+  pod:
+    runAsNonRoot:
+      __metadata:
+        label: "Run As Non-Root"
+        description: "If true, prevents cert-manager-webhook containers from being run as a root user."
+        type: "boolean"
+    runAsUser:
+      __metadata:
+        label: "Run As User"
+        description: "The user to run all containers in this pod as."
+        type: "string"
   container:
-    __metadata:
-      label: "Container"
-      description: "Security context at the container level, can override the pod level."
     readOnlyRootFilesystem:
       __metadata:
         label: "Read Only File System"
@@ -101,7 +109,22 @@ securityContext:
       __metadata:
         label: "Allow Privilege Escalation"
         description: "If true, allows a user within the cert-manager-webhook container to escalate their privilege to root."
-        type: "boolean"    
+        type: "boolean"
+    runAsNonRoot:
+      __metadata:
+        label: "Run As Non-Root"
+        description: "If true, prevents cert-manager-webhook container from being run as a root user."
+        type: "boolean"
+    runAsUser:
+      __metadata:
+        label: "Run As User"
+        description: "The user to run cert-manager as in the container."
+        type: "string"
+    privileged:
+      __metadata:
+        label: "Privileged"
+        description: "If true, allows container to run with privileged access."
+        type: "boolean"
 podAnnotations:
   __metadata:
     name: "podAnnotations"
@@ -118,42 +141,48 @@ nodeSelector:
     type: "string"
     immutable: false
     required: false
+  master:
+    __metadata:
+      label: "Master"
+      description: "Runs on master node if true, otherwise runs on other nodes if false."
+      type: "string"
+      required: true
 resources:
   __metadata:
     label: "Resources"
     description: "Resource requests and limits for cpu and memory for cert-manager-webhook deployment"
   requests:
-    __metadata:
-      label: "Requests"
-      description: "The amount of cpu/memory requested by cert-manager-webhook's deployment"
     memory:
       __metadata:
         label: "Memory request"
         description: "The amount of memory cert-manager-webhook requests"
         required: false
         type: "string"
+    cpu:
+      __metadata:
+        label: "CPU request"
+        description: "The amount of CPU cert-manager-webhook requests"
+        required: false
+        type: "string"
   limits:
-    __metadata:
-      label: "Limits"
-      description: "The amount of cpu/memory cert-manager-webhook deployment is limited to"
     memory:
       __metadata:
         label: "Memory limit"
         description: "The memory limit cert-manager-webhook has"
         required: true
         type: "string"
-cainjector:
+    cpu:
+      __metadata:
+        label: "CPU limit"
+        description: "The limit on CPU that that cert-manager-webhook is allowed to have"
+        required: true
+        type: "string"
+injectAPIServerCA:
   __metadata:
-    label: "CA Injector"
-    description: "Cert-manager webhook's CA injector subchart."
-    hidden: true
-  enabled:
-    __metadata:
-      label: "Enabled"
-      description: "If true, enables the CA injector subchart to be installed."
-      type: "boolean"
-      immutable: true
-      hidden: true
+    label: "Inject CA"
+    description: "If true, the apiserver's cabundle will automatically be injected into the webhook"
+    required: true
+    type: "boolean"
 tolerations:
   __metadata:
     label: "Tolerations"

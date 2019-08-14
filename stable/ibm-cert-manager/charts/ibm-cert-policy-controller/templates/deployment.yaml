@@ -1,4 +1,4 @@
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: {{ include "controller.fullname" . }}
@@ -22,13 +22,14 @@ spec:
         release: {{ .Release.Name }}
         heritage: {{ .Release.Service }}
         chart: {{ include "controller.chart" . }}
-      annotations:
-        productID: "1293014934"
-        productName: {{ include "controller.name" . }}
-        productVersion: {{ .Chart.Version }}
     spec:
+      hostPID: false
+      hostIPC: false
+      serviceAccount: {{ template "controller.serviceAccountName" . }}
       securityContext:
+{{- if not (.Capabilities.APIVersions.Has "security.openshift.io/v1") }} 
         runAsUser: {{ .Values.securityContext.pod.runAsUser }}
+{{- end }}
         runAsNonRoot: {{ .Values.securityContext.pod.runAsNonRoot }}
       containers:
       - name: {{ .Chart.Name }}
@@ -64,9 +65,15 @@ spec:
             cpu: "100m"
         securityContext:
           allowPrivilegeEscalation: {{ .Values.securityContext.container.allowPrivilegeEscalation }}
+{{- if not (.Capabilities.APIVersions.Has "security.openshift.io/v1") }} 
           runAsUser: {{ .Values.securityContext.container.runAsUser }}
+{{- end }}          
           readOnlyRootFilesystem: {{ .Values.securityContext.container.readOnlyRootFilesystem }}
           runAsNonRoot: {{ .Values.securityContext.container.runAsNonRoot }}
+          privileged: {{ .Values.securityContext.container.privileged }}
+          capabilities:
+            drop:
+            - ALL
       {{- with .Values.tolerations }}
       tolerations:
 {{ toYaml . | indent 8 }}

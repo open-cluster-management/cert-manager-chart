@@ -103,6 +103,12 @@ securityContext:
         description: "If true, then the user in the running container must be a non-root user."
         type: "boolean"
         required: true
+    privileged:
+      __metadata:
+        label: "Privileged"
+        description: "If true, allows the container to be privileged, false doesn't allow it to be privileged."
+        type: "boolean"
+        required: true
 nodeSelector:
   __metadata:
     label: "Node Selector"
@@ -113,3 +119,19 @@ tolerations:
     description: "When specified, tolerates any taint that matches the triple <key, value, effect>."
     type: "string"
     required: false
+serviceAccount:
+  __metadata:
+    label: "Service Account"
+    description: "Service account options for cert-policy-controller."
+  create:
+    __metadata:
+      label: "Create"
+      description: "If true, has cert-policy-controller create its own service account"
+      type: "boolean"
+      required: true
+  name:
+    __metadata:
+      label: "Name"
+      description: "The name of the service account to use if the controller doesn't create its own"
+      type: "string"
+      required: true

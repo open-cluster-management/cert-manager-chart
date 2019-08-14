@@ -1,4 +1,4 @@
-apiVersion: apps/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: {{ template "cert-manager.fullname" . }}
@@ -30,23 +30,23 @@ spec:
 {{ toYaml .Values.podLabels | indent 8 }}
 {{- end }}
       annotations:
-        productID: "9191919191"
-        productName: {{ .Chart.Name | quote }}
-        productVersion: {{ .Chart.Version | quote }}
         seccomp.security.alpha.kubernetes.io/pod: docker/default
 {{- if .Values.podAnnotations }}
 {{ toYaml .Values.podAnnotations | indent 8 }}
 {{- end }}
     spec:
+      hostPID: false
+      hostIPC: false
       serviceAccountName: {{ template "cert-manager.serviceAccountName" . }}
       {{- if .Values.global.priorityClassName }}
       priorityClassName: {{ .Values.global.priorityClassName | quote }}
       {{- end }}
-      {{- if .Values.securityContext.pod.enabled }}
       securityContext:
+{{- if .Values.securityContext.pod.enabled }}
         fsGroup: {{ .Values.securityContext.pod.fsGroup }}
+{{- end }}        
+        runAsNonRoot: {{ .Values.securityContext.pod.runAsNonRoot }}
         runAsUser: {{ .Values.securityContext.pod.runAsUser }}
-      {{- end }}
       containers:
         - name: {{ .Chart.Name }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
@@ -128,6 +128,9 @@ spec:
             runAsUser: {{ .Values.securityContext.container.runAsUser }}
             allowPrivilegeEscalation: {{ .Values.securityContext.container.allowPrivilegeEscalation }}
             readOnlyRootFilesystem: {{ .Values.securityContext.container.readOnlyRootFilesystem }}
+            capabilities:
+              drop:
+              - ALL
     {{- with .Values.nodeSelector }}
       nodeSelector:
 {{ toYaml . | indent 8 }}
