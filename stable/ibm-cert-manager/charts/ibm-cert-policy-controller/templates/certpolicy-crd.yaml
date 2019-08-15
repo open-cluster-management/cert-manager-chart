@@ -8,9 +8,9 @@ metadata:
     chart: {{ include "controller.chart" . }}
     release: {{ .Release.Name }}
     heritage: {{ .Release.Service }}
-  name: certificatepolicies.policy.ibm.com
+  name: certificatepolicies.policies.ibm.com
 spec:
-  group: policy.ibm.com
+  group: policies.ibm.com
   names:
     kind: CertificatePolicy
     plural: certificatepolicies
