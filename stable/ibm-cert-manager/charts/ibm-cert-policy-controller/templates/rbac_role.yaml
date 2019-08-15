@@ -37,9 +37,9 @@ rules:
   - update
   - patch
 - apiGroups:
-  - policy.ibm.com
+  - policies.ibm.com
   resources:
-  - Certificatepolicies
+  - CertificatePolicies
   verbs:
   - get
   - list
@@ -49,9 +49,9 @@ rules:
   - patch
   - delete
 - apiGroups:
-  - policy.ibm.com
+  - policies.ibm.com
   resources:
-  - Certificatepolicies/status
+  - CertificatePolicies/status
   verbs:
   - get
   - update
