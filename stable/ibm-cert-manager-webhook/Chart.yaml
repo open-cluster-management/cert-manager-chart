@@ -3,7 +3,7 @@ apiVersion: v1
 version: "0.7.1"
 appVersion: "0.7.0.1"
 tillerVersion: ">=2.7.0"
-kubeVersion: ">=1.9.0"
+kubeVersion: ">=1.9.0-0"
 description: A Helm chart for deploying the cert-manager webhook component
 home: https://github.com/jetstack/cert-manager
 sources:
