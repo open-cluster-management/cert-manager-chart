@@ -20,6 +20,9 @@ strategy: {}
 
 podAnnotations: {}
 
+args:
+  verbosity: 1
+
 # Optional additional arguments for webhook
 extraArgs: []
 

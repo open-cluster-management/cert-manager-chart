@@ -133,6 +133,18 @@ podAnnotations:
     immutable: false
     required: false
     type: "string"
+args:
+  __metadata:
+    name: "args"
+    label: "Arguments"
+    description: "The arguments the webhook takes when starting up."
+  verbosity:
+    __metadata:
+      name: "verbosity"
+      label: "Verbosity"
+      description: "How verbose the webhook logs are, 1 being the least and 12 being the most."
+      type: "number"
+      required: false
 nodeSelector:
   __metadata:
     name: "nodeSelector"
