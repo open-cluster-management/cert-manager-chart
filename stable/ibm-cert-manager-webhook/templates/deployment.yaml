@@ -49,7 +49,7 @@ spec:
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           args:
-          - --v=12
+          - --v={{ .Values.args.verbosity }}
           - --secure-port=1443
           - --tls-cert-file=/certs/tls.crt
           - --tls-private-key-file=/certs/tls.key
