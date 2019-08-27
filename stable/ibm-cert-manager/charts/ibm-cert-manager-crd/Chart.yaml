@@ -15,6 +15,6 @@ keywords:
 - Beta
 - Commercial
 - Limited
-kubeVersion: '>=1.9.0'
+kubeVersion: '>=1.9.0-0'
 name: ibm-cert-manager-crd
 tillerVersion: '>=2.7.0'
