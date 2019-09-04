@@ -69,7 +69,7 @@ overrides:
   message: ".* found '.*tolerations.*'"
   severity: "REVIEW"
   reduceTo: "INFO"
-- reason: ""
+- reason: "Breaking chart upgrade is not acceptable, using old labels."
   rule: "CheckForOldMetadataLabels"
   severity: "REVIEW"
   reduceTo: "INFO"
