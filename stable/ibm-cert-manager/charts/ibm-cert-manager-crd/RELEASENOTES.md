@@ -3,7 +3,6 @@
 
 # Prerequisites
 * Kubernetes version 1.7 or higher
-* Helm version 2.9 or higher
 
 # Version History
 | Chart | Date           | Details                           |

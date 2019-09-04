@@ -20,9 +20,5 @@ keywords:
   - ppc64le
   - s390x
   - Commercial
-  - Limited
   - ICPRHOCP
   - RHOCP
-maintainers:
-  - name: munnerz
-    email: james@jetstack.io
