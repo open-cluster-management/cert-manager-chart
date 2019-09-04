@@ -45,3 +45,7 @@ overrides:
   message: "chart name, classification keywords, and version are incompatible: chart without name ending in -dev or -prod must have both the Commercial and Limited keywords"
   severity: "ERROR"
   reduceTo: "INFO"
+- reason: "These parameters are in conditional statements so if they're not defined, they won't be used"
+  rule: "UsedParametersAreDefined"
+  severity: "REVIEW"
+  reduceTo: "INFO"
