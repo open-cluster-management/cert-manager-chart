@@ -3,12 +3,10 @@ kind: ValidatingWebhookConfiguration
 metadata:
   name: {{ include "webhook.fullname" . }}
   labels:
-    app.kubernetes.io/name: {{ include "webhook.name" . }}
-    app.kubernetes.io/instance: {{ include "webhook.fullname" . }}
-    app.kubernetes.io/version: {{ .Chart.Version }}
-    app.kubernetes.io/component: {{ .Values.component }}
-    app.kubernets.io/part-of: {{ include "webhook.chart" . }}
-    app.kubernetes.io/managed-by: {{ .Release.Service }}
+    app: {{ include "webhook.name" . }}
+    chart: {{ include "webhook.chart" . }}
+    release: {{ .Release.Name }}
+    heritage: {{ .Release.Service }}
   annotations:
 {{- if .Values.injectAPIServerCA }}
     certmanager.k8s.io/inject-apiserver-ca: "true"
