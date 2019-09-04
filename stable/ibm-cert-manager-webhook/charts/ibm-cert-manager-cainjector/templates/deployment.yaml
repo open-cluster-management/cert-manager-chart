@@ -67,6 +67,11 @@ spec:
               - sh
               - -c
               - pgrep cainjector -l
+          readinessProbe:
+            exec:
+              command: ["sh", "-c", "exec echo start cert-manager cainjector"]
+            initialDelaySeconds: 10
+            timeoutSeconds: 2
           env:
           - name: POD_NAMESPACE
             valueFrom:
