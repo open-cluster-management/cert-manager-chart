@@ -13,5 +13,5 @@ metadata:
 rules:
   - apiGroups: ["certmanager.k8s.io"]
     resources: ["certificates", "issuers"]
-    verbs: ["create", "delete", "deletecollection", "patch", "update"]
+    verbs: ["get", "list", "watch", "create", "update", "patch"]
 {{- end -}}
