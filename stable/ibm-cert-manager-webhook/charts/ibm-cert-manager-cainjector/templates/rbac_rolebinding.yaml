@@ -13,7 +13,7 @@ roleRef:
   kind: ClusterRole
   name: {{ template "cainjector.fullname" . }}
 subjects:
-  - name: {{ include "cainjector.fullname" . }}
+  - name: {{ .Values.serviceAccount.name }}
     namespace: {{ .Release.Namespace | quote }}
     kind: ServiceAccount
 {{- end -}}
