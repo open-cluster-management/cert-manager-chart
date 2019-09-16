@@ -1,6 +1,5 @@
-{{- if .Values.webhook.enabled -}}
 apiVersion: admissionregistration.k8s.io/v1beta1
-kind: ValidatingWebhookConfiguration
+kind: MutatingWebhookConfiguration
 metadata:
   name: {{ include "webhook.fullname" . }}
   labels:
@@ -15,16 +14,6 @@ metadata:
 {{- end }}
 webhooks:
   - name: webhook.certmanager.k8s.io
-    namespaceSelector:
-      matchExpressions:
-      - key: "certmanager.k8s.io/disable-validation"
-        operator: "NotIn"
-        values:
-        - "true"
-      - key: "name"
-        operator: "NotIn"
-        values:
-        - {{ .Release.Namespace }}
     rules:
       - apiGroups:
           - "certmanager.k8s.io"
@@ -37,12 +26,12 @@ webhooks:
           - certificates
           - issuers
           - clusterissuers
+          - orders
+          - challenges
           - certificaterequests
     failurePolicy: Fail
-    sideEffects: None
     clientConfig:
       service:
         name: kubernetes
         namespace: default
-        path: /apis/webhook.certmanager.k8s.io/v1beta1/validations
-{{- end -}}
+        path: /apis/webhook.certmanager.k8s.io/v1beta1/mutations

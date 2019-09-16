@@ -1,17 +1,21 @@
-name: cert-manager
-# The version and appVersion fields are set automatically by the release tool
-version: v0.1.0
-appVersion: v0.1.0
-description: A Helm chart for cert-manager
-home: https://github.com/jetstack/cert-manager
-icon: https://raw.githubusercontent.com/jetstack/cert-manager/master/logo/logo.png
+apiVersion: v1
+name: ibm-cert-manager
+version: 0.10.0
+tillerVersion: ">=2.7.0"
+kubeVersion: ">=1.9.0-0"
+appVersion: 0.10.1
+description: Service for issuing and managing certificates on IBM Cloud Private.
 keywords:
-  - cert-manager
-  - kube-lego
-  - letsencrypt
-  - tls
-sources:
-  - https://github.com/jetstack/cert-manager
-maintainers:
-  - name: munnerz
-    email: james@jetstack.io
+  - "amd64"
+  - "ppc64le"
+  - "s390x"
+  - "OpenSource"
+  - "ICP"
+  - "IcpClusterResource"
+  - "Security"
+  - "cert-manager"
+  - "kube-lego"
+  - "letsencrypt"
+  - "tls"
+  - "Development"
+  - "IBM Cloud Private"

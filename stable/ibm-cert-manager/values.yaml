@@ -28,25 +28,26 @@ strategy: {}
   #   maxSurge: 0
   #   maxUnavailable: 1
 
-
 image:
-  repository: quay.io/jetstack/cert-manager-controller
-  # Override the image tag to deploy by setting this variable.
-  # If no value is set, the chart's appVersion will be used.
-  # tag: canary
+  repository: ibmcom/icp-cert-manager-controller
+  tag: 0.7.0.1
   pullPolicy: IfNotPresent
+
+solver:
+  repository: ibmcom/icp-cert-manager-acmesolver
+  tag: 0.7.0.1
 
 # Override the namespace used to store DNS provider credentials etc. for ClusterIssuer
 # resources. By default, the same namespace as cert-manager is deployed within is
 # used. This namespace will not be automatically created by the Helm chart.
-clusterResourceNamespace: ""
+clusterResourceNamespace: "kube-system"
 
 serviceAccount:
   # Specifies whether a service account should be created
-  create: true
+  create: false
   # The name of the service account to use.
   # If not set and create is true, a name is generated using the fullname template
-  name:
+  name: "default"
 
 # Optional additional arguments
 extraArgs: []
@@ -60,17 +61,28 @@ extraEnv: []
 # - name: SOME_VAR
 #   value: 'some value'
 
-resources: {}
-  # requests:
-  #   cpu: 10m
-  #   memory: 32Mi
+resources: 
+  requests:
+    memory: "150Mi"
+    cpu: "100m"
+  limits:
+    memory: "300Mi"
+    cpu: "300m"
 
 # Pod Security Context
 # ref: https://kubernetes.io/docs/tasks/configure-pod-container/security-context/
 securityContext:
-  enabled: false
-  fsGroup: 1001
-  runAsUser: 1001
+  pod:
+    enabled: false
+    fsGroup: 1001
+    runAsNonRoot: true
+    runAsUser: 10000
+  container:
+    runAsNonRoot: true
+    runAsUser: 10000
+    allowPrivilegeEscalation: false
+    readOnlyRootFilesystem: true
+    privileged: false    
 
 podAnnotations: {}
 
@@ -80,7 +92,7 @@ podLabels: {}
 # cert-manager can access an ingress or DNS TXT records at all times.
 # NOTE: This requires Kubernetes 1.10 or `CustomPodDNS` feature gate enabled for
 # the cluster to work.
-# podDnsPolicy: "None"
+podDnsPolicy: "ClusterFirstWithHostNet"
 # podDnsConfig:
 #   nameservers:
 #     - "1.1.1.1"
@@ -95,7 +107,7 @@ ingressShim: {}
   # defaultACMEDNS01ChallengeProvider: ""
 
 prometheus:
-  enabled: true
+  enabled: false
   servicemonitor:
     enabled: false
     prometheusInstance: default
@@ -105,43 +117,7 @@ prometheus:
     scrapeTimeout: 30s
     labels: {}
 
-webhook:
-  enabled: true
-  replicaCount: 1
-
-  strategy: {}
-    # type: RollingUpdate
-    # rollingUpdate:
-    #   maxSurge: 0
-    #   maxUnavailable: 1
-
-  podAnnotations: {}
-
-  # Optional additional arguments for webhook
-  extraArgs: []
-
-  resources: {}
-    # requests:
-    #   cpu: 10m
-    #   memory: 32Mi
-
-  nodeSelector: {}
-
-  image:
-    repository: quay.io/jetstack/cert-manager-webhook
-    # Override the image tag to deploy by setting this variable.
-    # If no value is set, the chart's appVersion will be used.
-    # tag: canary
-    pullPolicy: IfNotPresent
-
-  # If true, the apiserver's cabundle will be automatically injected into the
-  # webhook's ValidatingWebhookConfiguration resource by the CA injector.
-  # in future this will default to false, as the apiserver can use the loopback
-  # configuration caBundle to talk to itself in kubernetes 1.11+
-  # see https://github.com/kubernetes/kubernetes/pull/62649
-  injectAPIServerCA: true
-
-cainjector:
+policyController:
   enabled: true
 
 # Use these variables to configure the HTTP_PROXY environment variables
@@ -169,4 +145,12 @@ affinity: {}
 #     operator: Equal
 #     value: master
 #     effect: NoSchedule
-tolerations: []
+tolerations:
+- effect: NoSchedule
+  key: dedicated
+  operator: Exists
+- key: CriticalAddonsOnly
+  operator: Exists
+
+podRestart: 
+  enabled: true

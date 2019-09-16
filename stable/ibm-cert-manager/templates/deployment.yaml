@@ -5,18 +5,15 @@ metadata:
   namespace: {{ .Release.Namespace | quote }}
   labels:
     app: {{ template "cert-manager.name" . }}
-    app.kubernetes.io/name: {{ template "cert-manager.name" . }}
-    app.kubernetes.io/instance:  {{ .Release.Name }}
-    app.kubernetes.io/managed-by: {{ .Release.Service }}
-    helm.sh/chart: {{ template "cert-manager.chart" . }}
+    chart: {{ template "cert-manager.chart" . }}
+    release: {{ .Release.Name }}
+    heritage: {{ .Release.Service }}
 spec:
   replicas: {{ .Values.replicaCount }}
   selector:
     matchLabels:
       app: {{ template "cert-manager.name" . }}
-      app.kubernetes.io/name: {{ template "cert-manager.name" . }}
-      app.kubernetes.io/instance:  {{ .Release.Name }}
-      app.kubernetes.io/managed-by: {{ .Release.Service }}
+      release: {{ .Release.Name }}
   {{- with .Values.strategy }}
   strategy:
     {{- . | toYaml | nindent 4 }}
@@ -24,36 +21,40 @@ spec:
   template:
     metadata:
       labels:
+        k8s-app: "cert-manager"
+        chart: {{ template "cert-manager.chart" . }}
+        heritage: {{ .Release.Service }}
         app: {{ template "cert-manager.name" . }}
-        app.kubernetes.io/name: {{ template "cert-manager.name" . }}
-        app.kubernetes.io/instance:  {{ .Release.Name }}
-        app.kubernetes.io/managed-by: {{ .Release.Service }}
-        helm.sh/chart: {{ template "cert-manager.chart" . }}
+        release: {{ .Release.Name }}
 {{- if .Values.podLabels }}
 {{ toYaml .Values.podLabels | indent 8 }}
 {{- end }}
       annotations:
-      {{- if .Values.podAnnotations }}
+        seccomp.security.alpha.kubernetes.io/pod: docker/default
+        {{- if .Values.podAnnotations }}
 {{ toYaml .Values.podAnnotations | indent 8 }}
-      {{- end }}
+        {{- end }}
       {{- if and .Values.prometheus.enabled (not .Values.prometheus.servicemonitor.enabled) }}
         prometheus.io/path: "/metrics"
         prometheus.io/scrape: 'true'
         prometheus.io/port: '9402'
       {{- end }}
     spec:
+      hostPID: false
+      hostIPC: false
       serviceAccountName: {{ template "cert-manager.serviceAccountName" . }}
       {{- if .Values.global.priorityClassName }}
       priorityClassName: {{ .Values.global.priorityClassName | quote }}
       {{- end }}
-      {{- if .Values.securityContext.enabled }}
       securityContext:
-        fsGroup: {{ .Values.securityContext.fsGroup }}
-        runAsUser: {{ .Values.securityContext.runAsUser }}
-      {{- end }}
+{{- if .Values.securityContext.pod.enabled }}
+        fsGroup: {{ .Values.securityContext.pod.fsGroup }}
+{{- end }}        
+        runAsNonRoot: {{ .Values.securityContext.pod.runAsNonRoot }}
+        runAsUser: {{ .Values.securityContext.pod.runAsUser }}
       containers:
         - name: {{ .Chart.Name }}
-          image: "{{ .Values.image.repository }}:{{ default .Chart.AppVersion .Values.image.tag }}"
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           args:
         {{- if .Values.global.logLevel }}
@@ -85,6 +86,8 @@ spec:
           {{- if .defaultACMEDNS01ChallengeProvider }}
           - --default-acme-issuer-dns01-provider-name={{ .defaultACMEDNS01ChallengeProvider }}
           {{- end }}
+          {{- if .Values.solver.repository }}
+          - --acme-http01-solver-image={{ .Values.solver.repository }}:{{ .Values.solver.tag }}
           {{- end }}
           - --webhook-namespace=$(POD_NAMESPACE)
           - --webhook-ca-secret={{ include "webhook.rootCACertificate" . }}
@@ -92,7 +95,26 @@ spec:
           - --webhook-dns-names={{ include "webhook.fullname" . }},{{ include "webhook.fullname" . }}.{{ .Release.Namespace }},{{ include "webhook.fullname" . }}.{{ .Release.Namespace }}.svc
           ports:
           - containerPort: 9402
+          {{- if .Values.affinity }}
+          affinity:
+{{ toYaml .Values.containerAffinity | indent 10 }}
+          {{- end }}
+          livenessProbe:
+            exec:
+              command: 
+              - sh
+              - -c
+              - pgrep cert-manager -l
+            initialDelaySeconds: 30
+            timeoutSeconds: 5
+          readinessProbe:
+            exec:
+              command: ["sh", "-c", "exec echo start cert-manager"]
+            initialDelaySeconds: 10
+            timeoutSeconds: 2
           env:
+          - name: POD_RESTART
+            value: {{ .Values.podRestart.enabled | quote }}
           - name: POD_NAMESPACE
             valueFrom:
               fieldRef:
@@ -114,6 +136,14 @@ spec:
           {{- end }}
           resources:
 {{ toYaml .Values.resources | indent 12 }}
+          securityContext:
+            runAsNonRoot: {{ .Values.securityContext.container.runAsNonRoot }}
+            runAsUser: {{ .Values.securityContext.container.runAsUser }}
+            allowPrivilegeEscalation: {{ .Values.securityContext.container.allowPrivilegeEscalation }}
+            readOnlyRootFilesystem: {{ .Values.securityContext.container.readOnlyRootFilesystem }}
+            capabilities:
+              drop:
+              - ALL
     {{- with .Values.nodeSelector }}
       nodeSelector:
 {{ toYaml . | indent 8 }}
@@ -126,6 +156,7 @@ spec:
       tolerations:
 {{ toYaml . | indent 8 }}
     {{- end }}
+      hostNetwork: true
 {{- if .Values.podDnsPolicy }}
       dnsPolicy: {{ .Values.podDnsPolicy }}
 {{- end }}

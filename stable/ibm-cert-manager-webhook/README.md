@@ -1,27 +1,17 @@
-# IBM Cloud Private Certificate Manager
+# IBM Cloud Private Certificate Manager Webhook
 
 ## Introduction
-This chart deploys the IBM Cloud Private certificate manager service that can be used to issue and manage certificates for services running on IBM Cloud Private. You can use cert-manager to create and mount a certificate to a Kubernetes Deployment, StatefulSet, or DaemonSet. You can also create and add a certificate to a Kubernetes Ingress. It will ensure certificates are valid and up to date periodically, and it will attempt to renew certificates at an appropriate time before expiry.
+This chart deploys the IBM Cloud Private certificate manager webhook service that can be used to validate resources created for IBM Cloud Private certificate manager service.
 
 ## Chart Details
-One instance of cert-manager is deployed to a single master node when IBM Cloud Private is installed.
+One instance of cert-manager-webhook is deployed to a single master node when IBM Cloud Private is installed.
 
-## How to use IBM-Cert-Manager
-See the IBM Cloud Private product documentation in the [IBM Knowledge Center](https://www.ibm.com/support/knowledgecenter/) for more details on cert-manager, IBM Cloud Private's Kubernetes certificate manager service.
+## How to use IBM-Cert-Manager webhook
+See the IBM Cloud Private product documentation in the [IBM Knowledge Center](https://www.ibm.com/support/knowledgecenter/) for more details on cert-manager-webhook, IBM Cloud Private's Kubernetes certificate manager service.
 
 ## Prerequisites
-1. Kubernetes version 1.9.0 or higher
-2. Helm version or higher
-3. Cluster running Kubernetes
-4. A dedicated cert-manager namespace on the cluster
-
-## Resources Required
-Docker images:
-
-| Image                        | Version |
-| ---------------------------- | ------- |
-| icp-cert-manager             | 0.7.0.1 |
-| icp-cert-policy-controller   | 3.2.1   |
+* Kubernetes version 1.13 or above
+* Helm version 2.9 or above
 
 ### PodSecurityPolicy Requirements
 The predefined `PodSecurityPolicy` name: [`ibm-privileged-psp`](https://ibm.biz/cpkspec-psp) has been verified for this chart, if your target namespace is bound to this `PodSecurityPolicy` you can proceed to install the chart.
@@ -86,19 +76,29 @@ This chart also defines a custom `PodSecurityPolicy` which can be used to finely
       verbs:
       - use
     ```
+
+## Resources Required
+* None
+
 ## Installing the Chart
-One instance of IBM Cloud Private certificate manager service is installed for every IBM Cloud Private Management.
+One instance of the cert-manager-webhook chart comes installed with IBM Cloud Private. If it is not installed, then run the following `helm` command to install it:
 
-IBM Cloud Private certificate manager service can be installed either by the command line or through the IBM Cloud Private Management Console if one instance is not already present on the cluster.
+```bash
+helm install -n ibm-cert-manager-webhook --namespace cert-manager <path to chart>/ibm-cert-manager-webhook --tls
+```
 
-To install on the command line, you must have your IBM Cloud Private certificate manager chart ready and the images required by the chart.
-1. `helm install <cert-manager chart> -n cert-manager --namespace cert-manager --tls`
+You can also install it from the IBM Cloud Private management console by navigating to either the Helm Releases page or the Catalog page and searching for `ibm-cert-manager-webhook`. 
 
-## Configurations
-Configurations for installing the IBM Cloud Private certificate manager service can be found in the `values.yaml` file. 
+## Configuration
+Changes to configuration can be made in the values.yaml file or in a values-override.yaml where it will override the values in values.yaml.
 
-These values may be overridden by specifying a `values-override.yaml` file and installing or upgrading cert-manager like so:
-`helm install <cert-manager chart> -f values-override.yaml -n cert-manager --namespace cert-manager --tls`
+To install or upgrade the chart with a values-override.yaml, the `helm` command would look like this:
+```bash
+helm upgrade ibm-cert-manager-webhook --force -f values-override.yaml ibm-cert-manager-webhook-chart --tls
+```
+
+## Red Hat OpenShift SecurityContextConstraints Requirements
+IBM Cloud Private Certificate manager webhook service runs using the [`ibm-anyuid-scc`](https://ibm.biz/cpkspec-scc) security context.
 
 ## Limitations
 * There can only be a single deployment of the certificate manager service in a cluster, and it is installed by default.
