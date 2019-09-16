@@ -89,6 +89,7 @@ spec:
           {{- if .Values.solver.repository }}
           - --acme-http01-solver-image={{ .Values.solver.repository }}:{{ .Values.solver.tag }}
           {{- end }}
+          {{- end }}
           - --webhook-namespace=$(POD_NAMESPACE)
           - --webhook-ca-secret={{ include "webhook.rootCACertificate" . }}
           - --webhook-serving-secret={{ include "webhook.servingCertificate" . }}
