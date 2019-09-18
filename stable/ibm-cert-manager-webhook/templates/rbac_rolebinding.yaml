@@ -5,7 +5,7 @@
 apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
 metadata:
-  name: {{ include "webhook.fullname" . }}-webhook-authentication-reader
+  name: {{ include "webhook.appName" . }}-webhook-authentication-reader
   namespace: kube-system
   labels:
     app: {{ include "webhook.name" . }}
@@ -19,7 +19,7 @@ roleRef:
 subjects:
 - apiGroup: ""
   kind: ServiceAccount
-  name: {{ include "webhook.fullname" . }}
+  name: {{ include "webhook.appName" . }}
   namespace: {{ .Release.Namespace }}
 
 ---
@@ -28,7 +28,7 @@ subjects:
 apiVersion: rbac.authorization.k8s.io/v1beta1
 kind: ClusterRoleBinding
 metadata:
-  name: {{ include "webhook.fullname" . }}:auth-delegator
+  name: {{ include "webhook.appName" . }}:auth-delegator
   labels:
     app: {{ include "webhook.name" . }}
     app.kubernetes.io/name: {{ include "webhook.name" . }}
@@ -42,7 +42,7 @@ roleRef:
 subjects:
 - apiGroup: ""
   kind: ServiceAccount
-  name: {{ include "webhook.fullname" . }}
+  name: {{ include "webhook.appName" . }}
   namespace: {{ .Release.Namespace }}
 
 {{- end -}}

@@ -56,16 +56,8 @@ We truncate at 63 chars because some Kubernetes name fields are limited to this 
 If release name contains chart name it will be used as a full name.
 */}}
 {{- define "webhook.fullname" -}}
-{{- if .Values.fullnameOverride -}}
-{{- printf "%s-webhook" .Values.fullnameOverride | trunc 63 | trimSuffix "-" -}}
-{{- else -}}
 {{- $name := default (include "webhook.name" .) .Values.nameOverride -}}
-{{- if contains $name .Release.Name -}}
-{{- printf "%s-webhook" $name | trunc 63 | trimSuffix "-" -}}
-{{- else -}}
-{{- printf "%s-webhook" $name | trunc 63 | trimSuffix "-" -}}
-{{- end -}}
-{{- end -}}
+{{- printf "cert-manager-%s" $name | trunc 63 | trimSuffix "-" -}}
 {{- end -}}
 
 {{/*
@@ -88,7 +80,7 @@ Create chart name and version as used by the chart label.
 {{- end -}}
 
 {{- define "webhook.servingCertificate" -}}
-{{ printf "%s-webhook-tls" (include "webhook.fullname" .) }}
+{{ printf "%s-tls" (include "webhook.fullname" .) }}
 {{- end -}}
 
 {{/*
