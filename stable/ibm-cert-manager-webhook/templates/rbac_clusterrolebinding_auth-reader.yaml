@@ -1,11 +1,12 @@
 {{- if .Values.global.rbac.create -}}
-### Webhook ###
-# apiserver gets the auth-delegator role to delegate auth decisions to
-# the core apiserver
+# apiserver gets the ability to read authentication. This allows it to
+# read the specific configmap that has the requestheader-* entries to
+# api agg
 apiVersion: rbac.authorization.k8s.io/v1
-kind: ClusterRoleBinding
+kind: RoleBinding
 metadata:
-  name: {{ include "webhook.appName" . }}-auth-delegator
+  name: {{ include "webhook.appName" . }}-webhook-authentication-reader
+  namespace: kube-system
   labels:
     app: {{ include "webhook.name" . }}
     chart: {{ include "webhook.chart" . }}
@@ -13,11 +14,12 @@ metadata:
     heritage: {{ .Release.Service }}
 roleRef:
   apiGroup: rbac.authorization.k8s.io
-  kind: ClusterRole
-  name: system:auth-delegator
+  kind: Role
+  name: extension-apiserver-authentication-reader
 subjects:
 - apiGroup: ""
   kind: ServiceAccount
   name: {{ include "webhook.serviceAccountName" . }}
   namespace: {{ .Release.Namespace }}
+
 {{- end -}}
