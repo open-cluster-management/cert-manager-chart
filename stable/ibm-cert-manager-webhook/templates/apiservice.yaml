@@ -14,6 +14,6 @@ spec:
   groupPriorityMinimum: 1000
   versionPriority: 15
   service:
-    name: {{ include "webhook.appName" . }}
+    name: {{ include "webhook.fullname" . }}
     namespace: "{{ .Release.Namespace }}"
   version: v1beta1

@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: {{ include "webhook.appName" . }}
+  name: {{ include "webhook.fullname" . }}
   namespace: {{ .Release.Namespace | quote }}
   labels:
     app: {{ include "webhook.name" . }}
