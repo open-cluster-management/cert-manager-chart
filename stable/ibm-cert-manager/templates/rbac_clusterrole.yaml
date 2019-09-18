@@ -13,23 +13,17 @@ metadata:
     helm.sh/chart: {{ template "cert-manager.chart" . }}
 rules:
   - apiGroups: ["certmanager.k8s.io"]
-    resources: ["certificates", "certificaterequests"]
-    verbs: ["create", "update", "delete"]
+    resources: ["certificates", "certificaterequests", "orders", "challenges", "clusterissuers", "issuers"]
+    verbs: ["*"]
   - apiGroups: ["certmanager.k8s.io"]
-    resources: ["certificates", "certificates/status", "certificaterequests", "certificaterequests/status", "challenges", "challenges/status", "clusterissuers", "clusterissuers/status", "issuers", "issuers/status", "orders", "orders/status"]
+    resources: ["certificates/status", "certificaterequests/status", "challenges/status", "clusterissuers/status", "issuers/status", "orders/status"]
     verbs: ["update"]
-  - apiGroups: ["certmanager.k8s.io"]
-    resources: ["certificates", "certificaterequests", "challenges", "clusterissuers", "issuers", "orders"]
-    verbs: ["get", "list", "watch"]
   # We require these rules to support users with the OwnerReferencesPermissionEnforcement
   # admission controller enabled:
   # https://kubernetes.io/docs/reference/access-authn-authz/admission-controllers/#ownerreferencespermissionenforcement
   - apiGroups: ["certmanager.k8s.io"]
     resources: ["certificates/finalizers", "challenges/finalizers", "ingresses/finalizers", "orders/finalizers"]
     verbs: ["update"]
-  - apiGroups: ["certmanager.k8s.io"]
-    resources: ["orders", "challenges"]
-    verbs: ["create", "delete"]
   - apiGroups: [""]
     resources: ["secrets"]
     verbs: ["get", "list", "watch", "create", "update", "delete"]
