@@ -34,6 +34,9 @@ global:
         description: "If true, create and use RBAC resources"
         type: "boolean"
         required: true
+  logLevel:
+    __metadata:
+      hidden: true
 replicaCount:
   __metadata:
     label: "Replicas"
