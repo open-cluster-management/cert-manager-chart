@@ -78,3 +78,11 @@ overrides:
   rule: "CheckForOldMetadataLabels"
   severity: "REVIEW"
   reduceTo: "INFO"
+- reason: "The caBundle is injected during runtime by the cainjector microservice."
+  rule: "ValidateSchema"
+  severity: "ERROR"
+  reduceTo: "INFO"
+  fileNames:
+    - templates/validating-webhook.yaml
+    - templates/mutating-webhook.yaml
+  message: ".*missing required field \"caBundle\" in io.k8s.api.admissionregistration.v1beta1.WebhookClientConfig.*"
