@@ -238,9 +238,6 @@ prometheus:
       required: true
       type: "boolean"
   servicemonitor:
-    __metadata:
-      label: "Service Monitor"
-      description: "Service monitoring settings."
     enabled:
       __metadata:
         label: "Enable"
