@@ -3,6 +3,11 @@ kind: CustomResourceDefinition
 metadata:
   creationTimestamp: null
   name: certificaterequests.certmanager.k8s.io
+  labels:
+    app: cert-manager
+    chart: {{ template "cert-manager-crd.chart" . }}
+    release: {{ .Release.Name }}
+    heritage: {{ .Release.Service }}
 spec:
   additionalPrinterColumns:
   - JSONPath: .status.conditions[?(@.type=="Ready")].status
