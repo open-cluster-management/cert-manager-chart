@@ -19,7 +19,7 @@ overrides:
 - reason: "If it were enabled, the rolebinding must be run on the kube-system namespace in order to read the specific configmap that has the requestheader-* entries."
   rule: "NoNamespace"
   fileNames:
-    - templates/rbac_rolebinding.yaml
+    - templates/rbac_rolebinding_auth-reader.yaml
   severity: "ERROR"
   reduceTo: "INFO"
 - reason: "Having an application test will mess with the shared testing environment since we are a platform service."
