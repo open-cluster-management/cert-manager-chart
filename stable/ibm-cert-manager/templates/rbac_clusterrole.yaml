@@ -1,16 +1,15 @@
 {{- if .Values.global.rbac.create -}}
 
 # Certificates controller role
-apiVersion: rbac.authorization.k8s.io/v1beta1
+apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
 metadata:
   name: {{ template "cert-manager.fullname" . }}
   labels:
     app: {{ template "cert-manager.name" . }}
-    app.kubernetes.io/name: {{ template "cert-manager.name" . }}
-    app.kubernetes.io/instance:  {{ .Release.Name }}
-    app.kubernetes.io/managed-by: {{ .Release.Service }}
-    helm.sh/chart: {{ template "cert-manager.chart" . }}
+    chart: {{ template "cert-manager.chart" . }}
+    release: {{ .Release.Name }}
+    heritage: {{ .Release.Service }}
 rules:
   - apiGroups: ["certmanager.k8s.io"]
     resources: ["certificates", "certificaterequests", "orders", "challenges", "clusterissuers", "issuers"]

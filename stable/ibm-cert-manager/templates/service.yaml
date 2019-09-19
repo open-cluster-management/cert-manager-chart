@@ -6,10 +6,9 @@ metadata:
   namespace: {{ .Release.Namespace | quote }}
   labels:
     app: {{ template "cert-manager.name" . }}
-    app.kubernetes.io/name: {{ template "cert-manager.name" . }}
-    app.kubernetes.io/instance:  {{ .Release.Name }}
-    app.kubernetes.io/managed-by: {{ .Release.Service }}
-    helm.sh/chart: {{ template "cert-manager.chart" . }}
+    chart: {{ template "cert-manager.chart" . }}
+    release: {{ .Release.Name }}
+    heritage: {{ .Release.Service }}
 spec:
   type: ClusterIP
   ports:
