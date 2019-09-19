@@ -237,7 +237,7 @@ prometheus:
       description: "If true, enables prometheus monitoring on cert-manager."
       required: true
       type: "boolean"
-  serviceMonitor:
+  servicemonitor:
     __metadata:
       label: "Service Monitor"
       description: "Service monitoring settings."
