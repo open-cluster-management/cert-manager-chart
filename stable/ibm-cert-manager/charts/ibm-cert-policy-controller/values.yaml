@@ -17,7 +17,7 @@ securityContext:
   container:
     allowPrivilegeEscalation: false
     runAsUser: 10000
-    readOnlyRootFilesystem: false
+    readOnlyRootFilesystem: true
     runAsNonRoot: true
     privileged: false
 
