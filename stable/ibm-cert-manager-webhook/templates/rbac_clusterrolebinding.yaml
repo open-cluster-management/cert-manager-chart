@@ -18,6 +18,6 @@ roleRef:
 subjects:
 - apiGroup: ""
   kind: ServiceAccount
-  name: {{ include "webhook.fullname" . }}
+  name: {{ include "webhook.serviceAccountName" . }}
   namespace: {{ .Release.Namespace }}
 {{- end -}}

@@ -8,6 +8,12 @@ global:
       description: "Any secrets required to pull cert-manager images."
       type: "string"
       required: false
+  isOpenshift:
+    __metadata:
+      label: "Openshift"
+      description: "If true, means this is deployed on openshift and will give cert-manager extra permissions."
+      type: "boolean"
+      required: true
   priorityClassName:
     __metadata:
       label: "Priority Class Name"
@@ -28,6 +34,9 @@ global:
         description: "If true, create and use RBAC resources"
         type: "boolean"
         required: true
+  logLevel:
+    __metadata:
+      hidden: true
 replicaCount:
   __metadata:
     label: "Replicas"
@@ -218,6 +227,59 @@ ingressShim:
     type: "string"
     hidden: true
     required: false
+prometheus:
+  __metadata:
+    label: "Prometheus"
+    description: "Settings for prometheus (a monitoring service)."
+  enabled:
+    __metadata:
+      label: "Enable"
+      description: "If true, enables prometheus monitoring on cert-manager."
+      required: true
+      type: "boolean"
+  servicemonitor:
+    enabled:
+      __metadata:
+        label: "Enable"
+        description: "If true, will enable service monitoring on cert-manager."
+        required: true
+        type: "boolean"
+    prometheusInstance:
+      __metadata:
+        label: "Prometheus Instance"
+        description: "Name of the prometheus instance if service monitoring is enabled."
+        type: "string"
+        required: false
+    targetPort:
+      __metadata:
+        label: "Target Port"
+        description: "Port exposed by cert-manager for service monitoring to prometheus if prometheus is enabled."
+        type: "string"
+        required: false
+    path:
+      __metadata:
+        label: "Metrics Path"
+        description: "The path prometheus can collect data from cert-manager."
+        required: false
+        type: "string"
+    interval:
+      __metadata:
+        label: "Colleciton Interval"
+        description: "How often you want prometheus to pull metrics from cert-manager."
+        type: "string"
+        required: false
+    scrapeTimeout:
+      __metadata:
+        label: "Timeout"
+        description: "The timeout for every collection."
+        required: false
+        type: "string"
+    labels:
+      __metadata:
+        label: "Labels"
+        description: "Any labels you want to apply to cert-manager's collections."
+        required: false
+        type: "string"
 policyController:
   __metadata:
     label: "Certificate Policy Controller"

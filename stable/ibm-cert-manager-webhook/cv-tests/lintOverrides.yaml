@@ -19,7 +19,7 @@ overrides:
 - reason: "If it were enabled, the rolebinding must be run on the kube-system namespace in order to read the specific configmap that has the requestheader-* entries."
   rule: "NoNamespace"
   fileNames:
-    - templates/rbac_rolebinding.yaml
+    - templates/rbac_rolebinding_auth-reader.yaml
   severity: "ERROR"
   reduceTo: "INFO"
 - reason: "Having an application test will mess with the shared testing environment since we are a platform service."
@@ -78,3 +78,11 @@ overrides:
   rule: "CheckForOldMetadataLabels"
   severity: "REVIEW"
   reduceTo: "INFO"
+- reason: "The caBundle is injected during runtime by the cainjector microservice."
+  rule: "ValidateSchema"
+  severity: "ERROR"
+  reduceTo: "INFO"
+  fileNames:
+    - templates/validating-webhook.yaml
+    - templates/mutating-webhook.yaml
+  message: ".*missing required field \"caBundle\" in io.k8s.api.admissionregistration.v1beta1.WebhookClientConfig.*"
