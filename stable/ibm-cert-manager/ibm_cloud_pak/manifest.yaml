@@ -3,15 +3,15 @@ charts:
     repository-keys:
     - image.repository
 images:
-- image: "icp-cert-manager-controller:0.7.0.1"
+- image: "icp-cert-manager-controller:0.10.0"
   references:
   - pull-authorization:
       password:
         env: ARTIFACTORY_PASSWORD
       username:
         env: ARTIFACTORY_USERNAME
-    pull-repository: icp-cert-manager-controller:0.7.0.1-amd64
-    repository: icp-cert-manager-controller-amd64:0.7.0.1
+    pull-repository: icp-cert-manager-controller:0.10.0-amd64
+    repository: icp-cert-manager-controller-amd64:0.10.0
     platform:
       os: linux
       architecture: amd64
@@ -20,8 +20,8 @@ images:
         env: ARTIFACTORY_PASSWORD
       username:
         env: ARTIFACTORY_USERNAME
-    pull-repository: icp-cert-manager-controller:0.7.0.1-ppc64le
-    repository: icp-cert-manager-controller-ppc64le:0.7.0.1
+    pull-repository: icp-cert-manager-controller:0.10.0-ppc64le
+    repository: icp-cert-manager-controller-ppc64le:0.10.0
     platform:
       os: linux
       architecture: ppc64le
@@ -30,8 +30,8 @@ images:
         env: ARTIFACTORY_PASSWORD
       username:
         env: ARTIFACTORY_USERNAME
-    pull-repository: icp-cert-manager-controller:0.7.0.1-s390x
-    repository: icp-cert-manager-controller-s390x:0.7.0.1
+    pull-repository: icp-cert-manager-controller:0.10.0-s390x
+    repository: icp-cert-manager-controller-s390x:0.10.0
     platform:
       os: linux
       architecture: s390x
@@ -64,6 +64,38 @@ images:
         env: ARTIFACTORY_USERNAME
     pull-repository: icp-cert-policy-controller:3.2.1-s390x
     repository: icp-cert-policy-controller-s390x:3.2.1
+    platform:
+      os: linux
+      architecture: s390x
+- image: "icp-cert-manager-acmesolver:0.10.0"
+  references:
+  - pull-authorization:
+      password:
+        env: ARTIFACTORY_PASSWORD
+      username:
+        env: ARTIFACTORY_USERNAME
+    pull-repository: icp-cert-manager-acmesolver:0.10.0-amd64
+    repository: icp-cert-manager-acmesolver-amd64:0.10.0
+    platform:
+      os: linux
+      architecture: amd64
+  - pull-authorization:
+      password:
+        env: ARTIFACTORY_PASSWORD
+      username:
+        env: ARTIFACTORY_USERNAME
+    pull-repository: icp-cert-manager-acmesolver:0.10.0-ppc64le
+    repository: icp-cert-manager-acmesolver-ppc64le:0.10.0
+    platform:
+      os: linux
+      architecture: ppc64le
+  - pull-authorization:
+      password:
+        env: ARTIFACTORY_PASSWORD
+      username:
+        env: ARTIFACTORY_USERNAME
+    pull-repository: icp-cert-manager-acmesolver:0.10.0-s390x
+    repository: icp-cert-manager-acmesolver-s390x:0.10.0
     platform:
       os: linux
       architecture: s390x
