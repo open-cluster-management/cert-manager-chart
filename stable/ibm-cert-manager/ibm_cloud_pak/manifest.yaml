@@ -35,15 +35,15 @@ images:
     platform:
       os: linux
       architecture: s390x
-- image: "icp-cert-policy-controller:3.2.1"
+- image: "icp-cert-policy-controller:3.2.2"
   references:
   - pull-authorization:
       password:
         env: ARTIFACTORY_PASSWORD
       username:
         env: ARTIFACTORY_USERNAME
-    pull-repository: icp-cert-policy-controller:3.2.1-amd64
-    repository: icp-cert-policy-controller-amd64:3.2.1
+    pull-repository: icp-cert-policy-controller:3.2.2-amd64
+    repository: icp-cert-policy-controller-amd64:3.2.2
     platform:
       os: linux
       architecture: amd64
@@ -52,8 +52,8 @@ images:
         env: ARTIFACTORY_PASSWORD
       username:
         env: ARTIFACTORY_USERNAME
-    pull-repository: icp-cert-policy-controller:3.2.1-ppc64le
-    repository: icp-cert-policy-controller-ppc64le:3.2.1
+    pull-repository: icp-cert-policy-controller:3.2.2-ppc64le
+    repository: icp-cert-policy-controller-ppc64le:3.2.2
     platform:
       os: linux
       architecture: ppc64le
@@ -62,8 +62,8 @@ images:
         env: ARTIFACTORY_PASSWORD
       username:
         env: ARTIFACTORY_USERNAME
-    pull-repository: icp-cert-policy-controller:3.2.1-s390x
-    repository: icp-cert-policy-controller-s390x:3.2.1
+    pull-repository: icp-cert-policy-controller:3.2.2-s390x
+    repository: icp-cert-policy-controller-s390x:3.2.2
     platform:
       os: linux
       architecture: s390x
