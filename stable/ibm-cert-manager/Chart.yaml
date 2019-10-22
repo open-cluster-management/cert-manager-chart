@@ -3,7 +3,7 @@ name: ibm-cert-manager
 version: 0.10.0
 tillerVersion: ">=2.7.0"
 kubeVersion: ">=1.9.0-0"
-appVersion: 0.10.1
+appVersion: 0.10.0
 description: Service for issuing and managing certificates on IBM Cloud Private.
 keywords:
   - "amd64"
