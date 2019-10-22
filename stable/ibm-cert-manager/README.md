@@ -20,8 +20,8 @@ Docker images:
 
 | Image                        | Version |
 | ---------------------------- | ------- |
-| icp-cert-manager             | 0.7.0.1 |
-| icp-cert-policy-controller   | 3.2.1   |
+| icp-cert-manager             | 0.10.0  |
+| icp-cert-policy-controller   | 3.2.2   |
 
 ### PodSecurityPolicy Requirements
 The predefined `PodSecurityPolicy` name: [`ibm-privileged-psp`](https://ibm.biz/cpkspec-psp) has been verified for this chart, if your target namespace is bound to this `PodSecurityPolicy` you can proceed to install the chart.

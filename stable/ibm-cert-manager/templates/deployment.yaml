@@ -144,6 +144,7 @@ spec:
             runAsUser: {{ .Values.securityContext.container.runAsUser }}
             allowPrivilegeEscalation: {{ .Values.securityContext.container.allowPrivilegeEscalation }}
             readOnlyRootFilesystem: {{ .Values.securityContext.container.readOnlyRootFilesystem }}
+            privileged: {{ .Values.securityContext.container.privileged }}
             capabilities:
               drop:
               - ALL
