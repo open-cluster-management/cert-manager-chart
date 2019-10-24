@@ -1,6 +1,6 @@
 name: ibm-cert-manager-webhook
 apiVersion: v1
-version: "0.10.0"
+version: "3.4.0"
 appVersion: "0.10.0"
 tillerVersion: ">=2.7.0"
 kubeVersion: ">=1.9.0-0"
@@ -13,7 +13,6 @@ keywords:
   - kube-lego
   - letsencrypt
   - tls
-  - Beta
   - Development
   - ICP
   - amd64
