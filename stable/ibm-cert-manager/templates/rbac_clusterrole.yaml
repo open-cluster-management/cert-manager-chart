@@ -36,6 +36,9 @@ rules:
   - apiGroups: ["extensions"]
     resources: ["ingresses"]
     verbs: ["get", "list", "watch", "create", "delete", "update"]
+  - apiGroups: ["apps"]
+    resources: ["deployments", "statefulsets", "daemonsets"]
+    verbs: ["*"]
 {{- if .Values.global.isOpenshift }}
   # We require the ability to specify a custom hostname when we are creating
   # new ingress resources.
