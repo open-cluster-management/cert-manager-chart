@@ -206,3 +206,26 @@ affinity:
     label: "Affinity"
     description: "Pod's affinity"
     hidden: true
+watcher:
+  __metadata:
+    label: "Watcher"
+    description: "The values for using the configmap watcher"
+  optIn:
+    __metadata:
+      label: "Opt In"
+      description: "Opts into the configmap watcher if true"
+      required: true
+      type: "boolean"
+  configmap:
+    name:
+      __metadata:
+        label: "Name"
+        description: "Name of configmap to watch"
+        required: false
+        type: "string"
+    namespace:
+      __metadata:
+        label: "Namespace"
+        description: "Namespace of the configmap to watch"
+        required: false
+        type: "string"
