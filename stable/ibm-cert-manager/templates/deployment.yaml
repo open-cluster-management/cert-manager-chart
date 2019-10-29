@@ -70,6 +70,9 @@ spec:
         {{- else }}
           - --leader-election-namespace=$(POD_NAMESPACE)
         {{- end }}
+        {{- if .Values.solver.repository }}
+          - --acme-http01-solver-image={{ .Values.solver.repository }}:{{ .Values.solver.tag }}
+        {{- end }}
         {{- if .Values.extraArgs }}
 {{ toYaml .Values.extraArgs | indent 10 }}
         {{- end }}
@@ -85,9 +88,6 @@ spec:
           {{- end }}
           {{- if .defaultACMEDNS01ChallengeProvider }}
           - --default-acme-issuer-dns01-provider-name={{ .defaultACMEDNS01ChallengeProvider }}
-          {{- end }}
-          {{- if .Values.solver.repository }}
-          - --acme-http01-solver-image={{ .Values.solver.repository }}:{{ .Values.solver.tag }}
           {{- end }}
           {{- end }}
           - --webhook-namespace=$(POD_NAMESPACE)
