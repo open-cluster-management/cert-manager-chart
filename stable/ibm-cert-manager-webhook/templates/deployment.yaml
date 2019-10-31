@@ -26,7 +26,7 @@ spec:
         heritage: {{ .Release.Service }}
         app: {{ include "webhook.name" . }}
         release: {{ .Release.Name }}
-        watcher.ibm.com/opt-in: {{ .Values.watcher.optIn }}
+        watcher.ibm.com/opt-in: {{ .Values.watcher.optIn | quote }}
       annotations:
         seccomp.security.alpha.kubernetes.io/pod: docker/default
         watcher.ibm.com/configmap-resource: "{{ .Values.watcher.configmap.namespace }}/{{ .Values.watcher.configmap.name }}"
