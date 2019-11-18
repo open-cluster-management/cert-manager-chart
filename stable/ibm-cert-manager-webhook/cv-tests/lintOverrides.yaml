@@ -110,3 +110,7 @@ overrides:
   rule: "CustomPodSecurityInReadme"
   severity: "ERROR"
   reduceTo: "INFO"
+- reason: "The link to translated licenses does not exists yet, will add the link to the license file when it is available."
+  rule: "TranslatedLicenseLinkExists"
+  severity: "ERROR"
+  reduceTo: "INFO"
