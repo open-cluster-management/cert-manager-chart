@@ -5,7 +5,7 @@ dependencies:
   repository: "file://ibm-cert-manager-crd"
   alias: crd
 - name: controller
-  version: "3.2.2"
+  version: "3.4.1"
   repository: "file://ibm-cert-policy-controller"
   condition: policyController.enabled
   alias: controller

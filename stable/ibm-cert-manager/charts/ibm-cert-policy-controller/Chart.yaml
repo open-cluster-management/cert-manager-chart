@@ -1,6 +1,6 @@
 name: controller
-version: 3.2.2
-appVersion: 3.2.2
+version: 3.4.1
+appVersion: 3.3.1
 description: A Helm chart for deploying the Certificate Policy Controller
 tillerVersion: ">=2.7.0"
 kubeVersion: ">=1.9.0-0"

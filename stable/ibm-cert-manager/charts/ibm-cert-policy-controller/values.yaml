@@ -2,7 +2,7 @@ replicas: 1
 
 image: 
   repository: ibmcom/icp-cert-policy-controller
-  tag: 3.3.0
+  tag: 3.3.1
   pullPolicy: IfNotPresent
 
 args:
