@@ -1,17 +1,17 @@
 charts:
-  - archive: file:ibm-cert-manager-webhook-3.4.0.tgz
+  - archive: file:ibm-cert-manager-webhook-3.5.0.tgz
     repository-keys:
     - image.repository
 images:
-- image: "icp-cert-manager-webhook:0.10.0"
+- image: "icp-cert-manager-webhook:0.10.1"
   references:
   - pull-authorization:
       password:
         env: ARTIFACTORY_PASSWORD
       username:
         env: ARTIFACTORY_USERNAME
-    pull-repository: icp-cert-manager-webhook:0.10.0-amd64
-    repository: icp-cert-manager-webhook-amd64:0.10.0
+    pull-repository: icp-cert-manager-webhook:0.10.1-amd64
+    repository: icp-cert-manager-webhook-amd64:0.10.1
     platform:
       os: linux
       architecture: amd64
@@ -20,8 +20,8 @@ images:
         env: ARTIFACTORY_PASSWORD
       username:
         env: ARTIFACTORY_USERNAME
-    pull-repository: icp-cert-manager-webhook:0.10.0-ppc64le
-    repository: icp-cert-manager-webhook-ppc64le:0.10.0
+    pull-repository: icp-cert-manager-webhook:0.10.1-ppc64le
+    repository: icp-cert-manager-webhook-ppc64le:0.10.1
     platform:
       os: linux
       architecture: ppc64le
@@ -30,8 +30,8 @@ images:
         env: ARTIFACTORY_PASSWORD
       username:
         env: ARTIFACTORY_USERNAME
-    pull-repository: icp-cert-manager-webhook:0.10.0-s390x
-    repository: icp-cert-manager-webhook-s390x:0.10.0
+    pull-repository: icp-cert-manager-webhook:0.10.1-s390x
+    repository: icp-cert-manager-webhook-s390x:0.10.1
     platform:
       os: linux
       architecture: s390x
