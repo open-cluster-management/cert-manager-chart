@@ -1,15 +1,24 @@
 # What's new in 0.10.0
-* Support for operators and administrators to create/read/update certificates and issuers within IBM Cloud Private
-* Support for administrators to delete certificates and issuers within IBM Cloud Private
-* Support for cert-manager apiserver Webhook enablement
+* KeyUsages field for Certificates
+* KeyEncoding field in Certificates to specify the private key encoding
+* Deprecation of spec.acme field in Certificates
+* New field spec.acme.solvers in Issuers for ACME Issuers
 
 # Prerequisites
 * Kubernetes Version 1.11 or later
+
+# Documentation
+Knowledge Center: https://www.ibm.com/support/knowledgecenter/SSFC4F_1.2.0/cert-manager/3.4.0/cert_manager.html
 
 # Known issues
 * ACME DNS Issuers are not supported.
 
 # Fixes
+* Refactoring to better generate serving certificates for the webhook
+
+# Breaking Changes
+* Validation for commonName, or the first dnsName if commonName is not specified, is active. The value must be less than 64 characters long.
+* Validation that the secretName for each Certificate must be unique within its namespace.
 
 # Version History
 | Chart   | Date               | Details                           |
