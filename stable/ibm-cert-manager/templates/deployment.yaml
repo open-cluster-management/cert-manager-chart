@@ -54,7 +54,7 @@ spec:
         runAsUser: {{ .Values.securityContext.pod.runAsUser }}
       containers:
         - name: {{ .Chart.Name }}
-          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          image: "{{ .Values.image.repository }}/{{ .Values.image.name }}:{{ .Values.image.tag }}{{ .Values.imageTagPostfix }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           args:
         {{- if .Values.global.logLevel }}
@@ -71,7 +71,7 @@ spec:
           - --leader-election-namespace=$(POD_NAMESPACE)
         {{- end }}
         {{- if .Values.solver.repository }}
-          - --acme-http01-solver-image={{ .Values.solver.repository }}:{{ .Values.solver.tag }}
+          - --acme-http01-solver-image={{ .Values.solver.repository }}/{{ .Values.solver.name }}:{{ .Values.solver.tag }}{{ .Values.imageTagPostfix }}
         {{- end }}
         {{- if .Values.extraArgs }}
 {{ toYaml .Values.extraArgs | indent 10 }}
