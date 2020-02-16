@@ -11,3 +11,6 @@ vendor*
 *requirements.lock
 
 *.tgz
+.build-harness-bootstrap
+build-harness-extensions/
+build-harness/
