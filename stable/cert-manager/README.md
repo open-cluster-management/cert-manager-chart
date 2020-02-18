@@ -22,7 +22,6 @@ Docker images:
 | ---------------------------- | ------- |
 | cert-manager-controller  | 0.10.0  |
 | cert-manager-acmesolver  | 0.10.0  |
-| cert-policy-controller   | 3.3.1   |
 
 CPU & Memory:
 | Resource | Limits| Required |
