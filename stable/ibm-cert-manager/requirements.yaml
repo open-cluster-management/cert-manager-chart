@@ -1,6 +1,0 @@
-# requirements.yaml
-dependencies:
-- name: ibm-cert-manager-crd
-  version: "3.4.0"
-  repository: "file://ibm-cert-manager-crd"
-  alias: crd

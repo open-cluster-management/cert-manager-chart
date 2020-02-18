@@ -8,7 +8,7 @@
 * Kubernetes Version 1.11 or later
 
 # Documentation
-Knowledge Center: https://www.ibm.com/support/knowledgecenter/SSFC4F_1.2.0/cert-manager/3.4.0/cert_manager.html
+See the documentation included with the product.
 
 # Known issues
 * ACME DNS Issuers are not supported.

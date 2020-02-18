@@ -7,7 +7,7 @@ This chart deploys the certificate manager service that can be used to issue and
 One instance of cert-manager is deployed to a single master node when common services is installed.
 
 ## How to use Cert-Manager
-See the IBM Cloud Pak for Multicloud Management product documentation in the [IBM Knowledge Center](https://www.ibm.com/support/knowledgecenter/SSFC4F_1.2.0/kc_welcome_cloud_pak.html) for more details on cert-manager.
+See the product documentation that included cert-manager for more details on usage.
 
 ## Prerequisites
 1. Kubernetes version 1.11.0 or higher
