@@ -31,13 +31,13 @@ strategy: {}
 imageTagPostfix: ""
 image:
   name: cert-manager-controller
-  repository: ibmcom
+  repository: quay.io/open-cluster-management
   tag: 0.10.1
   pullPolicy: IfNotPresent
 
 solver:
   name: icp-cert-manager-acmesolver
-  repository: ibmcom
+  repository: quay.io/open-cluster-management
   tag: 0.10.1
 
 # Override the namespace used to store DNS provider credentials etc. for ClusterIssuer
@@ -119,9 +119,6 @@ prometheus:
     interval: 60s
     scrapeTimeout: 30s
     labels: {}
-
-policyController:
-  enabled: true
 
 # Use these variables to configure the HTTP_PROXY environment variables
 # http_proxy: "http://proxy:8080"
