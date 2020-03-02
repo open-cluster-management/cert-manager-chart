@@ -148,10 +148,6 @@ spec:
             capabilities:
               drop:
               - ALL
-    {{- with .Values.nodeSelector }}
-      nodeSelector:
-{{ toYaml . | indent 8 }}
-    {{- end }}
     {{- with .Values.affinity }}
       affinity:
 {{ toYaml . | indent 8 }}
@@ -168,3 +164,7 @@ spec:
       dnsConfig:
 {{ toYaml .Values.podDnsConfig | indent 8 }}
 {{- end }}
+      {{- if .Values.global.pullSecret }}
+      imagePullSecrets:
+      - name: {{ .Values.global.pullSecret }}
+      {{- end }}

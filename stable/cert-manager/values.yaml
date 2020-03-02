@@ -2,12 +2,8 @@
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 global:
-  ## Reference to one or more secrets to be used when pulling images
-  ## ref: https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/
-  ##
-  imagePullSecrets: []
+  pullSecret: ""
   isOpenshift: false
-  # - name: "image-pull-secret"
 
   # Optional priority class to be used for the cert-manager pods
   priorityClassName: ""
@@ -100,8 +96,6 @@ podDnsPolicy: "ClusterFirstWithHostNet"
 #   nameservers:
 #     - "1.1.1.1"
 #     - "8.8.8.8"
-
-nodeSelector: {}
 
 ingressShim: {}
   # defaultIssuerName: ""
