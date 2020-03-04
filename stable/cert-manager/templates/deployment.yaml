@@ -51,7 +51,9 @@ spec:
         fsGroup: {{ .Values.securityContext.pod.fsGroup }}
 {{- end }}        
         runAsNonRoot: {{ .Values.securityContext.pod.runAsNonRoot }}
+{{- if .Values.securityContext.pod.runAsUser }}
         runAsUser: {{ .Values.securityContext.pod.runAsUser }}
+{{- end }}        
       containers:
         - name: {{ .Chart.Name }}
           image: "{{ .Values.image.repository }}/{{ .Values.image.name }}:{{ .Values.image.tag }}{{ .Values.imageTagPostfix }}"
@@ -141,7 +143,9 @@ spec:
 {{ toYaml .Values.resources | indent 12 }}
           securityContext:
             runAsNonRoot: {{ .Values.securityContext.container.runAsNonRoot }}
+{{- if .Values.securityContext.container.runAsUser }}
             runAsUser: {{ .Values.securityContext.container.runAsUser }}
+{{- end }}
             allowPrivilegeEscalation: {{ .Values.securityContext.container.allowPrivilegeEscalation }}
             readOnlyRootFilesystem: {{ .Values.securityContext.container.readOnlyRootFilesystem }}
             privileged: {{ .Values.securityContext.container.privileged }}
