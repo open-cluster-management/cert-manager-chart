@@ -30,7 +30,6 @@ spec:
 {{ toYaml .Values.podLabels | indent 8 }}
 {{- end }}
       annotations:
-        seccomp.security.alpha.kubernetes.io/pod: docker/default
         {{- if .Values.podAnnotations }}
 {{ toYaml .Values.podAnnotations | indent 8 }}
         {{- end }}
@@ -167,7 +166,7 @@ spec:
       dnsConfig:
 {{ toYaml .Values.podDnsConfig | indent 8 }}
 {{- end }}
-      {{- if .Values.global.pullSecret }}
+      {{- if .Values.imagePullSecret }}
       imagePullSecrets:
-      - name: {{ .Values.global.pullSecret }}
+      - name: {{ .Values.imagePullSecret }}
       {{- end }}

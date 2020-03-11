@@ -1,8 +1,8 @@
 # Default values for cert-manager.
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
+imagePullSecret: ""
 global:
-  pullSecret: ""
   isOpenshift: false
 
   # Optional priority class to be used for the cert-manager pods
@@ -49,7 +49,8 @@ serviceAccount:
   name: "default"
 
 # Optional additional arguments
-extraArgs: []
+extraArgs:
+  - --enable-certificate-owner-ref=true
   # Use this flag to set a namespace that cert-manager will use to store
   # supporting resources required for each ClusterIssuer (default is kube-system)
   # - --cluster-resource-namespace=kube-system
@@ -137,12 +138,9 @@ affinity: {}
 #     operator: Equal
 #     value: master
 #     effect: NoSchedule
-tolerations:
-- effect: NoSchedule
-  key: dedicated
-  operator: Exists
-- key: CriticalAddonsOnly
-  operator: Exists
+tolerations: {}
 
 podRestart: 
+  enabled: true
+cert-manager-crd:
   enabled: true
