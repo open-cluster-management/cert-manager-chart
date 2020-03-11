@@ -61,3 +61,5 @@ affinity: {}
 tolerations: {}
 podRestart:
   enabled: true
+cert-manager-crd:
+  enabled: true
