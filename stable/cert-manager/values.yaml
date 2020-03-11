@@ -49,7 +49,7 @@ serviceAccount:
   name: "default"
 
 # Optional additional arguments
-extraArgs: []
+extraArgs:
   - --enable-certificate-owner-ref=true
   # Use this flag to set a namespace that cert-manager will use to store
   # supporting resources required for each ClusterIssuer (default is kube-system)
