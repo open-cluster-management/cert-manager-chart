@@ -1,4 +1,4 @@
-IBM cert-manager has been deployed! 
+cert-manager has been deployed! 
 
 Please validate the service is running by checking if the pod is running, its logs to make sure there are no errors, and that the CRDs have been successfully installed.
 

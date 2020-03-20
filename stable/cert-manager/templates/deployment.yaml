@@ -9,12 +9,12 @@ metadata:
     release: {{ .Release.Name }}
     heritage: {{ .Release.Service }}
 spec:
-  replicas: {{ .Values.replicaCount }}
+  replicas: {{ .Values.global.replicaCount }}
   selector:
     matchLabels:
       app: {{ template "cert-manager.name" . }}
       release: {{ .Release.Name }}
-  {{- with .Values.strategy }}
+  {{- with .Values.global.strategy }}
   strategy:
     {{- . | toYaml | nindent 4 }}
   {{- end }}
@@ -155,7 +155,7 @@ spec:
       affinity:
 {{ toYaml . | indent 8 }}
     {{- end }}
-    {{- with .Values.tolerations }}
+    {{- with .Values.global.tolerations }}
       tolerations:
 {{ toYaml . | indent 8 }}
     {{- end }}
@@ -166,7 +166,7 @@ spec:
       dnsConfig:
 {{ toYaml .Values.podDnsConfig | indent 8 }}
 {{- end }}
-      {{- if .Values.imagePullSecret }}
+      {{- if .Values.global.pullSecret }}
       imagePullSecrets:
-      - name: {{ .Values.imagePullSecret }}
+      - name: {{ .Values.global.pullSecret }}
       {{- end }}

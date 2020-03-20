@@ -1,7 +1,11 @@
 # requirements.yaml
 dependencies:
-- name: cert-manager-crd
+- name: cert-manager-webhook
   version: "3.4.0"
-  repository: "file://cert-manager-crd"
-  alias: crd
-  condition: cert-manager-crd.enabled
+  repository: "file://cert-manager-webhook"
+  alias: webhook
+  condition: cert-manager-webhook.enabled
+- name: cainjector
+  version: "3.4.0"
+  repository: "file://cainjector"
+  condition: cainjector.enabled
