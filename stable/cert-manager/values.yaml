@@ -13,7 +13,7 @@ imageTagPostfix: ""
 image:
   name: cert-manager-controller
   repository: quay.io/open-cluster-management
-  tag: 3.5.0
+  tag: 0.10.1
   pullPolicy: IfNotPresent
 solver:
   name: icp-cert-manager-acmesolver
