@@ -32,7 +32,7 @@ image:
   pullPolicy: IfNotPresent
 
 solver:
-  name: icp-cert-manager-acmesolver
+  name: cert-manager-acmesolver
   repository: quay.io/open-cluster-management
   tag: 0.10.1
 
