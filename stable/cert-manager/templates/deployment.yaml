@@ -55,11 +55,7 @@ spec:
 {{- end }}        
       containers:
         - name: {{ .Chart.Name }}
-          {{- if .Values.imageShaDigests.cert_manager_controller }}
-          image: "{{ .Values.image.repository }}/{{ .Values.image.name }}@{{ .Values.imageShaDigests.cert_manager_controller }}"
-          {{- else }}
-          image: "{{ .Values.image.repository }}/{{ .Values.image.name }}:{{ .Values.image.tag }}{{ .Values.imageTagPostfix }}"
-          {{- end }}
+          image: {{ .Values.global.imageOverrides.cert_manager}}
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           args:
         {{- if .Values.global.logLevel }}
