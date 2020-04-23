@@ -56,7 +56,7 @@ spec:
       containers:
         - name: {{ .Chart.Name }}
           image: {{ .Values.global.imageOverrides.cert_manager_controller }}
-          imagePullPolicy: {{ .Values.global.image.pullPolicy }}
+          imagePullPolicy: {{ .Values.global.pullPolicy }}
           args:
         {{- if .Values.global.logLevel }}
           - --v={{ .Values.global.logLevel }}

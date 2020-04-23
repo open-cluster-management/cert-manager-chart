@@ -3,8 +3,7 @@
 # Declare variables to be passed into your templates.
 imagePullSecret: ""
 global:
-  image:
-    pullPolicy: IfNotPresent
+  pullPolicy: IfNotPresent
   imageOverrides:
     cert_manager_controller: ""
   isOpenshift: false
