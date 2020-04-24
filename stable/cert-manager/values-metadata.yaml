@@ -8,6 +8,16 @@ global:
   __metadata:
     label: "Global Chart Settings"
     description: "Global values for cert-manager chart"
+  imageOverrides:
+    _metadata:
+      name: "imageOverrides"
+      label: "CI/CD Image Overrides"
+      description: "Special Value for CI/CD Build Requirements"
+      cert_manager:
+        _metadata:
+          name: "cert-manager-controller"
+          description: "key for cert_manager_controller image from override"
+          hidden: true
   isOpenshift:
     __metadata:
       label: "Openshift"
@@ -53,18 +63,6 @@ image:
   __metadata:
     label: "Image"
     description: "Image to be used for cert-manager deployment"
-  repository:
-    __metadata:
-      label: "Image Repository"
-      description: "Full repository and path to Certificate Manager image."
-      type: "string"
-      required: true
-  tag:
-    __metadata:
-      label: "Image Tag"
-      description: "The tag identifying which Certificate Manager image to deploy."
-      type: "string"
-      required: true
   pullPolicy:
     __metadata:
       label: "Pull Policy"
@@ -78,22 +76,6 @@ image:
         value: "IfNotPresent"
       - label: "Always"
         value: "Always"
-solver:
-  __metadata:
-    label: "ACME Solver"
-    description: "Configuration for ACME Solver"
-  repository:
-    __metadata:
-      label: "ACME Solver Repository"
-      description: "Full repository and path to Certificate Manager ACME Solver image."
-      type: "string"
-      required: true
-  tag:
-    __metadata:
-      label: "Image Tag"
-      description: "The tag identifying which Certificate Manager ACME Solver image to deploy."
-      type: "string"
-      required: true
 clusterResourceNamespace:
   __metadata:
     label: "Cluster Resource Namespace"

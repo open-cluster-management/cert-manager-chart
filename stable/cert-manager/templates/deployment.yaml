@@ -55,12 +55,8 @@ spec:
 {{- end }}        
       containers:
         - name: {{ .Chart.Name }}
-          {{- if .Values.imageShaDigests.cert_manager_controller }}
-          image: "{{ .Values.image.repository }}/{{ .Values.image.name }}@{{ .Values.imageShaDigests.cert_manager_controller }}"
-          {{- else }}
-          image: "{{ .Values.image.repository }}/{{ .Values.image.name }}:{{ .Values.image.tag }}{{ .Values.imageTagPostfix }}"
-          {{- end }}
-          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          image: {{ .Values.global.imageOverrides.cert_manager_controller }}
+          imagePullPolicy: {{ .Values.global.pullPolicy }}
           args:
         {{- if .Values.global.logLevel }}
           - --v={{ .Values.global.logLevel }}
@@ -75,13 +71,7 @@ spec:
         {{- else }}
           - --leader-election-namespace=$(POD_NAMESPACE)
         {{- end }}
-        {{- if .Values.solver.repository }}
-        {{- if .Values.imageShaDigests.cert_manager_acmesolver }}
-          - --acme-http01-solver-image={{ .Values.solver.repository }}/{{ .Values.solver.name }}@{{ .Values.imageShaDigests.cert_manager_acmesolver }}"
-        {{- else }}
-          - --acme-http01-solver-image={{ .Values.solver.repository }}/{{ .Values.solver.name }}:{{ .Values.solver.tag }}{{ .Values.imageTagPostfix }}
-        {{- end }}
-        {{- end }}
+          - --acme-http01-solver-image={{ .Values.global.imageOverrides.cert_manager_acmesolver }}
         {{- if .Values.extraArgs }}
 {{ toYaml .Values.extraArgs | indent 10 }}
         {{- end }}
