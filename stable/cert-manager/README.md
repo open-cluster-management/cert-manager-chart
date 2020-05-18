@@ -20,8 +20,8 @@ Docker images:
 
 | Image                        | Version |
 | ---------------------------- | ------- |
-| cert-manager-controller  | 0.10.0  |
-| cert-manager-acmesolver  | 0.10.0  |
+| cert-manager-controller  | 0.10.2  |
+| cert-manager-acmesolver  | 0.10.2  |
 
 CPU & Memory:
 | Resource | Limits| Required |
