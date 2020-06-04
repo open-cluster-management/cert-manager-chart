@@ -97,10 +97,6 @@ spec:
           ports:
           - containerPort: {{ .Values.prometheus.servicemonitor.targetPort }}
 {{- end }}
-          {{- if .Values.affinity }}
-          affinity:
-{{ toYaml .Values.containerAffinity | indent 10 }}
-          {{- end }}
           livenessProbe:
             exec:
               command: 
@@ -167,4 +163,8 @@ spec:
       {{- if .Values.imagePullSecret }}
       imagePullSecrets:
       - name: {{ .Values.imagePullSecret }}
+      {{- end }}
+      {{- with .Values.hubconfig.nodeSelector }}
+      nodeSelector:
+      {{ toYaml . | indent 8 }}
       {{- end }}
