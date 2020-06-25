@@ -22,7 +22,9 @@ global:
     # Override the namespace used to store the ConfigMap for leader election
     namespace: ""
 
-replicaCount: 1
+hubconfig:
+  replicaCount: 1
+  nodeSelector: ""
 
 strategy: {}
   # type: RollingUpdate
