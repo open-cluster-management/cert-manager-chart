@@ -2,6 +2,7 @@
 
 #Script to be run in travis when charts are updated in master
 
+
 cd $(dirname $0)
 git clone git@github.com:open-cluster-management/multicloudhub-repo.git 
 cd multicloudhub-repo
