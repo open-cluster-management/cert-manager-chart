@@ -15,12 +15,14 @@ env:
 
     # Component Specific
     - COMPONENT_BUILD_COMMAND=${TRAVIS_BUILD_DIR}/build/build.sh
+    - COMPONENT_AUTO_COMMAND=${TRAVIS_BUILD_DIR}/chartAutomation.sh
     - COMPONENT_TYPE="make"
 
 stages:
   - build
   - unit-test
   - test-e2e
+  - auto
 
 jobs:
   include:
@@ -50,3 +52,7 @@ jobs:
         - |
           make init
           make component/test/e2e
+    - stage: auto
+      name: "Auto trigger mch-repo"
+      if: type = pull_request AND branch = trigger-3569
+      script: ./chartAutomation.sh
