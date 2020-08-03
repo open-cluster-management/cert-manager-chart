@@ -7,6 +7,7 @@ cd $(dirname $0)
 git clone git@github.com:open-cluster-management/multicloudhub-repo.git
 cd multicloudhub-repo
 git checkout chartAutomation
+cicd-scripts/install-dependencies.sh
 cicd-scripts/chart-sync.sh
 git add .
 git commit -m "[skip ci] greetings from cert-manager"
