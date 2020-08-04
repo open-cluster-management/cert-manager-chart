@@ -56,5 +56,6 @@ jobs:
       if: type = pull_request
       script: 
         - git clone git@github.com:open-cluster-management/multicloudhub-repo.git
+        - cd multicloudhub-repo
         - git checkout dev-auto
         - ./cicd-scripts/chartAutomation.sh cert-manager
