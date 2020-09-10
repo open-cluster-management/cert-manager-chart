@@ -53,7 +53,7 @@ extraArgs:
   # supporting resources required for each ClusterIssuer (default is kube-system)
   # - --cluster-resource-namespace=kube-system
   # When this flag is enabled, secrets will be automatically removed when the certificate resource is deleted
-  # - --enable-certificate-owner-ref=true
+  - --enable-certificate-owner-ref=true
 
 extraEnv:
  - name: OWNED_NAMESPACE
