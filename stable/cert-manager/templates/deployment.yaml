@@ -64,7 +64,7 @@ spec:
         {{- if .Values.clusterResourceNamespace }}
           - --cluster-resource-namespace={{ .Values.clusterResourceNamespace }}
         {{- else }}
-          - --cluster-resource-namespace=$(POD_NAMESPACE)
+          - --cluster-resource-namespace=$(POD_NAMESPACE)-issuer
         {{- end }}
         {{- if .Values.global.leaderElection.namespace }}
           - --leader-election-namespace={{ .Values.global.leaderElection.namespace }}
