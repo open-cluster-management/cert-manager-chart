@@ -3,11 +3,6 @@ kind: CustomResourceDefinition
 metadata:
   creationTimestamp: null
   name: clusterissuers.certmanager.k8s.io
-  labels:
-    app: cert-manager
-    chart: {{ template "cert-manager-crd.chart" . }}
-    release: {{ .Release.Name }}
-    heritage: {{ .Release.Service }}
 spec:
   group: certmanager.k8s.io
   names:
