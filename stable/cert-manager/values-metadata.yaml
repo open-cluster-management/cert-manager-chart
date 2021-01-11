@@ -315,13 +315,3 @@ affinity:
     label: "Affinity"
     description: "Pod's affinity"
     hidden: true
-cert-manager-crd:
-  __metadata:
-    label: "Configuration for Certificate Manager CRDs"
-    description: "Cert-Manager's custom resource definitions configuration"
-  enabled:
-    __metadata:
-      label: "Enabled"
-      description: "If true, the cert-manager-crd subchart will be installed."
-      required: false
-      type: "boolean"
